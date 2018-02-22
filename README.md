@@ -15,3 +15,8 @@ Class <code>StructuredLog</code> offers structured (as opposed to flat) logging.
 </ul>
 
 ## Nested Sections <img src="images/nesting.jpg" width="125">
+
+## Timestamp and Duration <img src="images/time.jpg" width="100"
+
+## Rescues <img src="images/rescue.jpg width="100">
+
