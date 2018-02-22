@@ -1,4 +1,4 @@
-# <img src="images/structured.png" width="50"> Structured Log  
+# Structured Log <img src="images/structured.png" width="50"> 
 
 <!-- [![Gem Version](https://badge.fury.io/rb/structured_log.svg)](https://badge.fury.io/rb/structured_log) -->
 
@@ -14,4 +14,4 @@ Class <code>StructuredLog</code> offers structured (as opposed to flat) logging.
 </ul>
 </ul>
 
-## <img src="images/nesting.jpg" width="100"> Nested Sections
+## Nested Sections <img src="images/nesting.jpg" width="125">
