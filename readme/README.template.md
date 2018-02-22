@@ -18,9 +18,17 @@ Class <code>StructuredLog</code> offers structured (as opposed to flat) logging.
 ## Nested Sections
 <img src="images/nesting.jpg" height="70">
 
+@[ruby](sections.rb)
+@[xml](sections.xml)
+
 ## Timestamp and Duration
 <img src="images/time.ico" height="70">
+
+@[ruby](time.rb)
+@[xml](time.xml)
 
 ## Rescues
 <img src="images/rescue.jpg" height="70">
 
+@[ruby](rescue.rb)
+@[xml](rescue.xml)

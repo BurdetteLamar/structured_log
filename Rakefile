@@ -14,6 +14,15 @@ namespace :build do
     require 'markdown_helper'
     markdown_helper = MarkdownHelper.new
     markdown_helper.include('readme/README.template.md', 'README.md')
+    chdir('readme') do
+      %w/
+        sections
+        time
+        rescue
+      /.each do |name|
+        system("ruby #{name}.rb")
+      end
+    end
   end
 
 end
