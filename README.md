@@ -14,4 +14,4 @@ Class <code>StructuredLog</code> offers structured (as opposed to flat) logging.
 </ul>
 </ul>
 
-## <img src="images/nesting.jpg" width="50"> Nested Sections
+## <img src="images/nesting.jpg" width="100"> Nested Sections
