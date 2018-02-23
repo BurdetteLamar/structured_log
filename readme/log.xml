@@ -1,0 +1,12 @@
+<log>
+  <section name='Section with timestamp'>
+    :timestamp
+  </section>
+  <section name='Section with duration' duration_seconds='0.000'/>
+  <section name='Section with both' duration_seconds='0.000'>
+    :timestamp
+  </section>
+  <section name='Order does not matter' duration_seconds='0.000'>
+    :timestamp
+  </section>
+</log>

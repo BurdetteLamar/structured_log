@@ -1,0 +1,11 @@
+<log>
+  <section name='Outer'>
+    <section name='Mid'>
+      <section name='Inner'>
+        <comment>
+          I am nested.
+        </comment>
+      </section>
+    </section>
+  </section>
+</log>

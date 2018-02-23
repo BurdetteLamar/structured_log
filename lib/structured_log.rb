@@ -1,8 +1,6 @@
 require 'rexml/document'
 require 'nokogiri'
 
-require 'structured_log/version'
-
 class StructuredLog
 
   attr_accessor \
@@ -17,7 +15,7 @@ class StructuredLog
   DEFAULT_FILE_NAME = 'log.xml'
   DEFAULT_DIR_PATH = '.'
   DEFAULT_XML_ROOT_TAG_NAME = 'log'
-  DEFAULT_XML_INDENTATION = -1
+  DEFAULT_XML_INDENTATION = 2
 
   # Message for no block error.
   NO_BLOCK_GIVEN_MSG = 'No block given'
@@ -65,7 +63,7 @@ class StructuredLog
         when arg.kind_of?(String)
           pcdata += arg
         when arg == :timestamp
-          attributes[:timestamp] = self.timestamp
+          attributes[:timestamp] = StructuredLog.timestamp
         when arg == :duration
           duration_to_be_included = true
         when arg == :rescue
@@ -208,6 +206,7 @@ class StructuredLog
 
     File.open(self.file_path, 'w') do |file|
       document.write(file, self.xml_indentation)
+      file.puts('')
     end
     nil
   end
