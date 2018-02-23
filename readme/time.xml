@@ -1,20 +1,20 @@
 <log>
-  <section name='Section with timestamp' timestamp='2018-02-23-Fri-17.09.34.264'>
+  <section name='Section with timestamp' timestamp='2018-02-23-Fri-17.34.28.485'>
     <comment>
       I have a timestamp
     </comment>
   </section>
-  <section name='Section with duration' duration_seconds='1.010'>
+  <section name='Section with duration' duration_seconds='1.000'>
     <comment>
       I have a duration
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-02-23-Fri-17.09.35.274' duration_seconds='1.000'>
+  <section name='Section with both' timestamp='2018-02-23-Fri-17.34.29.495' duration_seconds='1.010'>
     <comment>
       I have a both
     </comment>
   </section>
-  <section name='Order does not matter' timestamp='2018-02-23-Fri-17.09.36.274' duration_seconds='1.010'>
+  <section name='Order does not matter' timestamp='2018-02-23-Fri-17.34.30.505' duration_seconds='1.000'>
     <comment>
       I have a both
     </comment>

@@ -16,6 +16,12 @@ Optionally, each section may include:
 
 And of course the logger offers many ways to log data.
 
+## About the Examples
+
+A working example is worth a thousand words (maybe).
+
+Each of the following sections features an example Ruby program, followed by its output log.
+
 ## Nested Sections
 <img src="images/nesting.jpg" height="70">
 

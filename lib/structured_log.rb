@@ -120,6 +120,7 @@ class StructuredLog
     end
     lines.push('')
     lines.push('')
+    lines.push('')
     put_element('each_with_index', :name => name, :class => obj.class) do
       cdata(lines.join("\n"))
     end

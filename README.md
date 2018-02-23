@@ -16,6 +16,12 @@ Optionally, each section may include:
 
 And of course the logger offers many ways to log data.
 
+## About the Examples
+
+A working example is worth a thousand words (maybe).
+
+Each of the following sections features an example Ruby program, followed by its output log.
+
 ## Nested Sections
 <img src="images/nesting.jpg" height="70">
 
@@ -78,7 +84,7 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-02-23-Fri-17.04.12.553'>
+  <section name='Section with timestamp' timestamp='2018-02-23-Fri-17.33.58.895'>
     <comment>
       I have a timestamp
     </comment>
@@ -88,12 +94,12 @@ end
       I have a duration
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-02-23-Fri-17.04.13.563' duration_seconds='1.010'>
+  <section name='Section with both' timestamp='2018-02-23-Fri-17.33.59.905' duration_seconds='1.010'>
     <comment>
       I have a both
     </comment>
   </section>
-  <section name='Order does not matter' timestamp='2018-02-23-Fri-17.04.14.573' duration_seconds='1.010'>
+  <section name='Order does not matter' timestamp='2018-02-23-Fri-17.34.00.915' duration_seconds='1.010'>
     <comment>
       I have a both
     </comment>
@@ -167,6 +173,7 @@ end
      1 bar
      2 baz
      3 bat
+
 ]]>
   </each_with_index>
 </log>
