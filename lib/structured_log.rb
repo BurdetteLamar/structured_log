@@ -95,7 +95,7 @@ class StructuredLog
             put_element('class', x.class)
             put_element('message', x.message)
             put_element('backtrace') do
-              cdata(filter_backtrace(x.backtrace))
+              put_cdata(filter_backtrace(x.backtrace))
             end
           end
         end
@@ -122,7 +122,7 @@ class StructuredLog
     lines.push('')
     lines.push('')
     put_element('each_with_index', :name => name, :class => obj.class) do
-      cdata(lines.join("\n"))
+      put_cdata(lines.join("\n"))
     end
     nil
   end
@@ -137,14 +137,14 @@ class StructuredLog
     lines.push('')
     lines.push('')
     put_element('each_', :name => name, :class => obj.class) do
-      cdata(lines.join("\n"))
+      put_cdata(lines.join("\n"))
     end
     nil
   end
 
   def put_data(name, obj)
     put_element('data', :name => name, :class => obj.class) do
-      cdata(obj.inspect)
+      put_cdata(obj.inspect)
     end
   end
 
@@ -159,6 +159,19 @@ class StructuredLog
 
   def comment(text, *args)
     put_element('comment', text, *args)
+    nil
+  end
+
+  def put_cdata(text)
+    # Guard against using a terminator that's a substring of the cdata.
+    s = 'EOT'
+    terminator = s
+    while text.match(terminator) do
+      terminator += s
+    end
+    log_puts("CDATA\t<<#{terminator}")
+    log_puts(text)
+    log_puts(terminator)
     nil
   end
 
@@ -264,19 +277,6 @@ class StructuredLog
   def log_puts(text)
     self.file.puts(text)
     self.file.flush
-    nil
-  end
-
-  def cdata(text)
-    # Guard against using a terminator that's a substring of the cdata.
-    s = 'EOT'
-    terminator = s
-    while text.match(terminator) do
-      terminator += s
-    end
-    log_puts("CDATA\t<<#{terminator}")
-    log_puts(text)
-    log_puts(terminator)
     nil
   end
 

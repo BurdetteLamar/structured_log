@@ -60,3 +60,9 @@ Each of the following sections features an example Ruby program, followed by its
 @[ruby](data.rb)
 
 @[xml](data.xml)
+
+## CData
+
+@[ruby](cdata.rb)
+
+@[xml](cdata.xml)

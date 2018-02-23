@@ -22,6 +22,7 @@ namespace :build do
         array
         hash
         data
+        cdata
       /.each do |name|
         system("ruby #{name}.rb")
       end

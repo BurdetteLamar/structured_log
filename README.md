@@ -84,7 +84,7 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-02-23-Fri-17.33.58.895'>
+  <section name='Section with timestamp' timestamp='2018-02-23-Fri-17.53.25.209'>
     <comment>
       I have a timestamp
     </comment>
@@ -94,12 +94,12 @@ end
       I have a duration
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-02-23-Fri-17.33.59.905' duration_seconds='1.010'>
+  <section name='Section with both' timestamp='2018-02-23-Fri-17.53.26.219' duration_seconds='1.010'>
     <comment>
       I have a both
     </comment>
   </section>
-  <section name='Order does not matter' timestamp='2018-02-23-Fri-17.34.00.915' duration_seconds='1.010'>
+  <section name='Order does not matter' timestamp='2018-02-23-Fri-17.53.27.229' duration_seconds='1.010'>
     <comment>
       I have a both
     </comment>
@@ -260,5 +260,30 @@ end
   <data name='my_data' class='NilClass'>
     <![CDATA[nil]]>
   </data>
+</log>
+```
+
+## CData
+
+<code>cdata.rb</code>
+```ruby
+require 'structured_log'
+
+text = <<EOT
+Method put_cdata puts the data verbatim.
+Nothing is added or detracted.
+Not even whitespace.
+EOT
+StructuredLog.open(:file_path => 'cdata.xml') do |log|
+  log.put_cdata(text)
+end
+```
+
+<code>cdata.xml</code>
+```xml
+<log>
+  <![CDATA[Method put_cdata puts the data verbatim.
+Nothing is added or detracted.
+Not even whitespace.]]>
 </log>
 ```
