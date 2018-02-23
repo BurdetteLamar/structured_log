@@ -13,6 +13,7 @@ Class <code>StructuredLog</code> offers structured (as opposed to flat) logging.
 <li>A duration.
 <li>The ability to rescue and log an exception.
 </ul>
+<li>And of course many ways to log data.
 </ul>
 
 ## Nested Sections
@@ -75,7 +76,7 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-02-22-Thu-14.12.37.599'>
+  <section name='Section with timestamp' timestamp='2018-02-23-Fri-09.54.27.280'>
     <comment>
       I have a timestamp
     </comment>
@@ -85,12 +86,12 @@ end
       I have a duration
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-02-22-Thu-14.12.38.613' duration_seconds='1.014'>
+  <section name='Section with both' timestamp='2018-02-23-Fri-09.54.28.294' duration_seconds='1.014'>
     <comment>
       I have a both
     </comment>
   </section>
-  <section name='Order does not matter' timestamp='2018-02-22-Thu-14.12.39.627' duration_seconds='1.014'>
+  <section name='Order does not matter' timestamp='2018-02-23-Fri-09.54.29.308' duration_seconds='1.014'>
     <comment>
       I have a both
     </comment>
@@ -99,7 +100,7 @@ end
 ```
 
 ## Rescues
-<img src="images/rescue.jpg" height="70">
+<img src="images/rescue.jpg" height="120">
 
 <code>rescue.rb</code>
 ```ruby
