@@ -13,6 +13,7 @@ Class <code>StructuredLog</code> offers structured (as opposed to flat) logging.
 <li>A duration.
 <li>The ability to rescue and log an exception.
 </ul>
+<li>And of course many ways to log data.
 </ul>
 
 ## Nested Sections
@@ -28,7 +29,7 @@ Class <code>StructuredLog</code> offers structured (as opposed to flat) logging.
 @[xml](time.xml)
 
 ## Rescues
-<img src="images/rescue.jpg" height="70">
+<img src="images/rescue.jpg" height="120">
 
 @[ruby](rescue.rb)
 @[xml](rescue.xml)
