@@ -78,7 +78,7 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-02-23-Fri-17.02.20.733'>
+  <section name='Section with timestamp' timestamp='2018-02-23-Fri-17.04.12.553'>
     <comment>
       I have a timestamp
     </comment>
@@ -88,12 +88,12 @@ end
       I have a duration
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-02-23-Fri-17.02.21.743' duration_seconds='1.010'>
+  <section name='Section with both' timestamp='2018-02-23-Fri-17.04.13.563' duration_seconds='1.010'>
     <comment>
       I have a both
     </comment>
   </section>
-  <section name='Order does not matter' timestamp='2018-02-23-Fri-17.02.22.753' duration_seconds='1.000'>
+  <section name='Order does not matter' timestamp='2018-02-23-Fri-17.04.14.573' duration_seconds='1.010'>
     <comment>
       I have a both
     </comment>
@@ -116,7 +116,8 @@ StructuredLog.open(:file_path => 'rescue.xml') do |log|
   log.section('Another section') do
     log.comment('This section is ok.')
   end
-end```
+end
+```
 
 <code>rescue.xml</code>
 ```xml
