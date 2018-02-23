@@ -75,7 +75,7 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-02-23-Fri-09.51.54.300'>
+  <section name='Section with timestamp' timestamp='2018-02-23-Fri-09.53.28.015'>
     <comment>
       I have a timestamp
     </comment>
@@ -85,12 +85,12 @@ end
       I have a duration
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-02-23-Fri-09.51.55.314' duration_seconds='1.014'>
+  <section name='Section with both' timestamp='2018-02-23-Fri-09.53.29.029' duration_seconds='1.014'>
     <comment>
       I have a both
     </comment>
   </section>
-  <section name='Order does not matter' timestamp='2018-02-23-Fri-09.51.56.328' duration_seconds='1.015'>
+  <section name='Order does not matter' timestamp='2018-02-23-Fri-09.53.30.043' duration_seconds='1.015'>
     <comment>
       I have a both
     </comment>
@@ -99,7 +99,7 @@ end
 ```
 
 ## Rescues
-<img src="images/rescue.jpg" height="70">
+<img src="images/rescue.jpg" height="120">
 
 <code>rescue.rb</code>
 ```ruby
