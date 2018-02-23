@@ -13,6 +13,7 @@ Class <code>StructuredLog</code> offers structured (as opposed to flat) logging.
 <li>A duration.
 <li>The ability to rescue and log an exception.
 </ul>
+<li>And of course many ways to log data.
 </ul>
 
 ## Nested Sections
@@ -75,7 +76,7 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-02-23-Fri-09.53.28.015'>
+  <section name='Section with timestamp' timestamp='2018-02-23-Fri-09.54.27.280'>
     <comment>
       I have a timestamp
     </comment>
@@ -85,12 +86,12 @@ end
       I have a duration
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-02-23-Fri-09.53.29.029' duration_seconds='1.014'>
+  <section name='Section with both' timestamp='2018-02-23-Fri-09.54.28.294' duration_seconds='1.014'>
     <comment>
       I have a both
     </comment>
   </section>
-  <section name='Order does not matter' timestamp='2018-02-23-Fri-09.53.30.043' duration_seconds='1.015'>
+  <section name='Order does not matter' timestamp='2018-02-23-Fri-09.54.29.308' duration_seconds='1.014'>
     <comment>
       I have a both
     </comment>
