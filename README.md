@@ -75,7 +75,7 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-02-22-Thu-14.17.16.113'>
+  <section name='Section with timestamp' timestamp='2018-02-23-Fri-09.51.54.300'>
     <comment>
       I have a timestamp
     </comment>
@@ -85,12 +85,12 @@ end
       I have a duration
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-02-22-Thu-14.17.17.127' duration_seconds='1.014'>
+  <section name='Section with both' timestamp='2018-02-23-Fri-09.51.55.314' duration_seconds='1.014'>
     <comment>
       I have a both
     </comment>
   </section>
-  <section name='Order does not matter' timestamp='2018-02-22-Thu-14.17.18.141' duration_seconds='1.014'>
+  <section name='Order does not matter' timestamp='2018-02-23-Fri-09.51.56.328' duration_seconds='1.015'>
     <comment>
       I have a both
     </comment>
