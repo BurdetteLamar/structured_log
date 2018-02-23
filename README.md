@@ -3,18 +3,18 @@
 
 <!-- [![Gem Version](https://badge.fury.io/rb/structured_log.svg)](https://badge.fury.io/rb/structured_log) -->
 
-Class <code>StructuredLog</code> offers structured (as opposed to flat) logging.
+Class <code>StructuredLog</code> offers structured (as opposed to flat) logging.  Nested sections (blocks) in Ruby code become nested XML elements in the log.
 
-<ul>
-<li>Nested sections (blocks) in Ruby code become nested XML elements in the log.
-<li>Optionally, each section may include:
+This sectioning allows you to group actions in your program, and that grouping carries over into the log.
+
+Optionally, each section may include:
 <ul>
 <li>A timestamp.
 <li>A duration.
 <li>The ability to rescue and log an exception.
 </ul>
-<li>And of course many ways to log data.
-</ul>
+
+And of course the logger offers many ways to log data.
 
 ## Nested Sections
 <img src="images/nesting.jpg" height="70">
@@ -33,6 +33,7 @@ StructuredLog.open(:file_path => 'sections.xml') do |log|
   end
 end
 ```
+
 <code>sections.xml</code>
 ```xml
 <log>
@@ -73,25 +74,26 @@ StructuredLog.open(:file_path => 'time.xml') do |log|
   end
 end
 ```
+
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-02-23-Fri-09.54.27.280'>
+  <section name='Section with timestamp' timestamp='2018-02-23-Fri-17.02.20.733'>
     <comment>
       I have a timestamp
     </comment>
   </section>
-  <section name='Section with duration' duration_seconds='1.014'>
+  <section name='Section with duration' duration_seconds='1.010'>
     <comment>
       I have a duration
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-02-23-Fri-09.54.28.294' duration_seconds='1.014'>
+  <section name='Section with both' timestamp='2018-02-23-Fri-17.02.21.743' duration_seconds='1.010'>
     <comment>
       I have a both
     </comment>
   </section>
-  <section name='Order does not matter' timestamp='2018-02-23-Fri-09.54.29.308' duration_seconds='1.014'>
+  <section name='Order does not matter' timestamp='2018-02-23-Fri-17.02.22.753' duration_seconds='1.000'>
     <comment>
       I have a both
     </comment>
@@ -99,7 +101,7 @@ end
 </log>
 ```
 
-## Rescues
+## Rescue
 <img src="images/rescue.jpg" height="120">
 
 <code>rescue.rb</code>
@@ -115,6 +117,7 @@ StructuredLog.open(:file_path => 'rescue.xml') do |log|
     log.comment('This section is ok.')
   end
 end```
+
 <code>rescue.xml</code>
 ```xml
 <log>
@@ -139,5 +142,115 @@ rescue.rb:3:in `<main>']]>
       This section is ok.
     </comment>
   </section>
+</log>
+```
+
+## Array
+
+<code>array.rb</code>
+```ruby
+require 'structured_log'
+
+array = %w/foo bar baz bat/
+StructuredLog.open(:file_path => 'array.xml') do |log|
+  log.put_each_with_index('my_array', array)
+end
+```
+
+<code>array.xml</code>
+```xml
+<log>
+  <each_with_index name='my_array' class='Array'>
+    <![CDATA[
+     0 foo
+     1 bar
+     2 baz
+     3 bat
+]]>
+  </each_with_index>
+</log>
+```
+
+## Hash
+
+<code>hash.rb</code>
+```ruby
+require 'structured_log'
+
+hash = {
+    :a => 'z',
+    :aa => 'zz',
+    :aaa => 'zzz',
+    :aaaa => 'zzzz',
+}
+StructuredLog.open(:file_path => 'hash.xml') do |log|
+  log.put_each_pair('my_hash', hash)
+end
+```
+
+<code>hash.xml</code>
+```xml
+<log>
+  <each_ name='my_hash' class='Hash'>
+    <![CDATA[
+   a => z   
+  aa => zz  
+ aaa => zzz 
+aaaa => zzzz
+]]>
+  </each_>
+</log>
+```
+
+## Data
+
+<code>data.rb</code>
+```ruby
+require 'structured_log'
+
+data = [
+    [0, 1, 2],
+    {:a => 0, :b => 1},
+    Set.new(%w/foo bar baz/),
+    3.14,
+    1066,
+    false,
+    'Hello',
+    nil,
+]
+StructuredLog.open(:file_path => 'data.xml') do |log|
+  data.each do |datum|
+    log.put_data('my_data', datum)
+  end
+end
+```
+
+<code>data.xml</code>
+```xml
+<log>
+  <data name='my_data' class='Array'>
+    <![CDATA[[0, 1, 2]]]>
+  </data>
+  <data name='my_data' class='Hash'>
+    <![CDATA[{:a=>0, :b=>1}]]>
+  </data>
+  <data name='my_data' class='Set'>
+    <![CDATA[#<Set: {"foo", "bar", "baz"}>]]>
+  </data>
+  <data name='my_data' class='Float'>
+    <![CDATA[3.14]]>
+  </data>
+  <data name='my_data' class='Fixnum'>
+    <![CDATA[1066]]>
+  </data>
+  <data name='my_data' class='FalseClass'>
+    <![CDATA[false]]>
+  </data>
+  <data name='my_data' class='String'>
+    <![CDATA["Hello"]]>
+  </data>
+  <data name='my_data' class='NilClass'>
+    <![CDATA[nil]]>
+  </data>
 </log>
 ```

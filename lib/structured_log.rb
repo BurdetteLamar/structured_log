@@ -113,6 +113,40 @@ class StructuredLog
     nil
   end
 
+  def put_each_with_index(name, obj)
+    lines = ['']
+    obj.each_with_index do |item, i|
+      lines.push(format('%6d %s', i, item.to_s))
+    end
+    lines.push('')
+    lines.push('')
+    put_element('each_with_index', :name => name, :class => obj.class) do
+      cdata(lines.join("\n"))
+    end
+    nil
+  end
+
+  def put_each_pair(name, obj)
+    lines = ['']
+    max_key_size = obj.keys.max_by(&:size).size
+    max_val_size = obj.values.max_by(&:size).size
+    obj.each_pair do |key, value|
+      lines.push(format('%s => %s', key.to_s.rjust(max_key_size), value.to_s.ljust(max_val_size)))
+    end
+    lines.push('')
+    lines.push('')
+    put_element('each_', :name => name, :class => obj.class) do
+      cdata(lines.join("\n"))
+    end
+    nil
+  end
+
+  def put_data(name, obj)
+    put_element('data', :name => name, :class => obj.class) do
+      cdata(obj.inspect)
+    end
+  end
+
   # Start a new section, within the current section.
   # Sections may be nested.
   def section(name, *args)

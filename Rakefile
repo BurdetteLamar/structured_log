@@ -19,6 +19,9 @@ namespace :build do
         sections
         time
         rescue
+        array
+        hash
+        data
       /.each do |name|
         system("ruby #{name}.rb")
       end
