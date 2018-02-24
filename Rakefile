@@ -1,5 +1,6 @@
 require 'bundler/gem_tasks'
 require 'rake/testtask'
+require 'markdown_helper'
 
 Rake::TestTask.new(:test) do |t|
   t.libs << 'test'
@@ -11,9 +12,6 @@ namespace :build do
 
   desc 'Build README.md file from README.template.md'
   task :readme do
-    require 'markdown_helper'
-    markdown_helper = MarkdownHelper.new
-    markdown_helper.include('readme/README.template.md', 'README.md')
     chdir('readme') do
       %w/
         sections
@@ -24,9 +22,17 @@ namespace :build do
         data
         cdata
       /.each do |name|
-        system("ruby #{name}.rb")
+        source_file_name = "#{name}.rb"
+        target_file_name = "#{name}.xml"
+        unless uptodate?(target_file_name, [source_file_name])
+          system("ruby #{source_file_name}")
+          puts source_file_name, target_file_name
+        end
       end
     end
+    # TODO:  Implement dependencies
+    markdown_helper = MarkdownHelper.new
+    markdown_helper.include('readme/README.template.md', 'README.md')
   end
 
 end
