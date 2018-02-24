@@ -22,11 +22,11 @@ namespace :build do
         data
         cdata
       /.each do |name|
-        source_file_name = "#{name}.rb"
-        target_file_name = "#{name}.xml"
-        unless uptodate?(target_file_name, [source_file_name])
-          system("ruby #{source_file_name}")
-          puts source_file_name, target_file_name
+        source_file_path = "scripts/#{name}.rb"
+        target_file_path = "logs/#{name}.xml"
+        unless uptodate?(target_file_path, [source_file_path])
+          puts source_file_path, target_file_path
+          system("ruby #{source_file_path}")
         end
       end
     end

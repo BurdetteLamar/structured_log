@@ -84,22 +84,22 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-02-23-Fri-17.53.25.209'>
+  <section name='Section with timestamp' timestamp='2018-02-23-Fri-17.53.49.259'>
     <comment>
       I have a timestamp
     </comment>
   </section>
-  <section name='Section with duration' duration_seconds='1.010'>
+  <section name='Section with duration' duration_seconds='1.000'>
     <comment>
       I have a duration
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-02-23-Fri-17.53.26.219' duration_seconds='1.010'>
+  <section name='Section with both' timestamp='2018-02-23-Fri-17.53.50.269' duration_seconds='1.010'>
     <comment>
       I have a both
     </comment>
   </section>
-  <section name='Order does not matter' timestamp='2018-02-23-Fri-17.53.27.229' duration_seconds='1.010'>
+  <section name='Order does not matter' timestamp='2018-02-23-Fri-17.53.51.279' duration_seconds='1.010'>
     <comment>
       I have a both
     </comment>
