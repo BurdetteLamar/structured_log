@@ -1,0 +1,26 @@
+<log>
+  <data name='my_data' class='Array'>
+    <![CDATA[[0, 1, 2]]]>
+  </data>
+  <data name='my_data' class='Hash'>
+    <![CDATA[{:a=>0, :b=>1}]]>
+  </data>
+  <data name='my_data' class='Set'>
+    <![CDATA[#<Set: {"foo", "bar", "baz"}>]]>
+  </data>
+  <data name='my_data' class='Float'>
+    <![CDATA[3.14]]>
+  </data>
+  <data name='my_data' class='Fixnum'>
+    <![CDATA[1066]]>
+  </data>
+  <data name='my_data' class='FalseClass'>
+    <![CDATA[false]]>
+  </data>
+  <data name='my_data' class='String'>
+    <![CDATA["Hello"]]>
+  </data>
+  <data name='my_data' class='NilClass'>
+    <![CDATA[nil]]>
+  </data>
+</log>

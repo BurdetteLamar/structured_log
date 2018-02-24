@@ -95,7 +95,7 @@ class StructuredLog
             put_element('class', x.class)
             put_element('message', x.message)
             put_element('backtrace') do
-              cdata(filter_backtrace(x.backtrace))
+              put_cdata(filter_backtrace(x.backtrace))
             end
           end
         end
@@ -113,6 +113,41 @@ class StructuredLog
     nil
   end
 
+  def put_each_with_index(name, obj)
+    lines = ['']
+    obj.each_with_index do |item, i|
+      lines.push(format('%6d %s', i, item.to_s))
+    end
+    lines.push('')
+    lines.push('')
+    lines.push('')
+    put_element('each_with_index', :name => name, :class => obj.class) do
+      put_cdata(lines.join("\n"))
+    end
+    nil
+  end
+
+  def put_each_pair(name, obj)
+    lines = ['']
+    max_key_size = obj.keys.max_by(&:size).size
+    max_val_size = obj.values.max_by(&:size).size
+    obj.each_pair do |key, value|
+      lines.push(format('%s => %s', key.to_s.rjust(max_key_size), value.to_s.ljust(max_val_size)))
+    end
+    lines.push('')
+    lines.push('')
+    put_element('each_', :name => name, :class => obj.class) do
+      put_cdata(lines.join("\n"))
+    end
+    nil
+  end
+
+  def put_data(name, obj)
+    put_element('data', :name => name, :class => obj.class) do
+      put_cdata(obj.inspect)
+    end
+  end
+
   # Start a new section, within the current section.
   # Sections may be nested.
   def section(name, *args)
@@ -124,6 +159,19 @@ class StructuredLog
 
   def comment(text, *args)
     put_element('comment', text, *args)
+    nil
+  end
+
+  def put_cdata(text)
+    # Guard against using a terminator that's a substring of the cdata.
+    s = 'EOT'
+    terminator = s
+    while text.match(terminator) do
+      terminator += s
+    end
+    log_puts("CDATA\t<<#{terminator}")
+    log_puts(text)
+    log_puts(terminator)
     nil
   end
 
@@ -229,19 +277,6 @@ class StructuredLog
   def log_puts(text)
     self.file.puts(text)
     self.file.flush
-    nil
-  end
-
-  def cdata(text)
-    # Guard against using a terminator that's a substring of the cdata.
-    s = 'EOT'
-    terminator = s
-    while text.match(terminator) do
-      terminator += s
-    end
-    log_puts("CDATA\t<<#{terminator}")
-    log_puts(text)
-    log_puts(terminator)
     nil
   end
 

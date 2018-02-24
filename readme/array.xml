@@ -1,0 +1,11 @@
+<log>
+  <each_with_index name='my_array' class='Array'>
+    <![CDATA[
+     0 foo
+     1 bar
+     2 baz
+     3 bat
+
+]]>
+  </each_with_index>
+</log>

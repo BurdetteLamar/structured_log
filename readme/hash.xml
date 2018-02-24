@@ -1,0 +1,10 @@
+<log>
+  <each_ name='my_hash' class='Hash'>
+    <![CDATA[
+   a => z   
+  aa => zz  
+ aaa => zzz 
+aaaa => zzzz
+]]>
+  </each_>
+</log>
