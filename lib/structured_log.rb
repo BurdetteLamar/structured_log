@@ -91,7 +91,7 @@ class StructuredLog
         begin
           yield
         rescue Exception => x
-          put_element('uncaught_exception') do
+          put_element('rescued_exception') do
             put_element('class', x.class)
             put_element('message', x.message)
             put_element('backtrace') do

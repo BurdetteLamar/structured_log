@@ -8,10 +8,6 @@
         Boo!
       </message>
       <backtrace>
-        <![CDATA[
-rescue.rb:5:in `block (2 levels) in <main>'
-rescue.rb:4:in `block in <main>'
-rescue.rb:3:in `<main>']]>
       </backtrace>
     </uncaught_exception>
   </section>

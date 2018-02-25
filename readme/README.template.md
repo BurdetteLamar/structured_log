@@ -25,44 +25,44 @@ Each of the following sections features an example Ruby program, followed by its
 ## Nested Sections
 <img src="images/nesting.jpg" height="70">
 
-@[ruby](sections.rb)
+@[ruby](scripts/sections.rb)
 
-@[xml](sections.xml)
+@[xml](logs/sections.xml)
 
 ## Timestamp and Duration
 <img src="images/time.ico" height="70">
 
-@[ruby](time.rb)
+@[ruby](scripts/time.rb)
 
-@[xml](time.xml)
+@[xml](logs/time.xml)
 
 ## Rescue
 <img src="images/rescue.jpg" height="120">
 
-@[ruby](rescue.rb)
+@[ruby](scripts/rescue.rb)
 
-@[xml](rescue.xml)
+@[xml](logs/rescue.xml)
 
 ## Array
 
-@[ruby](array.rb)
+@[ruby](scripts/array.rb)
 
-@[xml](array.xml)
+@[xml](logs/array.xml)
 
 ## Hash
 
-@[ruby](hash.rb)
+@[ruby](scripts/hash.rb)
 
-@[xml](hash.xml)
+@[xml](logs/hash.xml)
 
 ## Data
 
-@[ruby](data.rb)
+@[ruby](scripts/data.rb)
 
-@[xml](data.xml)
+@[xml](logs/data.xml)
 
 ## CData
 
-@[ruby](cdata.rb)
+@[ruby](scripts/cdata.rb)
 
-@[xml](cdata.xml)
+@[xml](logs/cdata.xml)
