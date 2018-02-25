@@ -84,22 +84,22 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-02-23-Fri-17.53.49.259'>
+  <section name='Section with timestamp' timestamp='2018-02-25-Sun-06.46.46.400'>
     <comment>
       I have a timestamp
     </comment>
   </section>
-  <section name='Section with duration' duration_seconds='1.000'>
+  <section name='Section with duration' duration_seconds='1.010'>
     <comment>
       I have a duration
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-02-23-Fri-17.53.50.269' duration_seconds='1.010'>
+  <section name='Section with both' timestamp='2018-02-25-Sun-06.46.47.410' duration_seconds='1.010'>
     <comment>
       I have a both
     </comment>
   </section>
-  <section name='Order does not matter' timestamp='2018-02-23-Fri-17.53.51.279' duration_seconds='1.010'>
+  <section name='Order does not matter' timestamp='2018-02-25-Sun-06.46.48.420' duration_seconds='1.010'>
     <comment>
       I have a both
     </comment>
@@ -137,10 +137,6 @@ end
         Boo!
       </message>
       <backtrace>
-        <![CDATA[
-rescue.rb:5:in `block (2 levels) in <main>'
-rescue.rb:4:in `block in <main>'
-rescue.rb:3:in `<main>']]>
       </backtrace>
     </uncaught_exception>
   </section>
