@@ -1,11 +1,12 @@
 require 'structured_log'
 
-StructuredLog.open(:file_path => 'rescue.xml') do |log|
+StructuredLog.open('rescue.xml') do |log|
   log.section('Section with rescue', :rescue) do
-    fail 'Boo!'
-    # Section ends after logging the exception.
+    log.comment('This section will terminate because of the failure.')
+    fail 'This exception will be rescued and logged.'
+    log.comment('This comment will not be in the log.')
   end
   log.section('Another section') do
-    log.comment('This section is ok.')
+    log.comment('This comment will be reached and logged, because of rescue above.')
   end
 end

@@ -29,7 +29,7 @@ Each of the following sections features an example Ruby program, followed by its
 ```ruby
 require 'structured_log'
 
-StructuredLog.open(:file_path => 'sections.xml') do |log|
+StructuredLog.open('sections.xml') do |log|
   log.section('Outer') do
     log.section('Mid') do
       log.section('Inner') do
@@ -62,7 +62,7 @@ end
 ```ruby
 require 'structured_log'
 
-StructuredLog.open(:file_path => 'time.xml') do |log|
+StructuredLog.open('time.xml') do |log|
   log.section('Section with timestamp', :timestamp) do
     log.comment('I have a timestamp')
   end
@@ -84,22 +84,22 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-02-25-Sun-06.46.46.400'>
+  <section name='Section with timestamp' timestamp='2018-02-25-Sun-12.55.41.260'>
     <comment>
       I have a timestamp
     </comment>
   </section>
-  <section name='Section with duration' duration_seconds='1.010'>
+  <section name='Section with duration' duration_seconds='1.000'>
     <comment>
       I have a duration
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-02-25-Sun-06.46.47.410' duration_seconds='1.010'>
+  <section name='Section with both' timestamp='2018-02-25-Sun-12.55.42.270' duration_seconds='1.010'>
     <comment>
       I have a both
     </comment>
   </section>
-  <section name='Order does not matter' timestamp='2018-02-25-Sun-06.46.48.420' duration_seconds='1.010'>
+  <section name='Order does not matter' timestamp='2018-02-25-Sun-12.55.43.280' duration_seconds='1.000'>
     <comment>
       I have a both
     </comment>
@@ -114,13 +114,14 @@ end
 ```ruby
 require 'structured_log'
 
-StructuredLog.open(:file_path => 'rescue.xml') do |log|
+StructuredLog.open('rescue.xml') do |log|
   log.section('Section with rescue', :rescue) do
-    fail 'Boo!'
-    # Section ends after logging the exception.
+    log.comment('This section will terminate because of the failure.')
+    fail 'This exception will be rescued and logged.'
+    log.comment('This comment will not be in the log.')
   end
   log.section('Another section') do
-    log.comment('This section is ok.')
+    log.comment('This comment will be reached and logged, because of rescue above.')
   end
 end
 ```
@@ -129,20 +130,29 @@ end
 ```xml
 <log>
   <section name='Section with rescue'>
-    <uncaught_exception>
-      <class>
-        RuntimeError
-      </class>
+    <comment>
+      This section will terminate because of the failure.
+    </comment>
+    <rescued_exception timestamp='2018-02-25-Sun-12.55.40.780' class='RuntimeError'>
       <message>
-        Boo!
+        This exception will be rescued and logged.
       </message>
       <backtrace>
+        <![CDATA[
+C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/rescue.rb:6:in `block (2 levels) in <main>'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:169:in `block in section'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:91:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:168:in `section'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/rescue.rb:4:in `block in <main>'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:38:in `open'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/rescue.rb:3:in `<main>'
+]]>
       </backtrace>
-    </uncaught_exception>
+    </rescued_exception>
   </section>
   <section name='Another section'>
     <comment>
-      This section is ok.
+      This comment will be reached and logged, because of rescue above.
     </comment>
   </section>
 </log>
@@ -155,8 +165,8 @@ end
 require 'structured_log'
 
 array = %w/foo bar baz bat/
-StructuredLog.open(:file_path => 'array.xml') do |log|
-  log.put_each_with_index('my_array', array)
+StructuredLog.open('array.xml') do |log|
+  log.put_array('my_array', array)
 end
 ```
 
@@ -169,7 +179,6 @@ end
      1 bar
      2 baz
      3 bat
-
 ]]>
   </each_with_index>
 </log>
@@ -187,22 +196,22 @@ hash = {
     :aaa => 'zzz',
     :aaaa => 'zzzz',
 }
-StructuredLog.open(:file_path => 'hash.xml') do |log|
-  log.put_each_pair('my_hash', hash)
+StructuredLog.open('hash.xml') do |log|
+  log.put_hash('my_hash', hash)
 end
 ```
 
 <code>hash.xml</code>
 ```xml
 <log>
-  <each_ name='my_hash' class='Hash'>
+  <each_pair name='my_hash' class='Hash'>
     <![CDATA[
    a => z   
   aa => zz  
  aaa => zzz 
 aaaa => zzzz
 ]]>
-  </each_>
+  </each_pair>
 </log>
 ```
 
@@ -212,19 +221,37 @@ aaaa => zzzz
 ```ruby
 require 'structured_log'
 
-data = [
-    [0, 1, 2],
-    {:a => 0, :b => 1},
-    Set.new(%w/foo bar baz/),
-    3.14,
-    1066,
-    false,
-    'Hello',
-    nil,
-]
-StructuredLog.open(:file_path => 'data.xml') do |log|
-  data.each do |datum|
-    log.put_data('my_data', datum)
+data = {
+    :array => %w/foo bar baz bat/,
+    :hash => {
+        :a => 'z',
+        :aa => 'zz',
+        :aaa => 'zzz',
+        :aaaa => 'zzzz',
+    },
+    :set => Set.new(%w/foo bar baz/),
+    :float => 3.14,
+    :fixnum => 1066,
+    :false => false,
+    :string => 'Hello',
+    :nil => nil,
+    :dir => Dir.new(File.dirname(__FILE__)),
+    :file => File.new(__FILE__)
+}
+StructuredLog.open('data.xml') do |log|
+  data.each_pair do |type, datum|
+    name = "my_#{type}"
+    log.put_data(name, datum)
+    # case
+    #   when datum.respond_to?(:each_pair)
+    #     log.put_each_pair(name, datum)
+    #   when datum.respond_to?(:each_with_index)
+    #     log.put_each_with_index(name, datum)
+    #   when datum.respond_to?(:path)
+    #     log.put_path(name, datum)
+    #   else
+    #     log.put_data(name, datum)
+    # end
   end
 end
 ```
@@ -232,30 +259,50 @@ end
 <code>data.xml</code>
 ```xml
 <log>
-  <data name='my_data' class='Array'>
-    <![CDATA[[0, 1, 2]]]>
-  </data>
-  <data name='my_data' class='Hash'>
-    <![CDATA[{:a=>0, :b=>1}]]>
-  </data>
-  <data name='my_data' class='Set'>
-    <![CDATA[#<Set: {"foo", "bar", "baz"}>]]>
-  </data>
-  <data name='my_data' class='Float'>
+  <each_with_index name='my_array' class='Array'>
+    <![CDATA[
+     0 foo
+     1 bar
+     2 baz
+     3 bat
+]]>
+  </each_with_index>
+  <each_pair name='my_hash' class='Hash'>
+    <![CDATA[
+   a => z   
+  aa => zz  
+ aaa => zzz 
+aaaa => zzzz
+]]>
+  </each_pair>
+  <each_with_index name='my_set' class='Set'>
+    <![CDATA[
+     0 foo
+     1 bar
+     2 baz
+]]>
+  </each_with_index>
+  <data name='my_float' class='Float'>
     <![CDATA[3.14]]>
   </data>
-  <data name='my_data' class='Fixnum'>
+  <data name='my_fixnum' class='Fixnum'>
     <![CDATA[1066]]>
   </data>
-  <data name='my_data' class='FalseClass'>
+  <data name='my_false' class='FalseClass'>
     <![CDATA[false]]>
   </data>
-  <data name='my_data' class='String'>
+  <data name='my_string' class='String'>
     <![CDATA["Hello"]]>
   </data>
-  <data name='my_data' class='NilClass'>
+  <data name='my_nil' class='NilClass'>
     <![CDATA[nil]]>
   </data>
+  <path name='my_dir' class='Dir'>
+    <![CDATA[C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts]]>
+  </path>
+  <path name='my_file' class='File'>
+    <![CDATA[C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/data.rb]]>
+  </path>
 </log>
 ```
 
@@ -270,7 +317,7 @@ Method put_cdata puts the data verbatim.
 Nothing is added or detracted.
 Not even whitespace.
 EOT
-StructuredLog.open(:file_path => 'cdata.xml') do |log|
+StructuredLog.open('cdata.xml') do |log|
   log.put_cdata(text)
 end
 ```

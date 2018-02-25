@@ -5,7 +5,6 @@
      1 bar
      2 baz
      3 bat
-
 ]]>
   </each_with_index>
 </log>

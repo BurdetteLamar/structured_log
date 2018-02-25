@@ -1,10 +1,10 @@
 <log>
-  <each_ name='my_hash' class='Hash'>
+  <each_pair name='my_hash' class='Hash'>
     <![CDATA[
    a => z   
   aa => zz  
  aaa => zzz 
 aaaa => zzzz
 ]]>
-  </each_>
+  </each_pair>
 </log>

@@ -1,19 +1,28 @@
 <log>
   <section name='Section with rescue'>
-    <uncaught_exception>
-      <class>
-        RuntimeError
-      </class>
+    <comment>
+      This section will terminate because of the failure.
+    </comment>
+    <rescued_exception timestamp='2018-02-25-Sun-12.55.40.780' class='RuntimeError'>
       <message>
-        Boo!
+        This exception will be rescued and logged.
       </message>
       <backtrace>
+        <![CDATA[
+C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/rescue.rb:6:in `block (2 levels) in <main>'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:169:in `block in section'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:91:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:168:in `section'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/rescue.rb:4:in `block in <main>'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:38:in `open'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/rescue.rb:3:in `<main>'
+]]>
       </backtrace>
-    </uncaught_exception>
+    </rescued_exception>
   </section>
   <section name='Another section'>
     <comment>
-      This section is ok.
+      This comment will be reached and logged, because of rescue above.
     </comment>
   </section>
 </log>

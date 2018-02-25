@@ -6,6 +6,6 @@ hash = {
     :aaa => 'zzz',
     :aaaa => 'zzzz',
 }
-StructuredLog.open(:file_path => 'hash.xml') do |log|
-  log.put_each_pair('my_hash', hash)
+StructuredLog.open('hash.xml') do |log|
+  log.put_hash('my_hash', hash)
 end
