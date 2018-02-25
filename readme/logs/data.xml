@@ -1,26 +1,46 @@
 <log>
-  <data name='my_data' class='Array'>
-    <![CDATA[[0, 1, 2]]]>
-  </data>
-  <data name='my_data' class='Hash'>
-    <![CDATA[{:a=>0, :b=>1}]]>
-  </data>
-  <data name='my_data' class='Set'>
-    <![CDATA[#<Set: {"foo", "bar", "baz"}>]]>
-  </data>
-  <data name='my_data' class='Float'>
+  <each_with_index name='my_array' class='Array'>
+    <![CDATA[
+     0 foo
+     1 bar
+     2 baz
+     3 bat
+]]>
+  </each_with_index>
+  <each_pair name='my_hash' class='Hash'>
+    <![CDATA[
+   a => z   
+  aa => zz  
+ aaa => zzz 
+aaaa => zzzz
+]]>
+  </each_pair>
+  <each_with_index name='my_set' class='Set'>
+    <![CDATA[
+     0 foo
+     1 bar
+     2 baz
+]]>
+  </each_with_index>
+  <data name='my_float' class='Float'>
     <![CDATA[3.14]]>
   </data>
-  <data name='my_data' class='Fixnum'>
+  <data name='my_fixnum' class='Fixnum'>
     <![CDATA[1066]]>
   </data>
-  <data name='my_data' class='FalseClass'>
+  <data name='my_false' class='FalseClass'>
     <![CDATA[false]]>
   </data>
-  <data name='my_data' class='String'>
+  <data name='my_string' class='String'>
     <![CDATA["Hello"]]>
   </data>
-  <data name='my_data' class='NilClass'>
+  <data name='my_nil' class='NilClass'>
     <![CDATA[nil]]>
   </data>
+  <path name='my_dir' class='Dir'>
+    <![CDATA[C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts]]>
+  </path>
+  <path name='my_file' class='File'>
+    <![CDATA[C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/data.rb]]>
+  </path>
 </log>

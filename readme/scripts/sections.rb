@@ -1,6 +1,6 @@
 require 'structured_log'
 
-StructuredLog.open(:file_path => 'sections.xml') do |log|
+StructuredLog.open('sections.xml') do |log|
   log.section('Outer') do
     log.section('Mid') do
       log.section('Inner') do

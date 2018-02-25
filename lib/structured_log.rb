@@ -23,19 +23,18 @@ class StructuredLog
   NO_NEW_MSG = format('Please use %s.open, not %s.new.', self.class.name, self.class.name)
 
   # Callers should call this method, not method +new+.
+  # +file_path+ is the path to the output log file.
   # Options can include:
-  # - :file_path => _path_.
   # - :root_name => _root-xml-tag-name_.
   # - :xml_indentation => Integer:  indentation for nesting XML sub-elements.
-  def self.open(options=Hash.new)
+  def self.open(file_path = File.join(DEFAULT_DIR_PATH, DEFAULT_FILE_NAME), options=Hash.new)
     raise NO_BLOCK_GIVEN_MSG unless (block_given?)
     default_options = Hash[
-        :file_path => File.join(DEFAULT_DIR_PATH, DEFAULT_FILE_NAME),
         :root_name => DEFAULT_XML_ROOT_TAG_NAME,
         :xml_indentation => DEFAULT_XML_INDENTATION
     ]
     options = default_options.merge(options)
-    log = self.new(options, im_ok_youre_not_ok = true)
+    log = self.new(file_path, options, im_ok_youre_not_ok = true)
     yield log
     log.send(:dispose)
     log.file_path
@@ -119,7 +118,6 @@ class StructuredLog
     end
     lines.push('')
     lines.push('')
-    lines.push('')
     put_element('each_with_index', :name => name, :class => obj.class) do
       put_cdata(lines.join("\n"))
     end
@@ -143,9 +141,24 @@ class StructuredLog
   end
   alias put_hash put_each_pair
 
+  def put_path(name, obj)
+    put_element('path', :name => name, :class => obj.class) do
+      put_cdata(obj.path)
+    end
+  end
+
   def put_data(name, obj)
-    put_element('data', :name => name, :class => obj.class) do
-      put_cdata(obj.inspect)
+    case
+      when obj.respond_to?(:path)
+        put_path(name, obj)
+      when obj.respond_to?(:each_pair)
+        put_each_pair(name, obj)
+      when obj.respond_to?(:each_with_index)
+        put_each_with_index(name, obj)
+      else
+        put_element('data', :name => name, :class => obj.class) do
+          put_cdata(obj.inspect)
+        end
     end
   end
 
@@ -178,12 +191,12 @@ class StructuredLog
 
   private
 
-  def initialize(options=Hash.new, im_ok_youre_not_ok = false)
+  def initialize(file_path = File.join(DEFAULT_DIR_PATH, DEFAULT_FILE_NAME), options = Hash.new, im_ok_youre_not_ok = false)
     unless im_ok_youre_not_ok
       # Caller should call StructuredLog.open, not StructuredLog.new.
       raise RuntimeError.new(NO_NEW_MSG)
     end
-    self.file_path = options[:file_path]
+    self.file_path = file_path
     self.root_name = options[:root_name]
     self.xml_indentation = options[:xml_indentation]
     self.backtrace_filter = options[:backtrace_filter] || /structured_log|ruby/

@@ -11,7 +11,7 @@ class StructuredLogTest < Minitest::Test
   def create_temp_log
     dir_path = Dir.mktmpdir
     file_path = File.join(dir_path, 'log.xml')
-    StructuredLog.open({:file_path => file_path}) do |log|
+    StructuredLog.open(file_path) do |log|
       yield log
     end
     file_path
@@ -104,15 +104,16 @@ class StructuredLogTest < Minitest::Test
   end
 
   def test_open_file_path
-    file_path = StructuredLog.open(:file_path => 'foo.xml') do |log|
-      assert_equal('foo.xml', log.file_path)
+    file_name = 'foo.xml'
+    file_path = StructuredLog.open(file_name) do |log|
+      assert_equal(file_name, log.file_path)
     end
     Checker.new(self, file_path)
   end
 
   def test_open_root_name
     root_name = 'foo'
-    file_path = StructuredLog.open(:root_name => root_name) do |_|
+    file_path = StructuredLog.open('foo.xml', :root_name => root_name) do |_|
     end
     checker = Checker.new(self, file_path)
     checker.assert_root_name(root_name)
@@ -120,7 +121,7 @@ class StructuredLogTest < Minitest::Test
 
   def test_open_xml_indentation
     [-1, 0, 2].each do |indentation|
-      file_path = StructuredLog.open(:xml_indentation => indentation) do |log|
+      file_path = StructuredLog.open('foo.xml', :xml_indentation => indentation) do |log|
         log.section('Section') do
         end
       end

@@ -1,6 +1,6 @@
 require 'structured_log'
 
-StructuredLog.open(:file_path => 'time.xml') do |log|
+StructuredLog.open('time.xml') do |log|
   log.section('Section with timestamp', :timestamp) do
     log.comment('I have a timestamp')
   end
