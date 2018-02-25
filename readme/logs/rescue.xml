@@ -3,22 +3,16 @@
     <comment>
       This section will terminate because of the failure.
     </comment>
-    <rescued_exception>
-      <class>
-        RuntimeError
-      </class>
+    <rescued_exception timestamp='2018-02-25-Sun-08.48.49.046' class='RuntimeError'>
       <message>
         This exception will be rescued and logged.
       </message>
-      <timestamp>
-        2018-02-25-Sun-08.43.15.706
-      </timestamp>
       <backtrace>
         <![CDATA[
 C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/rescue.rb:6:in `block (2 levels) in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:156:in `block in section'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:154:in `block in section'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:92:in `put_element'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:155:in `section'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:153:in `section'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/rescue.rb:4:in `block in <main>'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/rescue.rb:3:in `<main>'

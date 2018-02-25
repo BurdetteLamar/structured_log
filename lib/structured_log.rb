@@ -91,10 +91,8 @@ class StructuredLog
         begin
           yield
         rescue Exception => x
-          put_element('rescued_exception') do
-            put_element('class', x.class)
+          put_element('rescued_exception', :timestamp, :class => x.class) do
             put_element('message', x.message)
-            put_element('timestamp', StructuredLog.timestamp)
             put_element('backtrace') do
               put_cdata(filter_backtrace(x.backtrace))
             end
