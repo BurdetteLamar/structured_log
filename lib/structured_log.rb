@@ -94,6 +94,7 @@ class StructuredLog
           put_element('rescued_exception') do
             put_element('class', x.class)
             put_element('message', x.message)
+            put_element('timestamp', StructuredLog.timestamp)
             put_element('backtrace') do
               put_cdata(filter_backtrace(x.backtrace))
             end
@@ -185,7 +186,7 @@ class StructuredLog
     self.file_path = options[:file_path]
     self.root_name = options[:root_name]
     self.xml_indentation = options[:xml_indentation]
-    self.backtrace_filter = options[:backtrace_filter] || /log|ruby/
+    self.backtrace_filter = options[:backtrace_filter] || /structured_log|ruby/
     self.file = File.open(self.file_path, 'w')
     log_puts("REMARK\tThis text log is the precursor for an XML log.")
     log_puts("REMARK\tIf the logged process completes, this text will be converted to XML.")
@@ -280,14 +281,18 @@ class StructuredLog
     nil
   end
 
-  # Filters lines that are from ruby or log, to make the backtrace more readable.
+  # Filters lines, to make the backtrace more readable.
   def filter_backtrace(lines)
-    filtered = ['']
+    filtered = []
     lines.each do |line|
       unless line.match(self.backtrace_filter)
         filtered.push(line)
       end
     end
+    filtered = lines if filtered.empty?
+    filtered.push('')
+    filtered.push('')
+    filtered.unshift('')
     filtered.join("\n")
   end
 

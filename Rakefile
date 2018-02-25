@@ -36,7 +36,8 @@ namespace :build do
             File.basename(source_file_path.sub(/rb$/, 'xml')),
         )
         unless uptodate?(target_file_path, [source_file_path])
-          system("ruby #{source_file_path}")
+          command = "ruby #{source_file_path}"
+          system(command)
         end
       end
     end

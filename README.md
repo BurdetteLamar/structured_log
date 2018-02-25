@@ -116,11 +116,12 @@ require 'structured_log'
 
 StructuredLog.open(:file_path => 'rescue.xml') do |log|
   log.section('Section with rescue', :rescue) do
-    fail 'Boo!'
-    # Section ends after logging the exception.
+    log.comment('This section will terminate because of the failure.')
+    fail 'This exception will be rescued and logged.'
+    log.comment('This comment will not be in the log.')
   end
   log.section('Another section') do
-    log.comment('This section is ok.')
+    log.comment('This comment will be reached and logged, because of rescue above.')
   end
 end
 ```
@@ -129,20 +130,35 @@ end
 ```xml
 <log>
   <section name='Section with rescue'>
-    <uncaught_exception>
+    <comment>
+      This section will terminate because of the failure.
+    </comment>
+    <rescued_exception>
       <class>
         RuntimeError
       </class>
       <message>
-        Boo!
+        This exception will be rescued and logged.
       </message>
+      <timestamp>
+        2018-02-25-Sun-08.43.15.706
+      </timestamp>
       <backtrace>
+        <![CDATA[
+C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/rescue.rb:6:in `block (2 levels) in <main>'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:156:in `block in section'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:92:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:155:in `section'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/rescue.rb:4:in `block in <main>'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/rescue.rb:3:in `<main>'
+]]>
       </backtrace>
-    </uncaught_exception>
+    </rescued_exception>
   </section>
   <section name='Another section'>
     <comment>
-      This section is ok.
+      This comment will be reached and logged, because of rescue above.
     </comment>
   </section>
 </log>
