@@ -141,9 +141,9 @@ class StructuredLog
   end
   alias put_hash put_each_pair
 
-  def put_path(name, obj)
-    put_element('path', :name => name, :class => obj.class) do
-      put_cdata(obj.path)
+  def put_method_return_value(name, obj, method, *args)
+    put_element('method_return_value', {:name => name, :class => obj.class, :method => method}) do
+      put_cdata(obj.send(method, *args))
     end
   end
 

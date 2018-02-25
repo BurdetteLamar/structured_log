@@ -14,22 +14,13 @@ data = {
     :false => false,
     :string => 'Hello',
     :nil => nil,
-    :dir => Dir.new(File.dirname(__FILE__)),
-    :file => File.new(__FILE__)
 }
 StructuredLog.open('data.xml') do |log|
   data.each_pair do |type, datum|
     name = "my_#{type}"
     log.put_data(name, datum)
-    # case
-    #   when datum.respond_to?(:each_pair)
-    #     log.put_each_pair(name, datum)
-    #   when datum.respond_to?(:each_with_index)
-    #     log.put_each_with_index(name, datum)
-    #   when datum.respond_to?(:path)
-    #     log.put_path(name, datum)
-    #   else
-    #     log.put_data(name, datum)
-    # end
   end
+  # Log the return value for a particular method.
+  file = File.new(__FILE__)
+  log.put_method_return_value('my_file_path', file, :path)
 end
