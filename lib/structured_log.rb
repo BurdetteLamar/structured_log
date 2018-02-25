@@ -125,6 +125,7 @@ class StructuredLog
     end
     nil
   end
+  alias put_array put_each_with_index
 
   def put_each_pair(name, obj)
     lines = ['']
@@ -135,11 +136,12 @@ class StructuredLog
     end
     lines.push('')
     lines.push('')
-    put_element('each_', :name => name, :class => obj.class) do
+    put_element('each_pair', :name => name, :class => obj.class) do
       put_cdata(lines.join("\n"))
     end
     nil
   end
+  alias put_hash put_each_pair
 
   def put_data(name, obj)
     put_element('data', :name => name, :class => obj.class) do
