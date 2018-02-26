@@ -84,22 +84,22 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-02-25-Sun-12.55.41.260'>
+  <section name='Section with timestamp' timestamp='2018-02-25-Sun-17.53.32.028'>
     <comment>
       I have a timestamp
     </comment>
   </section>
-  <section name='Section with duration' duration_seconds='1.000'>
+  <section name='Section with duration' duration_seconds='1.010'>
     <comment>
       I have a duration
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-02-25-Sun-12.55.42.270' duration_seconds='1.010'>
+  <section name='Section with both' timestamp='2018-02-25-Sun-17.53.33.038' duration_seconds='1.000'>
     <comment>
       I have a both
     </comment>
   </section>
-  <section name='Order does not matter' timestamp='2018-02-25-Sun-12.55.43.280' duration_seconds='1.000'>
+  <section name='Order does not matter' timestamp='2018-02-25-Sun-17.53.34.038' duration_seconds='1.010'>
     <comment>
       I have a both
     </comment>
@@ -133,7 +133,7 @@ end
     <comment>
       This section will terminate because of the failure.
     </comment>
-    <rescued_exception timestamp='2018-02-25-Sun-12.55.40.780' class='RuntimeError'>
+    <rescued_exception timestamp='2018-02-25-Sun-17.53.31.538' class='RuntimeError'>
       <message>
         This exception will be rescued and logged.
       </message>
@@ -235,24 +235,15 @@ data = {
     :false => false,
     :string => 'Hello',
     :nil => nil,
-    :dir => Dir.new(File.dirname(__FILE__)),
-    :file => File.new(__FILE__)
 }
 StructuredLog.open('data.xml') do |log|
   data.each_pair do |type, datum|
     name = "my_#{type}"
     log.put_data(name, datum)
-    # case
-    #   when datum.respond_to?(:each_pair)
-    #     log.put_each_pair(name, datum)
-    #   when datum.respond_to?(:each_with_index)
-    #     log.put_each_with_index(name, datum)
-    #   when datum.respond_to?(:path)
-    #     log.put_path(name, datum)
-    #   else
-    #     log.put_data(name, datum)
-    # end
   end
+  # Log the return value for a particular method.
+  file = File.new(__FILE__)
+  log.put_method_return_value('my_file_path', file, :path)
 end
 ```
 
@@ -297,12 +288,9 @@ aaaa => zzzz
   <data name='my_nil' class='NilClass'>
     <![CDATA[nil]]>
   </data>
-  <path name='my_dir' class='Dir'>
-    <![CDATA[C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts]]>
-  </path>
-  <path name='my_file' class='File'>
+  <method_return_value name='my_file_path' class='File' method='path'>
     <![CDATA[C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/data.rb]]>
-  </path>
+  </method_return_value>
 </log>
 ```
 
