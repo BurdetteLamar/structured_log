@@ -14,7 +14,7 @@ namespace :build do
   task :readme do
     readme_dir_path = File.join(
         File.dirname(__FILE__),
-        'readme',
+        'readme_files',
     )
     source_dir_path = File.join(
         readme_dir_path,
@@ -43,7 +43,20 @@ namespace :build do
     end
     # TODO:  Implement dependencies
     markdown_helper = MarkdownHelper.new
-    markdown_helper.include('readme/README.template.md', 'README.md')
+    markdown_helper.include('readme_files/README.template.md', 'README.md')
+  end
+
+  desc 'Build YARD documentation'
+  task :doc do
+    require 'find'
+    paths = []
+    Find::find(__dir__).each do |path|
+      next if File.directory?(path)
+      next unless path.end_with?('.rb')
+      paths.push(path)
+    end
+    puts paths.first
+    # system("yard doc #{paths.first}")
   end
 
 end

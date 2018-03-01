@@ -149,8 +149,6 @@ class StructuredLog
 
   def put_data(name, obj)
     case
-      when obj.respond_to?(:path)
-        put_path(name, obj)
       when obj.respond_to?(:each_pair)
         put_each_pair(name, obj)
       when obj.respond_to?(:each_with_index)
