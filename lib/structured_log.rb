@@ -35,7 +35,16 @@ class StructuredLog
     ]
     options = default_options.merge(options)
     log = self.new(file_path, options, im_ok_youre_not_ok = true)
-    yield log
+    begin
+      yield log
+    rescue => x
+      log.put_element('uncaught_exception', :timestamp, :class => x.class) do
+        log.put_element('message', x.message)
+        log.put_element('backtrace') do
+          log.put_cdata(log.send(:filter_backtrace, x.backtrace))
+        end
+      end
+    end
     log.send(:dispose)
     log.file_path
   end
