@@ -11,7 +11,8 @@ class StructuredLogTest < Minitest::Test
   def create_temp_log
     dir_path = Dir.mktmpdir
     file_path = File.join(dir_path, 'log.xml')
-    StructuredLog.open(file_path) do |log|
+    # Suppress all added whitespace, even newline, to facilitate text comparison.
+    StructuredLog.open(file_path, {:xml_indentation => -1}) do |log|
       yield log
     end
     file_path
@@ -67,11 +68,141 @@ class StructuredLogTest < Minitest::Test
           when 2
             # Should be multiple lines, with 2-space indentation.
             test.assert_operator(1, :<, lines.size)
-            test.assert_match(/^  \S/, lines[1])
+            test.assert_match(/^ {2}\S/, lines[1])
           else
             raise NotImplementedError(indentation)
         end
       end
+    end
+
+    # Verify text in element.
+    def assert_element_match(ele_xpath, expected_value)
+      actual_value = assert_element_exist(ele_xpath).first.text
+      self.test.assert_match(expected_value, actual_value)
+    end
+
+    # Verify text in element.
+    def assert_element_text(ele_xpath, expected_value)
+      actual_value = assert_element_exist(ele_xpath).first.text
+      self.test.assert_equal(expected_value, actual_value)
+    end
+
+    # Verify attribute match.
+    def assert_attribute_match(ele_xpath, attr_name, expected_value)
+      attr_xpath = format('%s/@%s', ele_xpath, attr_name)
+      actual_value = assert_element_exist(attr_xpath).first.value
+      self.test.assert_match(expected_value, actual_value, attr_name)
+    end
+
+    # Verify attribute value.
+    def assert_attribute_value(ele_xpath, attr_name, expected_value)
+      attr_xpath = format('%s/@%s', ele_xpath, attr_name)
+      actual_value = assert_element_exist(attr_xpath).first.value
+      self.test.assert_equal(expected_value, actual_value, attr_name)
+    end
+
+    # Verify attribute values.
+    def assert_attribute_values(ele_xpath, attributes)
+      attributes.each_pair do |name, value|
+        assert_attribute_value(ele_xpath, name, value)
+      end
+    end
+
+    # Verify element existence.
+    def assert_element_exist(ele_path)
+      elements = match(ele_path)
+      self.test.assert_operator(elements.size, :>, 0, "No elements at xpath #{ele_path}")
+      elements
+    end
+
+    def match(xpath)
+      REXML::XPath.match(root, xpath)
+    end
+
+  end
+
+  def args_common_test(log_method, test_method, element_name, &block)
+
+    # When log_method is :section we need a block.
+
+    # Hashes.
+    h0 = {:a => '0', :b => '1'}
+    h1 = {:c => '2', :b => '3'}
+    h = h0.merge(h1)
+    file_path = create_temp_log do |log|
+      log.send(log_method, element_name, h0, h1) do
+        block
+      end
+    end
+    checker = Checker.new(self, file_path)
+    ele_xpath = "//#{element_name}"
+    checker.assert_attribute_values(ele_xpath, h)
+
+    # Strings.
+    s0 = 'foo'
+    s1 = 'bar'
+    s = format('%s%s',s0, s1)
+    file_path = create_temp_log do |log|
+      log.send(log_method, element_name, s0, s1) do
+        block
+      end
+    end
+    checker = Checker.new(self, file_path)
+    ele_xpath = "//#{element_name}"
+    checker.assert_element_text(ele_xpath, s)
+
+    # Timestamp.
+    file_path = create_temp_log do |log|
+      log.send(log_method, element_name, :timestamp) do
+        block
+      end
+    end
+    checker = Checker.new(self, file_path)
+    ele_xpath = "//#{element_name}"
+    checker.assert_attribute_match(ele_xpath, :timestamp, /\d{4}-\d{2}-\d{2}-\w{3}-\d{2}\.\d{2}\.\d{2}\.\d{3}/)
+
+    # Duration.
+    file_path = create_temp_log do |log|
+      log.send(log_method, element_name, :duration) do
+        block
+      end
+    end
+    checker = Checker.new(self, file_path)
+    ele_xpath = "//#{element_name}"
+    checker.assert_attribute_match(ele_xpath, :duration_seconds, /\d+\.\d{3}/)
+
+    # Rescue.
+    exception_message = 'Wrong'
+    file_path = create_temp_log do |log|
+      log.send(log_method, element_name, :rescue) do
+        raise RuntimeError.new(exception_message)
+      end
+    end
+    checker = Checker.new(self, file_path)
+    ele_xpath = "//#{element_name}/rescued_exception"
+    checker.assert_attribute_value(ele_xpath, 'class', RuntimeError.name)
+    ele_xpath = "//#{element_name}/rescued_exception/message"
+    checker.assert_element_text(ele_xpath, exception_message)
+    ele_xpath = "//#{element_name}/rescued_exception/backtrace"
+    checker.assert_element_match(ele_xpath, __method__.to_s)
+
+    # Others.
+    [
+        0,
+        0.0,
+        :symbol,
+        true,
+        Array,
+        [0, 1],
+    ].each do |other|
+      file_path = create_temp_log do |log|
+        log.send(log_method, element_name, other) do
+          block
+        end
+      end
+      checker = Checker.new(self, file_path)
+      ele_xpath = "//#{element_name}"
+      checker.assert_element_text(ele_xpath, other.inspect)
     end
 
   end
@@ -133,13 +264,91 @@ class StructuredLogTest < Minitest::Test
 
   def test_section
 
-  end
+    method = :section
 
-  def test_put_element
+    # Section names.
+    file_path = create_temp_log do |log|
+      log.send(method, 'outer') do
+        log.send(method, 'inner') do
+          log.put_element('tag', 'text')
+        end
+      end
+    end
+    checker = Checker.new(self, file_path)
+    ele_xpath = "//section[@name='outer']/section[@name='inner']/tag"
+    checker.assert_element_text(ele_xpath, 'text')
+
+    args_common_test(method, __method__, 'section') do
+      # Will need a block for calling :section.
+    end
 
   end
 
   def test_comment
+
+    method = :comment
+
+    comment = 'My comment'
+    file_path = create_temp_log do |log|
+      log.send(method, comment)
+    end
+    checker = Checker.new(self, file_path)
+    ele_xpath = '//comment'
+    checker.assert_element_text(ele_xpath, comment)
+
+  end
+
+  def test_uncaught_exception
+
+    exception_message = 'Wrong'
+    file_path = StructuredLog.open('foo.xml', :xml_indentation => -1) do |log|
+      raise RuntimeError.new(exception_message)
+    end
+    checker = Checker.new(self, file_path)
+    ele_xpath = "//uncaught_exception"
+    checker.assert_attribute_value(ele_xpath, 'class', RuntimeError.name)
+    ele_xpath = '//uncaught_exception/message'
+    checker.assert_element_text(ele_xpath, exception_message)
+    ele_xpath = '//uncaught_exception/backtrace'
+    checker.assert_element_match(ele_xpath, __method__.to_s)
+
+  end
+
+  def test_put_element
+
+    method = :put_element
+
+    element_name = 'my_element'
+
+    # Element name.
+    file_path = create_temp_log do |log|
+      log.send(method, element_name)
+    end
+    checker = Checker.new(self, file_path)
+    ele_xpath = "//#{element_name}"
+    checker.assert_element_exist(ele_xpath)
+
+    args_common_test(method, __method__, element_name)
+
+  end
+
+  def test_each_with_index
+
+  end
+
+  def test_each_pair
+
+  end
+
+  def test_put_method_return_value
+
+  end
+
+  def test_put_data
+
+  end
+
+  def test_put_cdata
 
   end
 
