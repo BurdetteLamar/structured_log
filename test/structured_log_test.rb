@@ -263,9 +263,7 @@ class StructuredLogTest < Minitest::Test
   end
 
   def test_section
-
     method = :section
-
     # Section names.
     file_path = create_temp_log do |log|
       log.send(method, 'outer') do
@@ -277,17 +275,13 @@ class StructuredLogTest < Minitest::Test
     checker = Checker.new(self, file_path)
     ele_xpath = "//section[@name='outer']/section[@name='inner']/tag"
     checker.assert_element_text(ele_xpath, 'text')
-
     args_common_test(method, 'section') do
       # Will need a block for calling :section.
     end
-
   end
 
   def test_comment
-
     method = :comment
-
     comment = 'My comment'
     file_path = create_temp_log do |log|
       log.send(method, comment)
@@ -295,11 +289,9 @@ class StructuredLogTest < Minitest::Test
     checker = Checker.new(self, file_path)
     ele_xpath = '//comment'
     checker.assert_element_text(ele_xpath, comment)
-
   end
 
   def test_uncaught_exception
-
     exception_message = 'Wrong'
     file_path = StructuredLog.open('foo.xml', :xml_indentation => -1) do |_|
       raise RuntimeError.new(exception_message)
@@ -311,15 +303,11 @@ class StructuredLogTest < Minitest::Test
     checker.assert_element_text(ele_xpath, exception_message)
     ele_xpath = '//uncaught_exception/backtrace'
     checker.assert_element_match(ele_xpath, __method__.to_s)
-
   end
 
   def test_put_element
-
     method = :put_element
-
     element_name = 'my_element'
-
     # Element name.
     file_path = create_temp_log do |log|
       log.send(method, element_name)
@@ -327,80 +315,64 @@ class StructuredLogTest < Minitest::Test
     checker = Checker.new(self, file_path)
     ele_xpath = "//#{element_name}"
     checker.assert_element_exist(ele_xpath)
-
     args_common_test(method, element_name)
+  end
 
+  def _test_put_each_with_index(method, arg)
+    element_name = 'each_with_index'
+    file_path = create_temp_log do |log|
+      log.send(method, element_name, arg)
+    end
+    checker = Checker.new(self, file_path)
+    ele_xpath = "//#{element_name}"
+    checker.assert_element_exist(ele_xpath)
   end
 
   def test_put_each_with_index
-
     method = :put_each_with_index
-
-    element_name = 'each_with_index'
-
-    array = [:a, :aa, :aaa]
-    file_path = create_temp_log do |log|
-      log.send(method, 'my_array', array)
-    end
-    checker = Checker.new(self, file_path)
-    ele_xpath = "//#{element_name}"
-    checker.assert_element_exist(ele_xpath)
-
+    arg = [:a, :aa, :aaa]
+    _test_put_each_with_index(method, arg)
   end
 
   def test_put_array
-
     method = :put_array
+    arg = [:a, :aa, :aaa]
+    _test_put_each_with_index(method, arg)
+  end
 
-    element_name = 'each_with_index'
+  def test_put_set
+    method = :put_set
+    arg = Set.new([:a, :aa, :aaa])
+    _test_put_each_with_index(method, arg)
+  end
 
-    array = [:a, :aa, :aaa]
+  def _test_put_each_pair(method, arg)
+    element_name = 'each_pair'
     file_path = create_temp_log do |log|
-      log.send(method, 'my_array', array)
+      log.send(method, element_name, arg)
     end
     checker = Checker.new(self, file_path)
     ele_xpath = "//#{element_name}"
     checker.assert_element_exist(ele_xpath)
-
   end
 
   def test_put_each_pair
-
     method = :put_each_pair
-
-    element_name = 'each_pair'
-
-    hash = {:a => 0, :b => 1}
-    file_path = create_temp_log do |log|
-      log.send(method, 'my_hash', hash)
-    end
-    checker = Checker.new(self, file_path)
-    ele_xpath = "//#{element_name}"
-    checker.assert_element_exist(ele_xpath)
-
+    arg = {:a => 0, :b => 1}
+    _test_put_each_pair(method, arg)
   end
 
   def test_put_hash
-
     method = :put_each_pair
+    arg = {:a => 0, :b => 1}
+    _test_put_each_pair(method, arg)
+  end
 
-    element_name = 'each_pair'
-
-    hash = {:a => 0, :b => 1}
-    file_path = create_temp_log do |log|
-      log.send(method, 'my_hash', hash)
-    end
-    checker = Checker.new(self, file_path)
-    ele_xpath = "//#{element_name}"
-    checker.assert_element_exist(ele_xpath)
+  def test_put_data
 
   end
 
   def test_put_method_return_value
-
-  end
-
-  def test_put_data
 
   end
 
