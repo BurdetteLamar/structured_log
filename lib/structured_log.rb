@@ -134,6 +134,7 @@ class StructuredLog
     nil
   end
   alias put_array put_each_with_index
+  alias put_set put_each_with_index
 
   def put_each_pair(name, obj)
     lines = ['']
