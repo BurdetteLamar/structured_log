@@ -41,7 +41,8 @@ class StructuredLog
       log.put_element('uncaught_exception', :timestamp, :class => x.class) do
         log.put_element('message', x.message)
         log.put_element('backtrace') do
-          log.put_cdata(log.send(:filter_backtrace, x.backtrace))
+          backtrace = log.send(:filter_backtrace, x.backtrace)
+          log.send(:put_cdata, backtrace)
         end
       end
     end
@@ -183,19 +184,6 @@ class StructuredLog
     nil
   end
 
-  def put_cdata(text)
-    # Guard against using a terminator that's a substring of the cdata.
-    s = 'EOT'
-    terminator = s
-    while text.match(terminator) do
-      terminator += s
-    end
-    log_puts("CDATA\t<<#{terminator}")
-    log_puts(text)
-    log_puts(terminator)
-    nil
-  end
-
   private
 
   def initialize(file_path = File.join(DEFAULT_DIR_PATH, DEFAULT_FILE_NAME), options = Hash.new, im_ok_youre_not_ok = false)
@@ -292,6 +280,19 @@ class StructuredLog
               end
       log_puts("ATTRIBUTE\t#{name}\t#{value}")
     end
+    nil
+  end
+
+  def put_cdata(text)
+    # Guard against using a terminator that's a substring of the cdata.
+    s = 'EOT'
+    terminator = s
+    while text.match(terminator) do
+      terminator += s
+    end
+    log_puts("CDATA\t<<#{terminator}")
+    log_puts(text)
+    log_puts(terminator)
     nil
   end
 
