@@ -121,7 +121,7 @@ class StructuredLogTest < Minitest::Test
 
   end
 
-  def args_common_test(log_method, test_method, element_name, &block)
+  def args_common_test(log_method, element_name, &block)
 
     # When log_method is :section we need a block.
 
@@ -278,7 +278,7 @@ class StructuredLogTest < Minitest::Test
     ele_xpath = "//section[@name='outer']/section[@name='inner']/tag"
     checker.assert_element_text(ele_xpath, 'text')
 
-    args_common_test(method, __method__, 'section') do
+    args_common_test(method, 'section') do
       # Will need a block for calling :section.
     end
 
@@ -301,7 +301,7 @@ class StructuredLogTest < Minitest::Test
   def test_uncaught_exception
 
     exception_message = 'Wrong'
-    file_path = StructuredLog.open('foo.xml', :xml_indentation => -1) do |log|
+    file_path = StructuredLog.open('foo.xml', :xml_indentation => -1) do |_|
       raise RuntimeError.new(exception_message)
     end
     checker = Checker.new(self, file_path)
@@ -328,15 +328,71 @@ class StructuredLogTest < Minitest::Test
     ele_xpath = "//#{element_name}"
     checker.assert_element_exist(ele_xpath)
 
-    args_common_test(method, __method__, element_name)
+    args_common_test(method, element_name)
 
   end
 
-  def test_each_with_index
+  def test_put_each_with_index
+
+    method = :put_each_with_index
+
+    element_name = 'each_with_index'
+
+    array = [:a, :aa, :aaa]
+    file_path = create_temp_log do |log|
+      log.send(method, 'my_array', array)
+    end
+    checker = Checker.new(self, file_path)
+    ele_xpath = "//#{element_name}"
+    checker.assert_element_exist(ele_xpath)
 
   end
 
-  def test_each_pair
+  def test_put_array
+
+    method = :put_array
+
+    element_name = 'each_with_index'
+
+    array = [:a, :aa, :aaa]
+    file_path = create_temp_log do |log|
+      log.send(method, 'my_array', array)
+    end
+    checker = Checker.new(self, file_path)
+    ele_xpath = "//#{element_name}"
+    checker.assert_element_exist(ele_xpath)
+
+  end
+
+  def test_put_each_pair
+
+    method = :put_each_pair
+
+    element_name = 'each_pair'
+
+    hash = {:a => 0, :b => 1}
+    file_path = create_temp_log do |log|
+      log.send(method, 'my_hash', hash)
+    end
+    checker = Checker.new(self, file_path)
+    ele_xpath = "//#{element_name}"
+    checker.assert_element_exist(ele_xpath)
+
+  end
+
+  def test_put_hash
+
+    method = :put_each_pair
+
+    element_name = 'each_pair'
+
+    hash = {:a => 0, :b => 1}
+    file_path = create_temp_log do |log|
+      log.send(method, 'my_hash', hash)
+    end
+    checker = Checker.new(self, file_path)
+    ele_xpath = "//#{element_name}"
+    checker.assert_element_exist(ele_xpath)
 
   end
 
@@ -345,10 +401,6 @@ class StructuredLogTest < Minitest::Test
   end
 
   def test_put_data
-
-  end
-
-  def test_put_cdata
 
   end
 
