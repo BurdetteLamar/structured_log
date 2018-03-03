@@ -308,7 +308,6 @@ class StructuredLogTest < Minitest::Test
   def test_put_element
     method = :put_element
     element_name = 'my_element'
-    # Element name.
     file_path = create_temp_log do |log|
       log.send(method, element_name)
     end
@@ -369,7 +368,22 @@ class StructuredLogTest < Minitest::Test
   end
 
   def test_put_data
-
+    method = :put_data
+    element_name = 'data'
+    arg = [:a, :aa, :aaa]
+    file_path = create_temp_log do |log|
+      log.send(method, element_name, arg)
+    end
+    checker = Checker.new(self, file_path)
+    ele_xpath = "//#{element_name}"
+    checker.assert_element_exist(ele_xpath)
+    arg = {:a => 0, :aa => 1, :aaa => 2}
+    file_path = create_temp_log do |log|
+      log.send(method, element_name, arg)
+    end
+    checker = Checker.new(self, file_path)
+    ele_xpath = "//#{element_name}"
+    checker.assert_element_exist(ele_xpath)
   end
 
   def test_put_method_return_value

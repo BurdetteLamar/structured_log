@@ -161,13 +161,14 @@ class StructuredLog
   def put_data(name, obj)
     case
       when obj.respond_to?(:each_pair)
-        put_each_pair(name, obj)
+        STDERR.puts("Instance of #{obj.class} can be better logged by method log#put_each_pair")
       when obj.respond_to?(:each_with_index)
-        put_each_with_index(name, obj)
+        STDERR.puts("Instance of #{obj.class} can be better logged by method log#put_each_with_index")
       else
-        put_element('data', :name => name, :class => obj.class) do
-          put_cdata(obj.inspect)
-        end
+        # Ok.
+    end
+    put_element('data', :name => name, :class => obj.class) do
+      put_cdata(obj.inspect)
     end
   end
 
