@@ -109,10 +109,42 @@ class StructuredLogTest < Minitest::Test
     end
 
     # Verify element existence.
-    def assert_element_exist(ele_path)
-      elements = match(ele_path)
-      self.test.assert_operator(elements.size, :>, 0, "No elements at xpath #{ele_path}")
+    def assert_element_exist(ele_xpath)
+      elements = match(ele_xpath)
+      self.test.assert_operator(elements.size, :>, 0, "No elements at xpath #{ele_xpath}")
       elements
+    end
+
+    def assert_cdata_matches(ele_xpath, regexps)
+      element = assert_element_exist(ele_xpath).first
+      cdatas = element.cdatas
+      self.test.assert_equal(1, cdatas.size)
+      cdata_value = cdatas.first.value
+      regexps.each do |regexp|
+        self.test.assert_match(regexp, cdata_value)
+        cdata_value.sub!(regexp, '')
+      end
+      self.test.refute_match(/\S/, cdata_value)
+    end
+
+    def assert_counts(ele_xpath, counts_for_method_returns)
+      element = assert_element_exist(ele_xpath).first
+      [
+          :attributes,
+          :cdatas,
+          :comments,
+          :texts,
+      ].each do |method|
+        value = counts_for_method_returns[method]
+        expected_count = value.nil? ? 0 : value
+        actual_count = element.send(method).size
+        self.test.assert_equal(expected_count, actual_count, method.to_s)
+      end
+      method = :get_elements
+      value = counts_for_method_returns[method]
+      expected_count = value.nil? ? 0 : value
+      actual_count = element.send(method, ele_xpath).size
+      self.test.assert_equal(expected_count, actual_count, method.to_s)
     end
 
     def match(xpath)
@@ -136,6 +168,11 @@ class StructuredLogTest < Minitest::Test
     end
     checker = Checker.new(self, file_path)
     ele_xpath = "//#{element_name}"
+    counts = {
+        :attributes => element_name == 'section' ? 4 : 3,
+        :get_elements => 1,
+    }
+    checker.assert_counts(ele_xpath, counts)
     checker.assert_attribute_values(ele_xpath, h)
 
     # Strings.
@@ -149,6 +186,12 @@ class StructuredLogTest < Minitest::Test
     end
     checker = Checker.new(self, file_path)
     ele_xpath = "//#{element_name}"
+    counts = {
+        :attributes => element_name == 'section' ? 1 : 0,
+        :get_elements => 1,
+        :texts => 1,
+    }
+    checker.assert_counts(ele_xpath, counts)
     checker.assert_element_text(ele_xpath, s)
 
     # Timestamp.
@@ -159,6 +202,11 @@ class StructuredLogTest < Minitest::Test
     end
     checker = Checker.new(self, file_path)
     ele_xpath = "//#{element_name}"
+    counts = {
+        :attributes => element_name == 'section' ? 2 : 1,
+        :get_elements => 1,
+    }
+    checker.assert_counts(ele_xpath, counts)
     checker.assert_attribute_match(ele_xpath, :timestamp, /\d{4}-\d{2}-\d{2}-\w{3}-\d{2}\.\d{2}\.\d{2}\.\d{3}/)
 
     # Duration.
@@ -169,6 +217,11 @@ class StructuredLogTest < Minitest::Test
     end
     checker = Checker.new(self, file_path)
     ele_xpath = "//#{element_name}"
+    counts = {
+        :attributes => element_name == 'section' ? 2 : 1,
+        :get_elements => 1,
+    }
+    checker.assert_counts(ele_xpath, counts)
     checker.assert_attribute_match(ele_xpath, :duration_seconds, /\d+\.\d{3}/)
 
     # Rescue.
@@ -180,7 +233,16 @@ class StructuredLogTest < Minitest::Test
     end
     checker = Checker.new(self, file_path)
     ele_xpath = "//#{element_name}/rescued_exception"
-    checker.assert_attribute_value(ele_xpath, 'class', RuntimeError.name)
+    counts = {
+        :attributes => 2,
+        :get_elements => 1,
+    }
+    checker.assert_counts(ele_xpath, counts)
+    attributes = {
+        :class => RuntimeError.name,
+    }
+    checker.assert_attribute_values(ele_xpath, attributes)
+    checker.assert_attribute_match(ele_xpath, :timestamp, /\d{4}-\d{2}-\d{2}-\w{3}-\d{2}\.\d{2}\.\d{2}\.\d{3}/)
     ele_xpath = "//#{element_name}/rescued_exception/message"
     checker.assert_element_text(ele_xpath, exception_message)
     ele_xpath = "//#{element_name}/rescued_exception/backtrace"
@@ -202,6 +264,12 @@ class StructuredLogTest < Minitest::Test
       end
       checker = Checker.new(self, file_path)
       ele_xpath = "//#{element_name}"
+      counts = {
+          :attributes => element_name == 'section' ? 1 : 0,
+          :get_elements => 1,
+          :texts => 1,
+      }
+      checker.assert_counts(ele_xpath, counts)
       checker.assert_element_text(ele_xpath, other.inspect)
     end
 
@@ -324,7 +392,18 @@ class StructuredLogTest < Minitest::Test
     end
     checker = Checker.new(self, file_path)
     ele_xpath = "//#{element_name}"
-    checker.assert_element_exist(ele_xpath)
+    counts = {
+        :attributes => 2,
+        :cdatas => 1,
+        :get_elements => 1,
+        :texts => 1,
+    }
+    checker.assert_counts(ele_xpath, counts)
+    regexps = []
+    arg.each_with_index do |item, i|
+      regexps.push(Regexp.new("#{i} #{item}"))
+    end
+    checker.assert_cdata_matches(ele_xpath, regexps)
   end
 
   def test_put_each_with_index

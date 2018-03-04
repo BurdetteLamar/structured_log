@@ -138,10 +138,8 @@ class StructuredLog
 
   def put_each_pair(name, obj)
     lines = ['']
-    max_key_size = obj.keys.max_by(&:size).size
-    max_val_size = obj.values.max_by(&:size).size
     obj.each_pair do |key, value|
-      lines.push(format('%s => %s', key.to_s.rjust(max_key_size), value.to_s.ljust(max_val_size)))
+      lines.push(format('%s => %s', key, value))
     end
     lines.push('')
     lines.push('')
