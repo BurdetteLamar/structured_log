@@ -342,6 +342,11 @@ class StructuredLogTest < Minitest::Test
     end
     checker = Checker.new(self, file_path)
     ele_xpath = "//section[@name='outer']/section[@name='inner']/tag"
+    counts = {
+        :get_elements => 1,
+        :texts => 1,
+    }
+    checker.assert_counts(ele_xpath, counts)
     checker.assert_element_text(ele_xpath, 'text')
     args_common_test(method, 'section') do
       # Will need a block for calling :section.
@@ -356,6 +361,11 @@ class StructuredLogTest < Minitest::Test
     end
     checker = Checker.new(self, file_path)
     ele_xpath = '//comment'
+    counts = {
+        :get_elements => 1,
+        :texts => 1,
+    }
+    checker.assert_counts(ele_xpath, counts)
     checker.assert_element_text(ele_xpath, comment)
   end
 
@@ -366,6 +376,11 @@ class StructuredLogTest < Minitest::Test
     end
     checker = Checker.new(self, file_path)
     ele_xpath = "//uncaught_exception"
+    counts = {
+        :attributes => 2,
+        :get_elements => 1,
+    }
+    checker.assert_counts(ele_xpath, counts)
     checker.assert_attribute_value(ele_xpath, 'class', RuntimeError.name)
     ele_xpath = '//uncaught_exception/message'
     checker.assert_element_text(ele_xpath, exception_message)
@@ -381,6 +396,10 @@ class StructuredLogTest < Minitest::Test
     end
     checker = Checker.new(self, file_path)
     ele_xpath = "//#{element_name}"
+    counts = {
+        :get_elements => 1,
+    }
+    checker.assert_counts(ele_xpath, counts)
     checker.assert_element_exist(ele_xpath)
     args_common_test(method, element_name)
   end
@@ -431,6 +450,13 @@ class StructuredLogTest < Minitest::Test
     end
     checker = Checker.new(self, file_path)
     ele_xpath = "//#{element_name}"
+    counts = {
+        :attributes => 2,
+        :cdatas => 1,
+        :get_elements => 1,
+        :texts => 1,
+    }
+    checker.assert_counts(ele_xpath, counts)
     checker.assert_element_exist(ele_xpath)
   end
 
@@ -462,6 +488,13 @@ class StructuredLogTest < Minitest::Test
     end
     checker = Checker.new(self, file_path)
     ele_xpath = "//#{element_name}"
+    counts = {
+        :attributes => 2,
+        :cdatas => 1,
+        :get_elements => 1,
+        :texts => 1,
+    }
+    checker.assert_counts(ele_xpath, counts)
     checker.assert_element_exist(ele_xpath)
   end
 
