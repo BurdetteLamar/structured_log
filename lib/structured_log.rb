@@ -35,7 +35,17 @@ class StructuredLog
     ]
     options = default_options.merge(options)
     log = self.new(file_path, options, im_ok_youre_not_ok = true)
-    yield log
+    begin
+      yield log
+    rescue => x
+      log.put_element('uncaught_exception', :timestamp, :class => x.class) do
+        log.put_element('message', x.message)
+        log.put_element('backtrace') do
+          backtrace = log.send(:filter_backtrace, x.backtrace)
+          log.send(:put_cdata, backtrace)
+        end
+      end
+    end
     log.send(:dispose)
     log.file_path
   end
@@ -124,13 +134,12 @@ class StructuredLog
     nil
   end
   alias put_array put_each_with_index
+  alias put_set put_each_with_index
 
   def put_each_pair(name, obj)
     lines = ['']
-    max_key_size = obj.keys.max_by(&:size).size
-    max_val_size = obj.values.max_by(&:size).size
     obj.each_pair do |key, value|
-      lines.push(format('%s => %s', key.to_s.rjust(max_key_size), value.to_s.ljust(max_val_size)))
+      lines.push(format('%s => %s', key, value))
     end
     lines.push('')
     lines.push('')
@@ -150,13 +159,14 @@ class StructuredLog
   def put_data(name, obj)
     case
       when obj.respond_to?(:each_pair)
-        put_each_pair(name, obj)
+        STDERR.puts("Instance of #{obj.class} can be better logged by method log#put_each_pair")
       when obj.respond_to?(:each_with_index)
-        put_each_with_index(name, obj)
+        STDERR.puts("Instance of #{obj.class} can be better logged by method log#put_each_with_index")
       else
-        put_element('data', :name => name, :class => obj.class) do
-          put_cdata(obj.inspect)
-        end
+        # Ok.
+    end
+    put_element('data', :name => name, :class => obj.class) do
+      put_cdata(obj.inspect)
     end
   end
 
@@ -171,19 +181,6 @@ class StructuredLog
 
   def comment(text, *args)
     put_element('comment', text, *args)
-    nil
-  end
-
-  def put_cdata(text)
-    # Guard against using a terminator that's a substring of the cdata.
-    s = 'EOT'
-    terminator = s
-    while text.match(terminator) do
-      terminator += s
-    end
-    log_puts("CDATA\t<<#{terminator}")
-    log_puts(text)
-    log_puts(terminator)
     nil
   end
 
@@ -283,6 +280,19 @@ class StructuredLog
               end
       log_puts("ATTRIBUTE\t#{name}\t#{value}")
     end
+    nil
+  end
+
+  def put_cdata(text)
+    # Guard against using a terminator that's a substring of the cdata.
+    s = 'EOT'
+    terminator = s
+    while text.match(terminator) do
+      terminator += s
+    end
+    log_puts("CDATA\t<<#{terminator}")
+    log_puts(text)
+    log_puts(terminator)
     nil
   end
 

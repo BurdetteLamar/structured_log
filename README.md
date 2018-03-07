@@ -84,22 +84,22 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-02-25-Sun-17.53.32.028'>
+  <section name='Section with timestamp' timestamp='2018-03-05-Mon-15.58.21.555'>
     <comment>
       I have a timestamp
     </comment>
   </section>
-  <section name='Section with duration' duration_seconds='1.010'>
+  <section name='Section with duration' duration_seconds='1.014'>
     <comment>
       I have a duration
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-02-25-Sun-17.53.33.038' duration_seconds='1.000'>
+  <section name='Section with both' timestamp='2018-03-05-Mon-15.58.22.569' duration_seconds='1.014'>
     <comment>
       I have a both
     </comment>
   </section>
-  <section name='Order does not matter' timestamp='2018-02-25-Sun-17.53.34.038' duration_seconds='1.010'>
+  <section name='Order does not matter' timestamp='2018-03-05-Mon-15.58.23.583' duration_seconds='1.014'>
     <comment>
       I have a both
     </comment>
@@ -133,19 +133,19 @@ end
     <comment>
       This section will terminate because of the failure.
     </comment>
-    <rescued_exception timestamp='2018-02-25-Sun-17.53.31.538' class='RuntimeError'>
+    <rescued_exception timestamp='2018-03-05-Mon-15.58.21.055' class='RuntimeError'>
       <message>
         This exception will be rescued and logged.
       </message>
       <backtrace>
         <![CDATA[
-C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/rescue.rb:6:in `block (2 levels) in <main>'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:6:in `block (2 levels) in <main>'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:169:in `block in section'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:91:in `put_element'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:168:in `section'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/rescue.rb:4:in `block in <main>'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:4:in `block in <main>'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:38:in `open'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/rescue.rb:3:in `<main>'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:3:in `<main>'
 ]]>
       </backtrace>
     </rescued_exception>
@@ -289,7 +289,7 @@ aaaa => zzzz
     <![CDATA[nil]]>
   </data>
   <method_return_value name='my_file_path' class='File' method='path'>
-    <![CDATA[C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/data.rb]]>
+    <![CDATA[C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/data.rb]]>
   </method_return_value>
 </log>
 ```

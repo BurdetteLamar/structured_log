@@ -38,6 +38,6 @@ aaaa => zzzz
     <![CDATA[nil]]>
   </data>
   <method_return_value name='my_file_path' class='File' method='path'>
-    <![CDATA[C:/Users/Burdette/Documents/GitHub/structured_log/readme/scripts/data.rb]]>
+    <![CDATA[C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/data.rb]]>
   </method_return_value>
 </log>
