@@ -4,7 +4,7 @@
 
 <!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/structured.png | height=70)
 ' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/markdown_helper/master/images/structured.png" alt="Structured Log" height="70">
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/structured.png" alt="Structured Log" height="70">
 <!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/structured.png | height=70)
 ' -->
 
@@ -36,7 +36,7 @@ Each of the following sections features an example Ruby program, followed by its
 ## Nested Sections
 <!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/nesting.jpg | height=70)
 ' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/markdown_helper/master/images/nesting.jpg" alt="Structured Log" height="70">
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/nesting.jpg" alt="Structured Log" height="70">
 <!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/nesting.jpg | height=70)
 ' -->
 
@@ -77,7 +77,7 @@ end
 ## Timestamp and Duration
 <!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/time.ico | height=70)
 ' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/markdown_helper/master/images/time.ico" alt="Structured Log" height="70">
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/time.ico" alt="Structured Log" height="70">
 <!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/time.ico | height=70)
 ' -->
 
@@ -137,7 +137,7 @@ end
 ## Rescue
 <!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/rescue.jpg | height=70)
 ' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/markdown_helper/master/images/rescue.jpg" alt="Structured Log" height="70">
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/rescue.jpg" alt="Structured Log" height="70">
 <!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/rescue.jpg | height=70)
 ' -->
 
