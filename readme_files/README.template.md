@@ -24,21 +24,21 @@ A working example is worth a thousand words (maybe).
 Each of the following sections features an example Ruby program, followed by its output log.
 
 ## Nested Sections
-![Structured Log](images/nesting.jpg | height=70)
+![Nesting](images/nesting.jpg | height=70)
 
 @[ruby](scripts/sections.rb)
 
 @[xml](logs/sections.xml)
 
 ## Timestamp and Duration
-![Structured Log](images/time.ico | height=70)
+![Time](images/time.ico | height=70)
 
 @[ruby](scripts/time.rb)
 
 @[xml](logs/time.xml)
 
 ## Rescue
-![Structured Log](images/rescue.jpg | height=70)
+![Rescue](images/rescue.jpg | height=70)
 
 @[ruby](scripts/rescue.rb)
 
