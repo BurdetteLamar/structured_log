@@ -1,5 +1,6 @@
 # Structured Log
-<img src="images/structured.png" height="70"> 
+
+!![Structured Log](images/structured.png | height=70)
 
 <!-- [![Gem Version](https://badge.fury.io/rb/structured_log.svg)](https://badge.fury.io/rb/structured_log) -->
 
@@ -23,21 +24,21 @@ A working example is worth a thousand words (maybe).
 Each of the following sections features an example Ruby program, followed by its output log.
 
 ## Nested Sections
-<img src="images/nesting.jpg" height="70">
+!![Structured Log](images/nesting.jpg | height=70)
 
 @[ruby](scripts/sections.rb)
 
 @[xml](logs/sections.xml)
 
 ## Timestamp and Duration
-<img src="images/time.ico" height="70">
+!![Structured Log](images/time.ico | height=70)
 
 @[ruby](scripts/time.rb)
 
 @[xml](logs/time.xml)
 
 ## Rescue
-<img src="images/rescue.jpg" height="120">
+!![Structured Log](images/rescue.jpg | height=70)
 
 @[ruby](scripts/rescue.rb)
 
