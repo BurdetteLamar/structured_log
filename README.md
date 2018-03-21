@@ -2,10 +2,10 @@
 <!-- >>>>>> BEGIN GENERATED FILE (resolve): SOURCE readme_files/README.template.md -->
 # Structured Log
 
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '!![Structured Log](images/structured.png | height=70)
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/structured.png | height=70)
 ' -->
-!<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/structured.png" alt="Structured Log" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '!![Structured Log](images/structured.png | height=70)
+<img src="https://raw.githubusercontent.com/BurdetteLamar/markdown_helper/master/images/structured.png" alt="Structured Log" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/structured.png | height=70)
 ' -->
 
 <!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '<!-- [![Gem Version](https://badge.fury.io/rb/structured_log.svg)](https://badge.fury.io/rb/structured_log) -->
@@ -34,10 +34,10 @@ A working example is worth a thousand words (maybe).
 Each of the following sections features an example Ruby program, followed by its output log.
 
 ## Nested Sections
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '!![Structured Log](images/nesting.jpg | height=70)
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/nesting.jpg | height=70)
 ' -->
-!<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/nesting.jpg" alt="Structured Log" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '!![Structured Log](images/nesting.jpg | height=70)
+<img src="https://raw.githubusercontent.com/BurdetteLamar/markdown_helper/master/images/nesting.jpg" alt="Structured Log" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/nesting.jpg | height=70)
 ' -->
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/sections.rb -->
@@ -75,10 +75,10 @@ end
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/sections.xml -->
 
 ## Timestamp and Duration
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '!![Structured Log](images/time.ico | height=70)
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/time.ico | height=70)
 ' -->
-!<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/time.ico" alt="Structured Log" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '!![Structured Log](images/time.ico | height=70)
+<img src="https://raw.githubusercontent.com/BurdetteLamar/markdown_helper/master/images/time.ico" alt="Structured Log" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/time.ico | height=70)
 ' -->
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/time.rb -->
@@ -135,10 +135,10 @@ end
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/time.xml -->
 
 ## Rescue
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '!![Structured Log](images/rescue.jpg | height=70)
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/rescue.jpg | height=70)
 ' -->
-!<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/rescue.jpg" alt="Structured Log" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '!![Structured Log](images/rescue.jpg | height=70)
+<img src="https://raw.githubusercontent.com/BurdetteLamar/markdown_helper/master/images/rescue.jpg" alt="Structured Log" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/rescue.jpg | height=70)
 ' -->
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/rescue.rb -->
