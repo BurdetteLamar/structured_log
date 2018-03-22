@@ -1,7 +1,12 @@
+<!-- >>>>>> BEGIN GENERATED FILE (include): SOURCE readme_files/README.md -->
+<!-- >>>>>> BEGIN GENERATED FILE (resolve): SOURCE readme_files/README.template.md -->
 # Structured Log
-<img src="images/structured.png" height="70"> 
 
-<!-- [![Gem Version](https://badge.fury.io/rb/structured_log.svg)](https://badge.fury.io/rb/structured_log) -->
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/structured.png | height=70)
+' -->
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/structured.png" alt="Structured Log" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/structured.png | height=70)
+' -->
 
 Class <code>StructuredLog</code> offers structured (as opposed to flat) logging.  Nested sections (blocks) in Ruby code become nested XML elements in the log.
 
@@ -23,8 +28,13 @@ A working example is worth a thousand words (maybe).
 Each of the following sections features an example Ruby program, followed by its output log.
 
 ## Nested Sections
-<img src="images/nesting.jpg" height="70">
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Nesting](images/nesting.jpg | height=70)
+' -->
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/nesting.jpg" alt="Nesting" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Nesting](images/nesting.jpg | height=70)
+' -->
 
+<!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/sections.rb -->
 <code>sections.rb</code>
 ```ruby
 require 'structured_log'
@@ -39,7 +49,9 @@ StructuredLog.open('sections.xml') do |log|
   end
 end
 ```
+<!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/sections.rb -->
 
+<!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/sections.xml -->
 <code>sections.xml</code>
 ```xml
 <log>
@@ -54,10 +66,16 @@ end
   </section>
 </log>
 ```
+<!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/sections.xml -->
 
 ## Timestamp and Duration
-<img src="images/time.ico" height="70">
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Time](images/time.ico | height=70)
+' -->
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/time.ico" alt="Time" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Time](images/time.ico | height=70)
+' -->
 
+<!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/time.rb -->
 <code>time.rb</code>
 ```ruby
 require 'structured_log'
@@ -80,7 +98,9 @@ StructuredLog.open('time.xml') do |log|
   end
 end
 ```
+<!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/time.rb -->
 
+<!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/time.xml -->
 <code>time.xml</code>
 ```xml
 <log>
@@ -106,10 +126,16 @@ end
   </section>
 </log>
 ```
+<!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/time.xml -->
 
 ## Rescue
-<img src="images/rescue.jpg" height="120">
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Rescue](images/rescue.jpg | height=70)
+' -->
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/rescue.jpg" alt="Rescue" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Rescue](images/rescue.jpg | height=70)
+' -->
 
+<!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/rescue.rb -->
 <code>rescue.rb</code>
 ```ruby
 require 'structured_log'
@@ -125,7 +151,9 @@ StructuredLog.open('rescue.xml') do |log|
   end
 end
 ```
+<!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/rescue.rb -->
 
+<!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/rescue.xml -->
 <code>rescue.xml</code>
 ```xml
 <log>
@@ -157,9 +185,11 @@ C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb
   </section>
 </log>
 ```
+<!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/rescue.xml -->
 
 ## Array
 
+<!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/array.rb -->
 <code>array.rb</code>
 ```ruby
 require 'structured_log'
@@ -169,7 +199,9 @@ StructuredLog.open('array.xml') do |log|
   log.put_array('my_array', array)
 end
 ```
+<!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/array.rb -->
 
+<!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/array.xml -->
 <code>array.xml</code>
 ```xml
 <log>
@@ -183,9 +215,11 @@ end
   </each_with_index>
 </log>
 ```
+<!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/array.xml -->
 
 ## Hash
 
+<!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/hash.rb -->
 <code>hash.rb</code>
 ```ruby
 require 'structured_log'
@@ -200,7 +234,9 @@ StructuredLog.open('hash.xml') do |log|
   log.put_hash('my_hash', hash)
 end
 ```
+<!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/hash.rb -->
 
+<!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/hash.xml -->
 <code>hash.xml</code>
 ```xml
 <log>
@@ -214,9 +250,11 @@ aaaa => zzzz
   </each_pair>
 </log>
 ```
+<!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/hash.xml -->
 
 ## Data
 
+<!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/data.rb -->
 <code>data.rb</code>
 ```ruby
 require 'structured_log'
@@ -246,7 +284,9 @@ StructuredLog.open('data.xml') do |log|
   log.put_method_return_value('my_file_path', file, :path)
 end
 ```
+<!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/data.rb -->
 
+<!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/data.xml -->
 <code>data.xml</code>
 ```xml
 <log>
@@ -293,9 +333,11 @@ aaaa => zzzz
   </method_return_value>
 </log>
 ```
+<!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/data.xml -->
 
 ## CData
 
+<!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/cdata.rb -->
 <code>cdata.rb</code>
 ```ruby
 require 'structured_log'
@@ -309,7 +351,9 @@ StructuredLog.open('cdata.xml') do |log|
   log.put_cdata(text)
 end
 ```
+<!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/cdata.rb -->
 
+<!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/cdata.xml -->
 <code>cdata.xml</code>
 ```xml
 <log>
@@ -318,3 +362,6 @@ Nothing is added or detracted.
 Not even whitespace.]]>
 </log>
 ```
+<!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/cdata.xml -->
+<!-- <<<<<< END GENERATED FILE (resolve): SOURCE readme_files/README.template.md -->
+<!-- <<<<<< END GENERATED FILE (include): SOURCE readme_files/README.md -->
