@@ -2,8 +2,6 @@
 
 ![Structured Log](images/structured.png | height=70)
 
-<!-- [![Gem Version](https://badge.fury.io/rb/structured_log.svg)](https://badge.fury.io/rb/structured_log) -->
-
 Class <code>StructuredLog</code> offers structured (as opposed to flat) logging.  Nested sections (blocks) in Ruby code become nested XML elements in the log.
 
 This sectioning allows you to group actions in your program, and that grouping carries over into the log.
