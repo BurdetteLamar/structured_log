@@ -35,10 +35,8 @@ namespace :build do
             target_dir_path,
             File.basename(source_file_path.sub(/rb$/, 'xml')),
         )
-        unless uptodate?(target_file_path, [source_file_path])
-          command = "ruby #{source_file_path}"
-          system(command)
-        end
+        command = "ruby #{source_file_path}"
+        system(command)
       end
     end
     # TODO:  Implement dependencies

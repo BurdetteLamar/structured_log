@@ -1,9 +1,9 @@
 <log>
   <each_pair name='my_hash' class='Hash'>
     <![CDATA[
-   a => z   
-  aa => zz  
- aaa => zzz 
+a => z
+aa => zz
+aaa => zzz
 aaaa => zzzz
 ]]>
   </each_pair>

@@ -34,6 +34,8 @@ Each of the following sections features an example Ruby program, followed by its
 <!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Nesting](images/nesting.jpg | height=70)
 ' -->
 
+Use nested sections to give structure to your log.
+
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/sections.rb -->
 <code>sections.rb</code>
 ```ruby
@@ -68,12 +70,14 @@ end
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/sections.xml -->
 
-## Timestamp and Duration
+## Section Timestamps and Durations
 <!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Time](images/time.ico | height=70)
 ' -->
 <img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/time.ico" alt="Time" height="70">
 <!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Time](images/time.ico | height=70)
 ' -->
+
+Add timestamps and durations to your log sections.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/time.rb -->
 <code>time.rb</code>
@@ -104,7 +108,7 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-03-05-Mon-15.58.21.555'>
+  <section name='Section with timestamp' timestamp='2018-03-23-Fri-15.26.50.937'>
     <comment>
       I have a timestamp
     </comment>
@@ -114,12 +118,12 @@ end
       I have a duration
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-03-05-Mon-15.58.22.569' duration_seconds='1.014'>
+  <section name='Section with both' timestamp='2018-03-23-Fri-15.26.51.951' duration_seconds='1.014'>
     <comment>
       I have a both
     </comment>
   </section>
-  <section name='Order does not matter' timestamp='2018-03-05-Mon-15.58.23.583' duration_seconds='1.014'>
+  <section name='Order does not matter' timestamp='2018-03-23-Fri-15.26.52.965' duration_seconds='1.014'>
     <comment>
       I have a both
     </comment>
@@ -128,12 +132,14 @@ end
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/time.xml -->
 
-## Rescue
+## Rescued Sections
 <!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Rescue](images/rescue.jpg | height=70)
 ' -->
 <img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/rescue.jpg" alt="Rescue" height="70">
 <!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Rescue](images/rescue.jpg | height=70)
 ' -->
+
+Add rescuing to your log sections.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/rescue.rb -->
 <code>rescue.rb</code>
@@ -161,18 +167,18 @@ end
     <comment>
       This section will terminate because of the failure.
     </comment>
-    <rescued_exception timestamp='2018-03-05-Mon-15.58.21.055' class='RuntimeError'>
+    <rescued_exception timestamp='2018-03-23-Fri-15.26.50.469' class='RuntimeError'>
       <message>
         This exception will be rescued and logged.
       </message>
       <backtrace>
         <![CDATA[
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:6:in `block (2 levels) in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:169:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:91:in `put_element'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:168:in `section'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:177:in `block in section'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:101:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:176:in `section'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:4:in `block in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:38:in `open'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:3:in `<main>'
 ]]>
       </backtrace>
@@ -187,7 +193,11 @@ C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/rescue.xml -->
 
-## Array
+## Data
+
+Add data to your log.
+
+### Array-Like Objects
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/array.rb -->
 <code>array.rb</code>
@@ -217,7 +227,7 @@ end
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/array.xml -->
 
-## Hash
+### Hash-LIke Objects
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/hash.rb -->
 <code>hash.rb</code>
@@ -242,9 +252,9 @@ end
 <log>
   <each_pair name='my_hash' class='Hash'>
     <![CDATA[
-   a => z   
-  aa => zz  
- aaa => zzz 
+a => z
+aa => zz
+aaa => zzz
 aaaa => zzzz
 ]]>
   </each_pair>
@@ -252,7 +262,7 @@ aaaa => zzzz
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/hash.xml -->
 
-## Data
+### Other Objects
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/data.rb -->
 <code>data.rb</code>
@@ -290,29 +300,15 @@ end
 <code>data.xml</code>
 ```xml
 <log>
-  <each_with_index name='my_array' class='Array'>
-    <![CDATA[
-     0 foo
-     1 bar
-     2 baz
-     3 bat
-]]>
-  </each_with_index>
-  <each_pair name='my_hash' class='Hash'>
-    <![CDATA[
-   a => z   
-  aa => zz  
- aaa => zzz 
-aaaa => zzzz
-]]>
-  </each_pair>
-  <each_with_index name='my_set' class='Set'>
-    <![CDATA[
-     0 foo
-     1 bar
-     2 baz
-]]>
-  </each_with_index>
+  <data name='my_array' class='Array'>
+    <![CDATA[["foo", "bar", "baz", "bat"]]]>
+  </data>
+  <data name='my_hash' class='Hash'>
+    <![CDATA[{:a=>"z", :aa=>"zz", :aaa=>"zzz", :aaaa=>"zzzz"}]]>
+  </data>
+  <data name='my_set' class='Set'>
+    <![CDATA[#<Set: {"foo", "bar", "baz"}>]]>
+  </data>
   <data name='my_float' class='Float'>
     <![CDATA[3.14]]>
   </data>
@@ -335,7 +331,7 @@ aaaa => zzzz
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/data.xml -->
 
-## CData
+### CData
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/cdata.rb -->
 <code>cdata.rb</code>
@@ -363,5 +359,14 @@ Not even whitespace.]]>
 </log>
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/cdata.xml -->
+
+## Comments
+
+## Custom
+
+### Entries
+
+### Sections
+
 <!-- <<<<<< END GENERATED FILE (resolve): SOURCE readme_files/README.template.md -->
 <!-- <<<<<< END GENERATED FILE (include): SOURCE readme_files/README.md -->

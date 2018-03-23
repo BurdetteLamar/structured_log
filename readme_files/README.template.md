@@ -24,44 +24,63 @@ Each of the following sections features an example Ruby program, followed by its
 ## Nested Sections
 ![Nesting](images/nesting.jpg | height=70)
 
+Use nested sections to give structure to your log.
+
 @[ruby](scripts/sections.rb)
 
 @[xml](logs/sections.xml)
 
-## Timestamp and Duration
+## Section Timestamps and Durations
 ![Time](images/time.ico | height=70)
+
+Add timestamps and durations to your log sections.
 
 @[ruby](scripts/time.rb)
 
 @[xml](logs/time.xml)
 
-## Rescue
+## Rescued Sections
 ![Rescue](images/rescue.jpg | height=70)
+
+Add rescuing to your log sections.
 
 @[ruby](scripts/rescue.rb)
 
 @[xml](logs/rescue.xml)
 
-## Array
+## Data
+
+Add data to your log.
+
+### Array-Like Objects
 
 @[ruby](scripts/array.rb)
 
 @[xml](logs/array.xml)
 
-## Hash
+### Hash-LIke Objects
 
 @[ruby](scripts/hash.rb)
 
 @[xml](logs/hash.xml)
 
-## Data
+### Other Objects
 
 @[ruby](scripts/data.rb)
 
 @[xml](logs/data.xml)
 
-## CData
+### CData
 
 @[ruby](scripts/cdata.rb)
 
 @[xml](logs/cdata.xml)
+
+## Comments
+
+## Custom
+
+### Entries
+
+### Sections
+

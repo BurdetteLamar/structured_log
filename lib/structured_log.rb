@@ -179,6 +179,19 @@ class StructuredLog
     nil
   end
 
+  def put_cdata(text)
+    # Guard against using a terminator that's a substring of the cdata.
+    s = 'EOT'
+    terminator = s
+    while text.match(terminator) do
+      terminator += s
+    end
+    log_puts("CDATA\t<<#{terminator}")
+    log_puts(text)
+    log_puts(terminator)
+    nil
+  end
+
   def comment(text, *args)
     put_element('comment', text, *args)
     nil
@@ -280,19 +293,6 @@ class StructuredLog
               end
       log_puts("ATTRIBUTE\t#{name}\t#{value}")
     end
-    nil
-  end
-
-  def put_cdata(text)
-    # Guard against using a terminator that's a substring of the cdata.
-    s = 'EOT'
-    terminator = s
-    while text.match(terminator) do
-      terminator += s
-    end
-    log_puts("CDATA\t<<#{terminator}")
-    log_puts(text)
-    log_puts(terminator)
     nil
   end
 

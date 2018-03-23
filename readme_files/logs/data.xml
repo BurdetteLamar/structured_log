@@ -1,27 +1,13 @@
 <log>
-  <each_with_index name='my_array' class='Array'>
-    <![CDATA[
-     0 foo
-     1 bar
-     2 baz
-     3 bat
-]]>
-  </each_with_index>
-  <each_pair name='my_hash' class='Hash'>
-    <![CDATA[
-   a => z   
-  aa => zz  
- aaa => zzz 
-aaaa => zzzz
-]]>
-  </each_pair>
-  <each_with_index name='my_set' class='Set'>
-    <![CDATA[
-     0 foo
-     1 bar
-     2 baz
-]]>
-  </each_with_index>
+  <data name='my_array' class='Array'>
+    <![CDATA[["foo", "bar", "baz", "bat"]]]>
+  </data>
+  <data name='my_hash' class='Hash'>
+    <![CDATA[{:a=>"z", :aa=>"zz", :aaa=>"zzz", :aaaa=>"zzzz"}]]>
+  </data>
+  <data name='my_set' class='Set'>
+    <![CDATA[#<Set: {"foo", "bar", "baz"}>]]>
+  </data>
   <data name='my_float' class='Float'>
     <![CDATA[3.14]]>
   </data>
