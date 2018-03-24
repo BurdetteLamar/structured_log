@@ -2,9 +2,31 @@
   <section name='Outer'>
     <section name='Mid'>
       <section name='Inner'>
-        <comment>
-          I am nested.
-        </comment>
+        <uncaught_exception timestamp='2018-03-24-Sat-08.03.24.915' class='ArgumentError'>
+          <message>
+            wrong number of arguments (1 for 2)
+          </message>
+          <backtrace>
+            <![CDATA[
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:64:in `comment'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/sections.rb:7:in `block (4 levels) in <main>'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:127:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/sections.rb:6:in `block (3 levels) in <main>'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:127:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/sections.rb:5:in `block (2 levels) in <main>'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:127:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/sections.rb:4:in `block in <main>'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/sections.rb:3:in `<main>'
+]]>
+          </backtrace>
+        </uncaught_exception>
       </section>
     </section>
   </section>

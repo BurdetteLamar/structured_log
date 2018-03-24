@@ -52,17 +52,17 @@ Add rescuing to your log sections.
 
 Add data to your log.
 
-### Array-Like Objects
-
-@[ruby](scripts/array.rb)
-
-@[xml](logs/array.xml)
-
 ### Hash-LIke Objects
 
 @[ruby](scripts/hash.rb)
 
 @[xml](logs/hash.xml)
+
+### Array-Like Objects
+
+@[ruby](scripts/array.rb)
+
+@[xml](logs/array.xml)
 
 ### Other Objects
 
@@ -78,7 +78,7 @@ Add data to your log.
 
 ## Comments
 
-## Custom
+## Custom Logging
 
 ### Entries
 

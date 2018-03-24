@@ -1,18 +1,16 @@
 <log>
   <section name='Section with rescue'>
-    <comment>
-      This section will terminate because of the failure.
-    </comment>
-    <rescued_exception timestamp='2018-03-23-Fri-15.26.50.469' class='RuntimeError'>
+    <rescued_exception timestamp='2018-03-24-Sat-08.03.24.665' class='ArgumentError'>
       <message>
-        This exception will be rescued and logged.
+        wrong number of arguments (1 for 2)
       </message>
       <backtrace>
         <![CDATA[
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:6:in `block (2 levels) in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:177:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:101:in `put_element'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:176:in `section'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:64:in `comment'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:5:in `block (2 levels) in <main>'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:117:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:4:in `block in <main>'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:3:in `<main>'
@@ -21,8 +19,22 @@ C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb
     </rescued_exception>
   </section>
   <section name='Another section'>
-    <comment>
-      This comment will be reached and logged, because of rescue above.
-    </comment>
+    <uncaught_exception timestamp='2018-03-24-Sat-08.03.24.665' class='ArgumentError'>
+      <message>
+        wrong number of arguments (1 for 2)
+      </message>
+      <backtrace>
+        <![CDATA[
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:64:in `comment'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:10:in `block (2 levels) in <main>'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:127:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:9:in `block in <main>'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:3:in `<main>'
+]]>
+      </backtrace>
+    </uncaught_exception>
   </section>
 </log>

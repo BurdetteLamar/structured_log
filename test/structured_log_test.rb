@@ -498,8 +498,4 @@ class StructuredLogTest < Minitest::Test
     checker.assert_element_exist(ele_xpath)
   end
 
-  def test_put_method_return_value
-
-  end
-
 end

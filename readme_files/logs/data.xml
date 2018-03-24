@@ -23,7 +23,17 @@
   <data name='my_nil' class='NilClass'>
     <![CDATA[nil]]>
   </data>
-  <method_return_value name='my_file_path' class='File' method='path'>
-    <![CDATA[C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/data.rb]]>
-  </method_return_value>
+  <uncaught_exception timestamp='2018-03-24-Sat-08.03.24.182' class='NoMethodError'>
+    <message>
+      undefined method `put_method_return_value&apos; for
+      #&lt;StructuredLog:0x2deb680&gt;
+    </message>
+    <backtrace>
+      <![CDATA[
+C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/data.rb:25:in `block in <main>'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/data.rb:18:in `<main>'
+]]>
+    </backtrace>
+  </uncaught_exception>
 </log>

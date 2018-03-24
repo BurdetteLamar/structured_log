@@ -2,7 +2,7 @@ require 'structured_log'
 
 text = <<EOT
 Method put_cdata puts the data verbatim.
-Nothing is added or detracted.
+Nothing is added or subtracted.
 Not even whitespace.
 EOT
 StructuredLog.open('cdata.xml') do |log|
