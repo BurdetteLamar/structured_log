@@ -2,7 +2,7 @@
   <section name='Section with rescue'>
     <comment>
       This section will terminate because of the failure.
-      <rescued_exception timestamp='2018-03-26-Mon-11.45.59.281' class='LocalJumpError'>
+      <rescued_exception timestamp='2018-03-26-Mon-14.34.06.512' class='LocalJumpError'>
         <message>
           no block given (yield)
         </message>
@@ -25,7 +25,7 @@ C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb
     <section name='Another section'>
       <comment>
         This comment will be reached and logged, because of rescue above.
-        <uncaught_exception timestamp='2018-03-26-Mon-11.45.59.281' class='LocalJumpError'>
+        <uncaught_exception timestamp='2018-03-26-Mon-14.34.06.512' class='LocalJumpError'>
           <message>
             no block given (yield)
           </message>

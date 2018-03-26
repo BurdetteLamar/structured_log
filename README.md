@@ -1,12 +1,8 @@
 <!-- >>>>>> BEGIN GENERATED FILE (include): SOURCE readme_files/README.md -->
-<!-- >>>>>> BEGIN GENERATED FILE (resolve): SOURCE readme_files/README.template.md -->
+<!-- >>>>>> BEGIN GENERATED FILE (include): SOURCE readme_files/README.template.md -->
 # Structured Log
 
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/structured.png | height=70)
-' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/structured.png" alt="Structured Log" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/structured.png | height=70)
-' -->
+![Structured Log](images/structured.png | height=70)
 
 Class <code>StructuredLog</code> offers structured (as opposed to flat) logging.  Nested sections (blocks) in Ruby code become nested XML elements in the log.
 
@@ -28,11 +24,7 @@ A working example is worth a thousand words (maybe).
 Each of the following sections features an example Ruby program, followed by its output log.
 
 ## Nested Sections
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Nesting](images/nesting.jpg | height=70)
-' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/nesting.jpg" alt="Nesting" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Nesting](images/nesting.jpg | height=70)
-' -->
+![Nesting](images/nesting.jpg | height=70)
 
 Use nested sections to give structure to your log.
 
@@ -62,7 +54,7 @@ end
       <section name='Inner'>
         <comment>
           I am nested.
-          <uncaught_exception timestamp='2018-03-26-Mon-11.45.59.515' class='LocalJumpError'>
+          <uncaught_exception timestamp='2018-03-26-Mon-14.34.06.902' class='LocalJumpError'>
             <message>
               no block given (yield)
             </message>
@@ -110,11 +102,7 @@ Pass strings to method <code>section</code> to log them as CDATA.
 TODO:
 
 ## Section Timestamps and Durations
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Time](images/time.ico | height=70)
-' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/time.ico" alt="Time" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Time](images/time.ico | height=70)
-' -->
+![Time](images/time.ico | height=70)
 
 Add timestamps and durations to your log sections.
 
@@ -147,10 +135,10 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-03-26-Mon-11.45.59.749'>
+  <section name='Section with timestamp' timestamp='2018-03-26-Mon-14.34.07.152'>
     <comment>
       I have a timestamp
-      <uncaught_exception timestamp='2018-03-26-Mon-11.45.59.749' class='LocalJumpError'>
+      <uncaught_exception timestamp='2018-03-26-Mon-14.34.07.152' class='LocalJumpError'>
         <message>
           no block given (yield)
         </message>
@@ -176,11 +164,7 @@ C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/time.rb:3
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/time.xml -->
 
 ## Rescued Sections
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Rescue](images/rescue.jpg | height=70)
-' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/rescue.jpg" alt="Rescue" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Rescue](images/rescue.jpg | height=70)
-' -->
+![Rescue](images/rescue.jpg | height=70)
 
 Add rescuing to your log sections.
 
@@ -209,7 +193,7 @@ end
   <section name='Section with rescue'>
     <comment>
       This section will terminate because of the failure.
-      <rescued_exception timestamp='2018-03-26-Mon-11.45.59.281' class='LocalJumpError'>
+      <rescued_exception timestamp='2018-03-26-Mon-14.34.06.512' class='LocalJumpError'>
         <message>
           no block given (yield)
         </message>
@@ -232,7 +216,7 @@ C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb
     <section name='Another section'>
       <comment>
         This comment will be reached and logged, because of rescue above.
-        <uncaught_exception timestamp='2018-03-26-Mon-11.45.59.281' class='LocalJumpError'>
+        <uncaught_exception timestamp='2018-03-26-Mon-14.34.06.512' class='LocalJumpError'>
           <message>
             no block given (yield)
           </message>
@@ -452,5 +436,5 @@ TODO:
 TODO:
 
 ### Entries
-<!-- <<<<<< END GENERATED FILE (resolve): SOURCE readme_files/README.template.md -->
+<!-- <<<<<< END GENERATED FILE (include): SOURCE readme_files/README.template.md -->
 <!-- <<<<<< END GENERATED FILE (include): SOURCE readme_files/README.md -->
