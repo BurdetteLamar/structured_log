@@ -30,6 +30,18 @@ Use nested sections to give structure to your log.
 
 @[xml](logs/sections.xml)
 
+## Section Attributes
+
+Pass hashes to method <code>section</code> to add the name/value pairs as attributes.
+
+TODO:
+
+## Section CDATA
+
+Pass strings to method <code>section</code> to log them as CDATA.
+
+TODO:
+
 ## Section Timestamps and Durations
 ![Time](images/time.ico | height=70)
 
@@ -48,11 +60,25 @@ Add rescuing to your log sections.
 
 @[xml](logs/rescue.xml)
 
+## Sections with Lots of Stuff
+
+Pass lots of stuff to method <code>section</code>.
+
+Except that the (required) section name must be first, the arguments can be in any order.
+
+TODO:
+
+## Uncaught Exceptions
+
+TODO:  script and log.
+
 ## Data
 
 Add data to your log.
 
 ### Hash-LIke Objects
+
+Use method <code>put_each_pair</clde>, or its alias <code>put_hash</code>, to log an object that <code>respond_to?(:each_pair)</code>.
 
 @[ruby](scripts/hash.rb)
 
@@ -60,11 +86,15 @@ Add data to your log.
 
 ### Array-Like Objects
 
+Use method <code>put_each_with_index</clde>, or its aliases <code>put_array</code> and <code>put_set</code>, to log an object that <code>respond_to?(:each_with_index)</code>.
+
 @[ruby](scripts/array.rb)
 
 @[xml](logs/array.xml)
 
 ### Other Objects
+
+Use method <code>put_data</code> to log any object.
 
 @[ruby](scripts/data.rb)
 
@@ -72,15 +102,22 @@ Add data to your log.
 
 ### CData
 
+Use method <code>put_cdata</code> to log a string (possibly multi-line) as CDATA.
+
 @[ruby](scripts/cdata.rb)
 
 @[xml](logs/cdata.xml)
 
 ## Comments
 
+TODO:
+
 ## Custom Logging
 
-### Entries
+TODO:
 
 ### Sections
 
+TODO:
+
+### Entries

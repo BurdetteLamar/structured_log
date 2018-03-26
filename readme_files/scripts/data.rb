@@ -20,7 +20,4 @@ StructuredLog.open('data.xml') do |log|
     name = "my_#{type}"
     log.put_data(name, datum)
   end
-  # Log the return value for a particular method.
-  file = File.new(__FILE__)
-  log.put_method_return_value('my_file_path', file, :path)
 end

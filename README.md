@@ -60,37 +60,54 @@ end
   <section name='Outer'>
     <section name='Mid'>
       <section name='Inner'>
-        <uncaught_exception timestamp='2018-03-24-Sat-08.03.24.915' class='ArgumentError'>
-          <message>
-            wrong number of arguments (1 for 2)
-          </message>
-          <backtrace>
-            <![CDATA[
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:64:in `comment'
+        <comment>
+          I am nested.
+          <uncaught_exception timestamp='2018-03-26-Mon-11.17.39.112' class='LocalJumpError'>
+            <message>
+              no block given (yield)
+            </message>
+            <backtrace>
+              <![CDATA[
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:66:in `block in comment'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:65:in `comment'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/sections.rb:7:in `block (4 levels) in <main>'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:127:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/sections.rb:6:in `block (3 levels) in <main>'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:127:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/sections.rb:5:in `block (2 levels) in <main>'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:127:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/sections.rb:4:in `block in <main>'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/sections.rb:3:in `<main>'
 ]]>
-          </backtrace>
-        </uncaught_exception>
+            </backtrace>
+          </uncaught_exception>
+        </comment>
       </section>
     </section>
   </section>
 </log>
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/sections.xml -->
+
+## Section Attributes
+
+Pass hashes to method <code>section</code> to add the name/value pairs as attributes.
+
+TODO:
+
+## Section CDATA
+
+Pass strings to method <code>section</code> to log them as CDATA.
+
+TODO:
 
 ## Section Timestamps and Durations
 <!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Time](images/time.ico | height=70)
@@ -130,24 +147,29 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-03-24-Sat-08.03.25.149'>
-    <uncaught_exception timestamp='2018-03-24-Sat-08.03.25.164' class='ArgumentError'>
-      <message>
-        wrong number of arguments (1 for 2)
-      </message>
-      <backtrace>
-        <![CDATA[
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:64:in `comment'
+  <section name='Section with timestamp' timestamp='2018-03-26-Mon-11.17.39.346'>
+    <comment>
+      I have a timestamp
+      <uncaught_exception timestamp='2018-03-26-Mon-11.17.39.346' class='LocalJumpError'>
+        <message>
+          no block given (yield)
+        </message>
+        <backtrace>
+          <![CDATA[
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:66:in `block in comment'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:65:in `comment'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/time.rb:5:in `block (2 levels) in <main>'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:127:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/time.rb:4:in `block in <main>'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/time.rb:3:in `<main>'
 ]]>
-      </backtrace>
-    </uncaught_exception>
+        </backtrace>
+      </uncaught_exception>
+    </comment>
   </section>
 </log>
 ```
@@ -185,52 +207,76 @@ end
 ```xml
 <log>
   <section name='Section with rescue'>
-    <rescued_exception timestamp='2018-03-24-Sat-08.03.24.665' class='ArgumentError'>
-      <message>
-        wrong number of arguments (1 for 2)
-      </message>
-      <backtrace>
-        <![CDATA[
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:64:in `comment'
+    <comment>
+      This section will terminate because of the failure.
+      <rescued_exception timestamp='2018-03-26-Mon-11.17.38.863' class='LocalJumpError'>
+        <message>
+          no block given (yield)
+        </message>
+        <backtrace>
+          <![CDATA[
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:66:in `block in comment'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:65:in `comment'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:5:in `block (2 levels) in <main>'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:117:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:119:in `put_element'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:4:in `block in <main>'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:3:in `<main>'
 ]]>
-      </backtrace>
-    </rescued_exception>
-  </section>
-  <section name='Another section'>
-    <uncaught_exception timestamp='2018-03-24-Sat-08.03.24.665' class='ArgumentError'>
-      <message>
-        wrong number of arguments (1 for 2)
-      </message>
-      <backtrace>
-        <![CDATA[
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:64:in `comment'
+        </backtrace>
+      </rescued_exception>
+    </comment>
+    <section name='Another section'>
+      <comment>
+        This comment will be reached and logged, because of rescue above.
+        <uncaught_exception timestamp='2018-03-26-Mon-11.17.38.863' class='LocalJumpError'>
+          <message>
+            no block given (yield)
+          </message>
+          <backtrace>
+            <![CDATA[
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:66:in `block in comment'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:65:in `comment'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:10:in `block (2 levels) in <main>'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:127:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:9:in `block in <main>'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:3:in `<main>'
 ]]>
-      </backtrace>
-    </uncaught_exception>
+          </backtrace>
+        </uncaught_exception>
+      </comment>
+    </section>
   </section>
 </log>
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/rescue.xml -->
+
+## Sections with Lots of Stuff
+
+Pass lots of stuff to method <code>section</code>.
+
+Except that the (required) section name must be first, the arguments can be in any order.
+
+TODO:
+
+## Uncaught Exceptions
+
+TODO:  script and log.
 
 ## Data
 
 Add data to your log.
 
 ### Hash-LIke Objects
+
+Use method <code>put_each_pair</clde>, or its alias <code>put_hash</code>, to log an object that <code>respond_to?(:each_pair)</code>.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/hash.rb -->
 <code>hash.rb</code>
@@ -267,6 +313,8 @@ aaaa => zzzz
 
 ### Array-Like Objects
 
+Use method <code>put_each_with_index</clde>, or its aliases <code>put_array</code> and <code>put_set</code>, to log an object that <code>respond_to?(:each_with_index)</code>.
+
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/array.rb -->
 <code>array.rb</code>
 ```ruby
@@ -297,6 +345,8 @@ end
 
 ### Other Objects
 
+Use method <code>put_data</code> to log any object.
+
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/data.rb -->
 <code>data.rb</code>
 ```ruby
@@ -322,9 +372,6 @@ StructuredLog.open('data.xml') do |log|
     name = "my_#{type}"
     log.put_data(name, datum)
   end
-  # Log the return value for a particular method.
-  file = File.new(__FILE__)
-  log.put_method_return_value('my_file_path', file, :path)
 end
 ```
 <!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/data.rb -->
@@ -357,24 +404,13 @@ end
   <data name='my_nil' class='NilClass'>
     <![CDATA[nil]]>
   </data>
-  <uncaught_exception timestamp='2018-03-24-Sat-08.03.24.182' class='NoMethodError'>
-    <message>
-      undefined method `put_method_return_value&apos; for
-      #&lt;StructuredLog:0x2deb680&gt;
-    </message>
-    <backtrace>
-      <![CDATA[
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/data.rb:25:in `block in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/data.rb:18:in `<main>'
-]]>
-    </backtrace>
-  </uncaught_exception>
 </log>
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/data.xml -->
 
 ### CData
+
+Use method <code>put_cdata</code> to log a string (possibly multi-line) as CDATA.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/cdata.rb -->
 <code>cdata.rb</code>
@@ -405,11 +441,16 @@ Not even whitespace.]]>
 
 ## Comments
 
+TODO:
+
 ## Custom Logging
 
-### Entries
+TODO:
 
 ### Sections
 
+TODO:
+
+### Entries
 <!-- <<<<<< END GENERATED FILE (resolve): SOURCE readme_files/README.template.md -->
 <!-- <<<<<< END GENERATED FILE (include): SOURCE readme_files/README.md -->

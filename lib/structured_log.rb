@@ -62,7 +62,9 @@ class StructuredLog
   end
 
   def comment(text, *args)
-    put_element('comment', text, *args)
+    put_element('comment', text, *args) do
+      yield
+    end
     nil
   end
 
