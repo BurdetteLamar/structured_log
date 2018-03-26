@@ -1,8 +1,8 @@
 <log>
-  <section name='Section with timestamp' timestamp='2018-03-26-Mon-11.17.39.346'>
+  <section name='Section with timestamp' timestamp='2018-03-26-Mon-11.45.59.749'>
     <comment>
       I have a timestamp
-      <uncaught_exception timestamp='2018-03-26-Mon-11.17.39.346' class='LocalJumpError'>
+      <uncaught_exception timestamp='2018-03-26-Mon-11.45.59.749' class='LocalJumpError'>
         <message>
           no block given (yield)
         </message>

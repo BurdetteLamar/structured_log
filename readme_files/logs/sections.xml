@@ -4,7 +4,7 @@
       <section name='Inner'>
         <comment>
           I am nested.
-          <uncaught_exception timestamp='2018-03-26-Mon-11.17.39.112' class='LocalJumpError'>
+          <uncaught_exception timestamp='2018-03-26-Mon-11.45.59.515' class='LocalJumpError'>
             <message>
               no block given (yield)
             </message>

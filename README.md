@@ -62,7 +62,7 @@ end
       <section name='Inner'>
         <comment>
           I am nested.
-          <uncaught_exception timestamp='2018-03-26-Mon-11.17.39.112' class='LocalJumpError'>
+          <uncaught_exception timestamp='2018-03-26-Mon-11.45.59.515' class='LocalJumpError'>
             <message>
               no block given (yield)
             </message>
@@ -147,10 +147,10 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-03-26-Mon-11.17.39.346'>
+  <section name='Section with timestamp' timestamp='2018-03-26-Mon-11.45.59.749'>
     <comment>
       I have a timestamp
-      <uncaught_exception timestamp='2018-03-26-Mon-11.17.39.346' class='LocalJumpError'>
+      <uncaught_exception timestamp='2018-03-26-Mon-11.45.59.749' class='LocalJumpError'>
         <message>
           no block given (yield)
         </message>
@@ -209,7 +209,7 @@ end
   <section name='Section with rescue'>
     <comment>
       This section will terminate because of the failure.
-      <rescued_exception timestamp='2018-03-26-Mon-11.17.38.863' class='LocalJumpError'>
+      <rescued_exception timestamp='2018-03-26-Mon-11.45.59.281' class='LocalJumpError'>
         <message>
           no block given (yield)
         </message>
@@ -232,7 +232,7 @@ C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb
     <section name='Another section'>
       <comment>
         This comment will be reached and logged, because of rescue above.
-        <uncaught_exception timestamp='2018-03-26-Mon-11.17.38.863' class='LocalJumpError'>
+        <uncaught_exception timestamp='2018-03-26-Mon-11.45.59.281' class='LocalJumpError'>
           <message>
             no block given (yield)
           </message>
