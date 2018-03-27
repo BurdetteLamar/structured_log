@@ -13,7 +13,7 @@ Optionally, each section may include:
 <li>The ability to rescue and log an exception.
 </ul>
 
-And of course the logger offers many ways to log data.
+And of course the class offers many ways to log data.
 
 ## About the Examples
 
@@ -21,7 +21,10 @@ A working example is worth a thousand words (maybe).
 
 Each of the following sections features an example Ruby program, followed by its output log.
 
-## Nested Sections
+
+## Sections
+
+### Nested Sections
 ![Nesting](images/nesting.jpg | height=70)
 
 Use nested sections to give structure to your log.
@@ -30,47 +33,54 @@ Use nested sections to give structure to your log.
 
 @[xml](logs/sections.xml)
 
-## Section Attributes
+### Text
+![Text](images/text.jpg | height=70)
 
-Pass hashes to method <code>section</code> to add the name/value pairs as attributes.
+Add text to a <code>section</code> element by passing a string argument.
 
-TODO:
+@[ruby](scripts/text.rb)
 
-## Section CDATA
+@[xml](logs/text.xml)
 
-Pass strings to method <code>section</code> to log them as CDATA.
+### Attributes
+![Attributes](images/attributes.png | height=70)
 
-TODO:
+Add attributes to a <code>section</code> element by passing a hash argument.
 
-## Section Timestamps and Durations
+@[ruby](scripts/attributes.rb)
+
+@[xml](logs/attributes.xml)
+
+### Timestamps and Durations
 ![Time](images/time.ico | height=70)
 
-Add timestamps and durations to your log sections.
+Add a timestamp or duration to a <code>section</code> element by passing a special symbol argument.
 
 @[ruby](scripts/time.rb)
 
 @[xml](logs/time.xml)
 
-## Rescued Sections
+### Rescued Section
 ![Rescue](images/rescue.jpg | height=70)
 
-Add rescuing to your log sections.
+Add rescuing to a <code>section</code> element by passing a special symbol argument.
+
+For the rescued exception, the class, message, and backtrace are logged.
 
 @[ruby](scripts/rescue.rb)
 
 @[xml](logs/rescue.xml)
 
-## Sections with Lots of Stuff
+### Potpourri
+![Potpourri](images/potpourri.png | height=70)
 
-Pass lots of stuff to method <code>section</code>.
+Pass any mixture of arguments to method <code>section</code>.
 
-Except that the (required) section name must be first, the arguments can be in any order.
+The section name must be first; after that, anything goes.
 
-TODO:
+@[ruby](scripts/potpourri.rb)
 
-## Uncaught Exceptions
-
-TODO:  script and log.
+@[xml](logs/potpourri.xml)
 
 ## Data
 
@@ -78,7 +88,7 @@ Add data to your log.
 
 ### Hash-LIke Objects
 
-Use method <code>put_each_pair</clde>, or its alias <code>put_hash</code>, to log an object that <code>respond_to?(:each_pair)</code>.
+Use method <code>put_each_pair</code>, or its alias <code>put_hash</code>, to log an object that <code>respond_to?(:each_pair)</code>.
 
 @[ruby](scripts/hash.rb)
 
@@ -86,7 +96,7 @@ Use method <code>put_each_pair</clde>, or its alias <code>put_hash</code>, to lo
 
 ### Array-Like Objects
 
-Use method <code>put_each_with_index</clde>, or its aliases <code>put_array</code> and <code>put_set</code>, to log an object that <code>respond_to?(:each_with_index)</code>.
+Use method <code>put_each_with_index</code>, or its aliases <code>put_array</code> and <code>put_set</code>, to log an object that <code>respond_to?(:each_with_index)</code>.
 
 @[ruby](scripts/array.rb)
 
@@ -108,7 +118,9 @@ Use method <code>put_cdata</code> to log a string (possibly multi-line) as CDATA
 
 @[xml](logs/cdata.xml)
 
-## Comments
+### Comments
+
+Add comments to your log.
 
 TODO:
 
@@ -121,3 +133,11 @@ TODO:
 TODO:
 
 ### Entries
+
+## Uncaught Exceptions
+
+Finally, what about an uncaught exception?
+
+When an exception is raised in a section that does not have <code>:rescue</code>, the logger rescues and logs it anyway, just as if there were an invisible "outermost section" with <code>:rescue</code>.
+
+TODO:  script and log.

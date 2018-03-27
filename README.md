@@ -1,8 +1,12 @@
 <!-- >>>>>> BEGIN GENERATED FILE (include): SOURCE readme_files/README.md -->
-<!-- >>>>>> BEGIN GENERATED FILE (include): SOURCE readme_files/README.template.md -->
+<!-- >>>>>> BEGIN GENERATED FILE (resolve): SOURCE readme_files/README.template.md -->
 # Structured Log
 
-![Structured Log](images/structured.png | height=70)
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/structured.png | height=70)
+' -->
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/structured.png" alt="Structured Log" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/structured.png | height=70)
+' -->
 
 Class <code>StructuredLog</code> offers structured (as opposed to flat) logging.  Nested sections (blocks) in Ruby code become nested XML elements in the log.
 
@@ -15,7 +19,7 @@ Optionally, each section may include:
 <li>The ability to rescue and log an exception.
 </ul>
 
-And of course the logger offers many ways to log data.
+And of course the class offers many ways to log data.
 
 ## About the Examples
 
@@ -23,8 +27,15 @@ A working example is worth a thousand words (maybe).
 
 Each of the following sections features an example Ruby program, followed by its output log.
 
-## Nested Sections
-![Nesting](images/nesting.jpg | height=70)
+
+## Sections
+
+### Nested Sections
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Nesting](images/nesting.jpg | height=70)
+' -->
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/nesting.jpg" alt="Nesting" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Nesting](images/nesting.jpg | height=70)
+' -->
 
 Use nested sections to give structure to your log.
 
@@ -34,13 +45,19 @@ Use nested sections to give structure to your log.
 require 'structured_log'
 
 StructuredLog.open('sections.xml') do |log|
+  # Any code can be here.
   log.section('Outer') do
+    # Any code can be here.
     log.section('Mid') do
+      # Any code can be here.
       log.section('Inner') do
-        log.comment('I am nested.')
+        # Any code can be here.
       end
+      # Any code can be here.
     end
+    # Any code can be here.
   end
+  # Any code can be here.
 end
 ```
 <!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/sections.rb -->
@@ -51,60 +68,91 @@ end
 <log>
   <section name='Outer'>
     <section name='Mid'>
-      <section name='Inner'>
-        <comment>
-          I am nested.
-          <uncaught_exception timestamp='2018-03-26-Mon-14.34.06.902' class='LocalJumpError'>
-            <message>
-              no block given (yield)
-            </message>
-            <backtrace>
-              <![CDATA[
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:66:in `block in comment'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:65:in `comment'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/sections.rb:7:in `block (4 levels) in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/sections.rb:6:in `block (3 levels) in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/sections.rb:5:in `block (2 levels) in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/sections.rb:4:in `block in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/sections.rb:3:in `<main>'
-]]>
-            </backtrace>
-          </uncaught_exception>
-        </comment>
-      </section>
+      <section name='Inner'/>
     </section>
   </section>
 </log>
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/sections.xml -->
 
-## Section Attributes
+### Text
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Text](images/text.jpg | height=70)
+' -->
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/text.jpg" alt="Text" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Text](images/text.jpg | height=70)
+' -->
 
-Pass hashes to method <code>section</code> to add the name/value pairs as attributes.
+Add text to a <code>section</code> element by passing a string argument.
 
-TODO:
+<!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/text.rb -->
+<code>text.rb</code>
+```ruby
+require 'structured_log'
 
-## Section CDATA
+text = 'This section has text.'
+StructuredLog.open('text.xml') do |log|
+  log.section('with_text', text) do
+    # Any code can be here.
+  end
+end
+```
+<!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/text.rb -->
 
-Pass strings to method <code>section</code> to log them as CDATA.
+<!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/text.xml -->
+<code>text.xml</code>
+```xml
+<log>
+  <section name='with_text'>
+    This section has text.
+  </section>
+</log>
+```
+<!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/text.xml -->
 
-TODO:
+### Attributes
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Attributes](images/attributes.png | height=70)
+' -->
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/attributes.png" alt="Attributes" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Attributes](images/attributes.png | height=70)
+' -->
 
-## Section Timestamps and Durations
-![Time](images/time.ico | height=70)
+Add attributes to a <code>section</code> element by passing a hash argument.
 
-Add timestamps and durations to your log sections.
+<!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/attributes.rb -->
+<code>attributes.rb</code>
+```ruby
+require 'structured_log'
+
+attributes = {:a => 0, :b => 1}
+StructuredLog.open('attributes.xml') do |log|
+  log.section('with_attributes', attributes) do
+    log.comment('This section has attributes.')
+  end
+end
+```
+<!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/attributes.rb -->
+
+<!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/attributes.xml -->
+<code>attributes.xml</code>
+```xml
+<log>
+  <section name='with_attributes' a='0' b='1'>
+    <comment>
+      This section has attributes.
+    </comment>
+  </section>
+</log>
+```
+<!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/attributes.xml -->
+
+### Timestamps and Durations
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Time](images/time.ico | height=70)
+' -->
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/time.ico" alt="Time" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Time](images/time.ico | height=70)
+' -->
+
+Add a timestamp or duration to a <code>section</code> element by passing a special symbol argument.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/time.rb -->
 <code>time.rb</code>
@@ -113,18 +161,14 @@ require 'structured_log'
 
 StructuredLog.open('time.xml') do |log|
   log.section('Section with timestamp', :timestamp) do
-    log.comment('I have a timestamp')
+    log.comment('This section has a timestamp.')
   end
   log.section('Section with duration', :duration) do
-    log.comment('I have a duration')
+    log.comment('This section has a duration.')
     sleep 1
   end
   log.section('Section with both', :duration, :timestamp) do
-    log.comment('I have a both')
-    sleep 1
-  end
-  log.section('Order does not matter', :timestamp, :duration) do
-    log.comment('I have a both')
+    log.comment('This section has both.')
     sleep 1
   end
 end
@@ -135,38 +179,35 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-03-26-Mon-14.34.07.152'>
+  <section name='Section with timestamp' timestamp='2018-03-27-Tue-11.05.05.514'>
     <comment>
-      I have a timestamp
-      <uncaught_exception timestamp='2018-03-26-Mon-14.34.07.152' class='LocalJumpError'>
-        <message>
-          no block given (yield)
-        </message>
-        <backtrace>
-          <![CDATA[
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:66:in `block in comment'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:65:in `comment'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/time.rb:5:in `block (2 levels) in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/time.rb:4:in `block in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/time.rb:3:in `<main>'
-]]>
-        </backtrace>
-      </uncaught_exception>
+      This section has a timestamp.
+    </comment>
+  </section>
+  <section name='Section with duration' duration_seconds='1.010'>
+    <comment>
+      This section has a duration.
+    </comment>
+  </section>
+  <section name='Section with both' timestamp='2018-03-27-Tue-11.05.06.524' duration_seconds='1.000'>
+    <comment>
+      This section has both.
     </comment>
   </section>
 </log>
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/time.xml -->
 
-## Rescued Sections
-![Rescue](images/rescue.jpg | height=70)
+### Rescued Sections
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Rescue](images/rescue.jpg | height=70)
+' -->
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/rescue.jpg" alt="Rescue" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Rescue](images/rescue.jpg | height=70)
+' -->
 
-Add rescuing to your log sections.
+Add rescuing to a <code>section</code> element by passing a special symbol argument.
+
+For the rescued exception, the class, message, and backtrace are logged.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/rescue.rb -->
 <code>rescue.rb</code>
@@ -193,66 +234,112 @@ end
   <section name='Section with rescue'>
     <comment>
       This section will terminate because of the failure.
-      <rescued_exception timestamp='2018-03-26-Mon-14.34.06.512' class='LocalJumpError'>
-        <message>
-          no block given (yield)
-        </message>
-        <backtrace>
-          <![CDATA[
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:66:in `block in comment'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:65:in `comment'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:5:in `block (2 levels) in <main>'
+    </comment>
+    <rescued_exception timestamp='2018-03-27-Tue-11.05.04.732' class='RuntimeError'>
+      <message>
+        This exception will be rescued and logged.
+      </message>
+      <backtrace>
+        <![CDATA[
+C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:6:in `block (2 levels) in <main>'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:119:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:117:in `put_element'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:4:in `block in <main>'
 C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:3:in `<main>'
 ]]>
-        </backtrace>
-      </rescued_exception>
+      </backtrace>
+    </rescued_exception>
+  </section>
+  <section name='Another section'>
+    <comment>
+      This comment will be reached and logged, because of rescue above.
     </comment>
-    <section name='Another section'>
-      <comment>
-        This comment will be reached and logged, because of rescue above.
-        <uncaught_exception timestamp='2018-03-26-Mon-14.34.06.512' class='LocalJumpError'>
-          <message>
-            no block given (yield)
-          </message>
-          <backtrace>
-            <![CDATA[
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:66:in `block in comment'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:65:in `comment'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:10:in `block (2 levels) in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:9:in `block in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:3:in `<main>'
-]]>
-          </backtrace>
-        </uncaught_exception>
-      </comment>
-    </section>
   </section>
 </log>
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/rescue.xml -->
 
-## Sections with Lots of Stuff
+### Potpourri
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Potpourri](images/potpourri.png | height=70)
+' -->
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/potpourri.png" alt="Potpourri" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Potpourri](images/potpourri.png | height=70)
+' -->
 
-Pass lots of stuff to method <code>section</code>.
+Pass any mixture of arguments to method <code>section</code>.
 
-Except that the (required) section name must be first, the arguments can be in any order.
+The section name must be first; after that, anything goes.
 
-TODO:
+<!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/potpourri.rb -->
+<code>potpourri.rb</code>
+```ruby
+require 'structured_log'
 
-## Uncaught Exceptions
+attributes = {:a => 0, :b => 1}
+text = 'This section has a potpourri.'
+array = [:a, :b]
+float = 3.14159
 
-TODO:  script and log.
+StructuredLog.open('potpourri.xml') do |log|
+  log.section('my_potpourri', attributes, text, :timestamp, :duration, :rescue) do
+    log.comment('Hash, string, and special symbols are logged as usual.')
+  end
+  # Anything else has its inspect value logged as text.
+  log.section('my_array', array) do
+    log.comment('The value of array.inspect is logged as text.')
+  end
+  log.section('my_boolean', false) do
+    log.comment('The value of boolean.inspect is logged as text.')
+  end
+  log.section('my_float', float) do
+    log.comment('The value of float.inspect is logged as text.')
+  end
+  log.section('my_true_potpourri', array, false, float) do
+    log.comment('The values of inspect are concatenated and logged as text.')
+  end
+end
+```
+<!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/potpourri.rb -->
+
+<!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/potpourri.xml -->
+<code>potpourri.xml</code>
+```xml
+<log>
+  <section name='my_potpourri' a='0' b='1' timestamp='2018-03-27-Tue-11.05.04.412' duration_seconds='0.000'>
+    This section has a potpourri.
+    <comment>
+      Hash, string, and special symbols are logged as usual.
+    </comment>
+  </section>
+  <section name='my_array'>
+    [:a, :b]
+    <comment>
+      The value of array.inspect is logged as text.
+    </comment>
+  </section>
+  <section name='my_boolean'>
+    false
+    <comment>
+      The value of boolean.inspect is logged as text.
+    </comment>
+  </section>
+  <section name='my_float'>
+    3.14159
+    <comment>
+      The value of float.inspect is logged as text.
+    </comment>
+  </section>
+  <section name='my_true_potpourri'>
+    [:a, :b]false3.14159
+    <comment>
+      The values of inspect are concatenated and logged as text.
+    </comment>
+  </section>
+</log>
+```
+<!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/potpourri.xml -->
 
 ## Data
 
@@ -260,7 +347,7 @@ Add data to your log.
 
 ### Hash-LIke Objects
 
-Use method <code>put_each_pair</clde>, or its alias <code>put_hash</code>, to log an object that <code>respond_to?(:each_pair)</code>.
+Use method <code>put_each_pair</code>, or its alias <code>put_hash</code>, to log an object that <code>respond_to?(:each_pair)</code>.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/hash.rb -->
 <code>hash.rb</code>
@@ -297,7 +384,7 @@ aaaa => zzzz
 
 ### Array-Like Objects
 
-Use method <code>put_each_with_index</clde>, or its aliases <code>put_array</code> and <code>put_set</code>, to log an object that <code>respond_to?(:each_with_index)</code>.
+Use method <code>put_each_with_index</code>, or its aliases <code>put_array</code> and <code>put_set</code>, to log an object that <code>respond_to?(:each_with_index)</code>.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/array.rb -->
 <code>array.rb</code>
@@ -423,7 +510,9 @@ Not even whitespace.]]>
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/cdata.xml -->
 
-## Comments
+### Comments
+
+Add comments to your log.
 
 TODO:
 
@@ -436,5 +525,13 @@ TODO:
 TODO:
 
 ### Entries
-<!-- <<<<<< END GENERATED FILE (include): SOURCE readme_files/README.template.md -->
+
+## Uncaught Exceptions
+
+Finally, what about an uncaught exception?
+
+When an exception is raised in a section that does not have <code>:rescue</code>, the logger rescues and logs it anyway, just as if there were an invisible "outermost section" with <code>:rescue</code>.
+
+TODO:  script and log.
+<!-- <<<<<< END GENERATED FILE (resolve): SOURCE readme_files/README.template.md -->
 <!-- <<<<<< END GENERATED FILE (include): SOURCE readme_files/README.md -->

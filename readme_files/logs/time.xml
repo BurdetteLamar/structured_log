@@ -1,26 +1,17 @@
 <log>
-  <section name='Section with timestamp' timestamp='2018-03-26-Mon-14.34.07.152'>
+  <section name='Section with timestamp' timestamp='2018-03-27-Tue-11.05.05.514'>
     <comment>
-      I have a timestamp
-      <uncaught_exception timestamp='2018-03-26-Mon-14.34.07.152' class='LocalJumpError'>
-        <message>
-          no block given (yield)
-        </message>
-        <backtrace>
-          <![CDATA[
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:66:in `block in comment'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:65:in `comment'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/time.rb:5:in `block (2 levels) in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:129:in `put_element'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/time.rb:4:in `block in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/time.rb:3:in `<main>'
-]]>
-        </backtrace>
-      </uncaught_exception>
+      This section has a timestamp.
+    </comment>
+  </section>
+  <section name='Section with duration' duration_seconds='1.010'>
+    <comment>
+      This section has a duration.
+    </comment>
+  </section>
+  <section name='Section with both' timestamp='2018-03-27-Tue-11.05.06.524' duration_seconds='1.000'>
+    <comment>
+      This section has both.
     </comment>
   </section>
 </log>
