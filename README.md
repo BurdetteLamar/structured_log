@@ -179,7 +179,7 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-03-27-Tue-11.05.05.514'>
+  <section name='Section with timestamp' timestamp='2018-03-27-Tue-14.59.01.160'>
     <comment>
       This section has a timestamp.
     </comment>
@@ -189,7 +189,7 @@ end
       This section has a duration.
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-03-27-Tue-11.05.06.524' duration_seconds='1.000'>
+  <section name='Section with both' timestamp='2018-03-27-Tue-14.59.02.170' duration_seconds='1.000'>
     <comment>
       This section has both.
     </comment>
@@ -198,7 +198,7 @@ end
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/time.xml -->
 
-### Rescued Sections
+### Rescued Section
 <!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Rescue](images/rescue.jpg | height=70)
 ' -->
 <img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/rescue.jpg" alt="Rescue" height="70">
@@ -235,7 +235,7 @@ end
     <comment>
       This section will terminate because of the failure.
     </comment>
-    <rescued_exception timestamp='2018-03-27-Tue-11.05.04.732' class='RuntimeError'>
+    <rescued_exception timestamp='2018-03-27-Tue-14.59.00.450' class='RuntimeError'>
       <message>
         This exception will be rescued and logged.
       </message>
@@ -307,7 +307,7 @@ end
 <code>potpourri.xml</code>
 ```xml
 <log>
-  <section name='my_potpourri' a='0' b='1' timestamp='2018-03-27-Tue-11.05.04.412' duration_seconds='0.000'>
+  <section name='my_potpourri' a='0' b='1' timestamp='2018-03-27-Tue-14.59.00.210' duration_seconds='0.000'>
     This section has a potpourri.
     <comment>
       Hash, string, and special symbols are logged as usual.
@@ -343,9 +343,12 @@ end
 
 ## Data
 
-Add data to your log.
-
 ### Hash-LIke Objects
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Hash](images/hash.png | height=70)
+' -->
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/hash.png" alt="Hash" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Hash](images/hash.png | height=70)
+' -->
 
 Use method <code>put_each_pair</code>, or its alias <code>put_hash</code>, to log an object that <code>respond_to?(:each_pair)</code>.
 
@@ -383,6 +386,11 @@ aaaa => zzzz
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/hash.xml -->
 
 ### Array-Like Objects
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Array](images/array.jpg | height=70)
+' -->
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/array.jpg" alt="Array" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Array](images/array.jpg | height=70)
+' -->
 
 Use method <code>put_each_with_index</code>, or its aliases <code>put_array</code> and <code>put_set</code>, to log an object that <code>respond_to?(:each_with_index)</code>.
 
@@ -415,6 +423,11 @@ end
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/array.xml -->
 
 ### Other Objects
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Data](images/data.png | height=70)
+' -->
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/data.png" alt="Data" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Data](images/data.png | height=70)
+' -->
 
 Use method <code>put_data</code> to log any object.
 
@@ -489,9 +502,16 @@ Use method <code>put_cdata</code> to log a string (possibly multi-line) as CDATA
 require 'structured_log'
 
 text = <<EOT
-Method put_cdata puts the data verbatim.
-Nothing is added or subtracted.
-Not even whitespace.
+
+Method put_cdata puts the data verbatim:
+
+* Nothing is added or subtracted.
+* Not even whitespace.
+
+So you can use the method to log a formatted string.
+
+(You'll need to add your own leading and trailing newlines, if desired.)
+
 EOT
 StructuredLog.open('cdata.xml') do |log|
   log.put_cdata(text)
@@ -503,30 +523,66 @@ end
 <code>cdata.xml</code>
 ```xml
 <log>
-  <![CDATA[Method put_cdata puts the data verbatim.
-Nothing is added or subtracted.
-Not even whitespace.]]>
+  <![CDATA[
+Method put_cdata puts the data verbatim:
+
+* Nothing is added or subtracted.
+* Not even whitespace.
+
+So you can use the method to log a formatted string.
+
+(You'll need to add your own leading and trailing newlines, if desired.)
+]]>
 </log>
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/cdata.xml -->
 
-### Comments
+### Comment
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Comment](images/comment.jpg | height=70)
+' -->
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/comment.jpg" alt="Comment" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Comment](images/comment.jpg | height=70)
+' -->
 
-Add comments to your log.
+Use method <code>comment</code> to log a comment.
 
-TODO:
+<!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/comment.rb -->
+<code>comment.rb</code>
+```ruby
+require 'structured_log'
+
+StructuredLog.open('comment.xml') do |log|
+  log.comment('My comment can be any text.')
+end
+```
+<!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/comment.rb -->
+
+<!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/comment.xml -->
+<code>comment.xml</code>
+```xml
+<log>
+  <comment>
+    My comment can be any text.
+  </comment>
+</log>
+```
+<!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/comment.xml -->
 
 ## Custom Logging
+TODO:  Image
 
 TODO:
 
-### Sections
+### Section
+TODO:  Image
 
 TODO:
 
-### Entries
+### Entry
+TODO:  Image
 
-## Uncaught Exceptions
+## Uncaught Exception
+TODO:  Image
 
 Finally, what about an uncaught exception?
 

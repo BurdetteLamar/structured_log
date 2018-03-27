@@ -84,9 +84,8 @@ The section name must be first; after that, anything goes.
 
 ## Data
 
-Add data to your log.
-
 ### Hash-LIke Objects
+![Hash](images/hash.png | height=70)
 
 Use method <code>put_each_pair</code>, or its alias <code>put_hash</code>, to log an object that <code>respond_to?(:each_pair)</code>.
 
@@ -95,6 +94,7 @@ Use method <code>put_each_pair</code>, or its alias <code>put_hash</code>, to lo
 @[xml](logs/hash.xml)
 
 ### Array-Like Objects
+![Array](images/array.jpg | height=70)
 
 Use method <code>put_each_with_index</code>, or its aliases <code>put_array</code> and <code>put_set</code>, to log an object that <code>respond_to?(:each_with_index)</code>.
 
@@ -103,6 +103,7 @@ Use method <code>put_each_with_index</code>, or its aliases <code>put_array</cod
 @[xml](logs/array.xml)
 
 ### Other Objects
+![Data](images/data.png | height=70)
 
 Use method <code>put_data</code> to log any object.
 
@@ -118,25 +119,30 @@ Use method <code>put_cdata</code> to log a string (possibly multi-line) as CDATA
 
 @[xml](logs/cdata.xml)
 
-### Comments
+### Comment
+![Comment](images/comment.jpg | height=70)
 
-Add comments to your log.
+Use method <code>comment</code> to log a comment.
 
-TODO:
+@[ruby](scripts/comment.rb)
+
+@[xml](logs/comment.xml)
 
 ## Custom Logging
+![Custom](images/custom.png | width=70)
 
-TODO:
+TODO:  script and log.
 
-### Sections
+### Section
 
-TODO:
+TODO:  script and log.
 
-### Entries
+### Entry
 
-## Uncaught Exceptions
+## Uncaught Exception
+![Exception](images/exception.png | width=70)
 
-Finally, what about an uncaught exception?
+Finally, what about an uncaught exception, one not rescued by <code>:rescue</code>?
 
 When an exception is raised in a section that does not have <code>:rescue</code>, the logger rescues and logs it anyway, just as if there were an invisible "outermost section" with <code>:rescue</code>.
 
