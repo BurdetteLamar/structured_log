@@ -179,7 +179,7 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-03-28-Wed-10.15.25.699'>
+  <section name='Section with timestamp' timestamp='2018-03-28-Wed-14.27.32.362'>
     <comment>
       This section has a timestamp.
     </comment>
@@ -189,7 +189,7 @@ end
       This section has a duration.
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-03-28-Wed-10.15.26.713' duration_seconds='1.014'>
+  <section name='Section with both' timestamp='2018-03-28-Wed-14.27.33.376' duration_seconds='1.014'>
     <comment>
       This section has both.
     </comment>
@@ -235,7 +235,7 @@ end
     <comment>
       This section will terminate because of the failure.
     </comment>
-    <rescued_exception timestamp='2018-03-28-Wed-10.15.24.919' class='RuntimeError'>
+    <rescued_exception timestamp='2018-03-28-Wed-14.27.31.567' class='RuntimeError'>
       <message>
         This exception will be rescued and logged.
       </message>
@@ -304,12 +304,12 @@ end
 <log>
   <section name='All together now'>
     Order does not matter except in aggregating text and attributes.
-    <section name='Potpourri' a='0' b='1' c='2' d='3' timestamp='2018-03-28-Wed-10.15.23.109' duration_seconds='0.000'>
-      This section has a potpourri.3.14159false10662018-03-28 10:15:23
+    <section name='Potpourri' a='0' b='1' c='2' d='3' timestamp='2018-03-28-Wed-14.27.29.757' duration_seconds='0.000'>
+      This section has a potpourri.3.14159false10662018-03-28 14:27:29
       -0500#&lt;RuntimeError: Oops!&gt;
     </section>
-    <section name='Reverse potpourri' timestamp='2018-03-28-Wed-10.15.23.109' c='2' d='3' a='0' b='1' duration_seconds='0.000'>
-      #&lt;RuntimeError: Oops!&gt;2018-03-28 10:15:23 -05001066false3.14159This
+    <section name='Reverse potpourri' timestamp='2018-03-28-Wed-14.27.29.757' c='2' d='3' a='0' b='1' duration_seconds='0.000'>
+      #&lt;RuntimeError: Oops!&gt;2018-03-28 14:27:29 -05001066false3.14159This
       section has a potpourri.
     </section>
   </section>
@@ -443,7 +443,7 @@ end
     <![CDATA[false]]>
   </data>
   <data name='my_time' class='Time'>
-    <![CDATA[2018-03-28 10:15:22 -0500]]>
+    <![CDATA[2018-03-28 14:27:28 -0500]]>
   </data>
   <data name='my_exception' class='RuntimeError'>
     <![CDATA[#<RuntimeError: Oops!>]]>
@@ -538,9 +538,15 @@ end
 <!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Custom](images/custom.png | width=70)
 ' -->
 
-TODO:  script and log.
+At the heart of class <code>StructuredLog</code> is method <code>put_element</code>.  It logs an element, possibly with children, attributes, and text.  Several methods call it, and you can too.
+
+Basically, it's just like method <code>section</code>, except that you choose the element name (instead of the fixed name <code>section</code>).
+
+Otherwise, it handles a block and all the same arguments as <code>section</code>.
 
 ### Section
+
+Create a custom section by calling method <code>put_element</code> with a block.  The custom section will have children if you call logging methods within the block.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/custom_section.rb -->
 <code>custom_section.rb</code>
@@ -585,6 +591,8 @@ end
 
 ### Entry
 
+Create a custom entry by calling method <code>put_element</code> without a block.  The custom entry will not have children.
+
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/custom_entry.rb -->
 <code>custom_entry.rb</code>
 ```ruby
@@ -610,7 +618,7 @@ end
       No child elements, just this text.
     </element_with_text>
     <element_with_attributes a='0' b='1'/>
-    <element_with_timestamp timestamp='2018-03-28-Wed-10.15.21.035'/>
+    <element_with_timestamp timestamp='2018-03-28-Wed-14.27.27.433'/>
     <element_with_data>
       3.14159
     </element_with_data>
@@ -630,6 +638,37 @@ Finally, what about an uncaught exception, one not rescued by <code>:rescue</cod
 
 When an exception is raised in a section that does not have <code>:rescue</code>, the logger rescues and logs it anyway, just as if there were an invisible "outermost section" with <code>:rescue</code> (which, in fact, there is).
 
-TODO:  script and log.
+Just as for a rescued exception, the log includes the exception's class, message, and backtrace.
+
+<!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/exception.rb -->
+<code>exception.rb</code>
+```ruby
+require 'structured_log'
+
+StructuredLog.open('exception.xml') do |log|
+  fail('Oops!')
+end
+```
+<!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/exception.rb -->
+
+<!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/exception.xml -->
+<code>exception.xml</code>
+```xml
+<log>
+  <uncaught_exception timestamp='2018-03-28-Wed-14.27.29.242' class='RuntimeError'>
+    <message>
+      Oops!
+    </message>
+    <backtrace>
+      <![CDATA[
+C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/exception.rb:4:in `block in <main>'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
+C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/exception.rb:3:in `<main>'
+]]>
+    </backtrace>
+  </uncaught_exception>
+</log>
+```
+<!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/exception.xml -->
 <!-- <<<<<< END GENERATED FILE (resolve): SOURCE readme_files/README.template.md -->
 <!-- <<<<<< END GENERATED FILE (include): SOURCE readme_files/README.md -->

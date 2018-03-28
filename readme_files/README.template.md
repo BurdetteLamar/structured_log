@@ -131,15 +131,23 @@ Use method <code>comment</code> to log a comment.
 ## Custom Logging
 ![Custom](images/custom.png | width=70)
 
-TODO:  script and log.
+At the heart of class <code>StructuredLog</code> is method <code>put_element</code>.  It logs an element, possibly with children, attributes, and text.  Several methods call it, and you can too.
+
+Basically, it's just like method <code>section</code>, except that you choose the element name (instead of the fixed name <code>section</code>).
+
+Otherwise, it handles a block and all the same arguments as <code>section</code>.
 
 ### Section
+
+Create a custom section by calling method <code>put_element</code> with a block.  The custom section will have children if you call logging methods within the block.
 
 @[ruby](scripts/custom_section.rb)
 
 @[xml](logs/custom_section.xml)
 
 ### Entry
+
+Create a custom entry by calling method <code>put_element</code> without a block.  The custom entry will not have children.
 
 @[ruby](scripts/custom_entry.rb)
 
@@ -152,4 +160,8 @@ Finally, what about an uncaught exception, one not rescued by <code>:rescue</cod
 
 When an exception is raised in a section that does not have <code>:rescue</code>, the logger rescues and logs it anyway, just as if there were an invisible "outermost section" with <code>:rescue</code> (which, in fact, there is).
 
-TODO:  script and log.
+Just as for a rescued exception, the log includes the exception's class, message, and backtrace.
+
+@[ruby](scripts/exception.rb)
+
+@[xml](logs/exception.xml)
