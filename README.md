@@ -179,7 +179,7 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-03-28-Wed-14.27.32.362'>
+  <section name='Section with timestamp' timestamp='2018-03-28-Wed-14.45.13.417'>
     <comment>
       This section has a timestamp.
     </comment>
@@ -189,7 +189,7 @@ end
       This section has a duration.
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-03-28-Wed-14.27.33.376' duration_seconds='1.014'>
+  <section name='Section with both' timestamp='2018-03-28-Wed-14.45.14.431' duration_seconds='1.014'>
     <comment>
       This section has both.
     </comment>
@@ -235,18 +235,18 @@ end
     <comment>
       This section will terminate because of the failure.
     </comment>
-    <rescued_exception timestamp='2018-03-28-Wed-14.27.31.567' class='RuntimeError'>
+    <rescued_exception timestamp='2018-03-28-Wed-14.45.12.824' class='RuntimeError'>
       <message>
         This exception will be rescued and logged.
       </message>
       <backtrace>
         <![CDATA[
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:6:in `block (2 levels) in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:59:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:117:in `put_element'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `section'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `block in section'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:116:in `put_element'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:57:in `section'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:4:in `block in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:38:in `open'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:3:in `<main>'
 ]]>
       </backtrace>
@@ -304,12 +304,12 @@ end
 <log>
   <section name='All together now'>
     Order does not matter except in aggregating text and attributes.
-    <section name='Potpourri' a='0' b='1' c='2' d='3' timestamp='2018-03-28-Wed-14.27.29.757' duration_seconds='0.000'>
-      This section has a potpourri.3.14159false10662018-03-28 14:27:29
+    <section name='Potpourri' a='0' b='1' c='2' d='3' timestamp='2018-03-28-Wed-14.45.11.248' duration_seconds='0.000'>
+      This section has a potpourri.3.14159false10662018-03-28 14:45:11
       -0500#&lt;RuntimeError: Oops!&gt;
     </section>
-    <section name='Reverse potpourri' timestamp='2018-03-28-Wed-14.27.29.757' c='2' d='3' a='0' b='1' duration_seconds='0.000'>
-      #&lt;RuntimeError: Oops!&gt;2018-03-28 14:27:29 -05001066false3.14159This
+    <section name='Reverse potpourri' timestamp='2018-03-28-Wed-14.45.11.248' c='2' d='3' a='0' b='1' duration_seconds='0.000'>
+      #&lt;RuntimeError: Oops!&gt;2018-03-28 14:45:11 -05001066false3.14159This
       section has a potpourri.
     </section>
   </section>
@@ -443,7 +443,7 @@ end
     <![CDATA[false]]>
   </data>
   <data name='my_time' class='Time'>
-    <![CDATA[2018-03-28 14:27:28 -0500]]>
+    <![CDATA[2018-03-28 14:45:10 -0500]]>
   </data>
   <data name='my_exception' class='RuntimeError'>
     <![CDATA[#<RuntimeError: Oops!>]]>
@@ -618,7 +618,7 @@ end
       No child elements, just this text.
     </element_with_text>
     <element_with_attributes a='0' b='1'/>
-    <element_with_timestamp timestamp='2018-03-28-Wed-14.27.27.433'/>
+    <element_with_timestamp timestamp='2018-03-28-Wed-14.45.09.345'/>
     <element_with_data>
       3.14159
     </element_with_data>
@@ -655,14 +655,14 @@ end
 <code>exception.xml</code>
 ```xml
 <log>
-  <uncaught_exception timestamp='2018-03-28-Wed-14.27.29.242' class='RuntimeError'>
+  <uncaught_exception timestamp='2018-03-28-Wed-14.45.10.905' class='RuntimeError'>
     <message>
       Oops!
     </message>
     <backtrace>
       <![CDATA[
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/exception.rb:4:in `block in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:39:in `open'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:38:in `open'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/exception.rb:3:in `<main>'
 ]]>
     </backtrace>

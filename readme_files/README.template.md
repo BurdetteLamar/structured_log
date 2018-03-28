@@ -52,7 +52,7 @@ Add attributes to a <code>section</code> element by passing a hash argument.
 @[xml](logs/attributes.xml)
 
 ### Timestamps and Durations
-![Time](images/time.ico | height=70)
+![Time](images/time.png | height=70)
 
 Add a timestamp or duration to a <code>section</code> element by passing a special symbol argument.
 
@@ -85,7 +85,7 @@ The section name must be first; after that, anything goes.
 ## Data
 
 ### Hash-LIke Objects
-![Hash](images/hash.png | height=70)
+![Hash](images/hash.png | height=30)
 
 Use method <code>put_each_pair</code>, or its alias <code>put_hash</code>, to log an object that <code>respond_to?(:each_pair)</code>.
 
@@ -94,7 +94,7 @@ Use method <code>put_each_pair</code>, or its alias <code>put_hash</code>, to lo
 @[xml](logs/hash.xml)
 
 ### Array-Like Objects
-![Array](images/array.jpg | height=70)
+![Array](images/array.jpg | height=30)
 
 Use method <code>put_each_with_index</code>, or its aliases <code>put_array</code> and <code>put_set</code>, to log an object that <code>respond_to?(:each_with_index)</code>.
 
