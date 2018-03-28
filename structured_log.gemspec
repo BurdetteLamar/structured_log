@@ -34,6 +34,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'minitest', '~> 5.0'
   spec.add_development_dependency 'diff-lcs', '~> 1.3'
-  spec.add_development_dependency 'nokogiri', '~> 1.6.7.2'
   spec.add_development_dependency 'markdown_helper', '~> 0.1.5'
 end
