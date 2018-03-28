@@ -146,10 +146,10 @@ end
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/attributes.xml -->
 
 ### Timestamps and Durations
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Time](images/time.ico | height=70)
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Time](images/time.png | height=70)
 ' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/time.ico" alt="Time" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Time](images/time.ico | height=70)
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/time.png" alt="Time" height="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Time](images/time.png | height=70)
 ' -->
 
 Add a timestamp or duration to a <code>section</code> element by passing a special symbol argument.
@@ -179,7 +179,7 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-03-28-Wed-14.45.13.417'>
+  <section name='Section with timestamp' timestamp='2018-03-28-Wed-14.54.50.197'>
     <comment>
       This section has a timestamp.
     </comment>
@@ -189,7 +189,7 @@ end
       This section has a duration.
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-03-28-Wed-14.45.14.431' duration_seconds='1.014'>
+  <section name='Section with both' timestamp='2018-03-28-Wed-14.54.51.211' duration_seconds='1.014'>
     <comment>
       This section has both.
     </comment>
@@ -235,7 +235,7 @@ end
     <comment>
       This section will terminate because of the failure.
     </comment>
-    <rescued_exception timestamp='2018-03-28-Wed-14.45.12.824' class='RuntimeError'>
+    <rescued_exception timestamp='2018-03-28-Wed-14.54.49.698' class='RuntimeError'>
       <message>
         This exception will be rescued and logged.
       </message>
@@ -304,12 +304,12 @@ end
 <log>
   <section name='All together now'>
     Order does not matter except in aggregating text and attributes.
-    <section name='Potpourri' a='0' b='1' c='2' d='3' timestamp='2018-03-28-Wed-14.45.11.248' duration_seconds='0.000'>
-      This section has a potpourri.3.14159false10662018-03-28 14:45:11
+    <section name='Potpourri' a='0' b='1' c='2' d='3' timestamp='2018-03-28-Wed-14.54.48.169' duration_seconds='0.000'>
+      This section has a potpourri.3.14159false10662018-03-28 14:54:48
       -0500#&lt;RuntimeError: Oops!&gt;
     </section>
-    <section name='Reverse potpourri' timestamp='2018-03-28-Wed-14.45.11.248' c='2' d='3' a='0' b='1' duration_seconds='0.000'>
-      #&lt;RuntimeError: Oops!&gt;2018-03-28 14:45:11 -05001066false3.14159This
+    <section name='Reverse potpourri' timestamp='2018-03-28-Wed-14.54.48.169' c='2' d='3' a='0' b='1' duration_seconds='0.000'>
+      #&lt;RuntimeError: Oops!&gt;2018-03-28 14:54:48 -05001066false3.14159This
       section has a potpourri.
     </section>
   </section>
@@ -320,10 +320,10 @@ end
 ## Data
 
 ### Hash-LIke Objects
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Hash](images/hash.png | height=70)
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Hash](images/hash.png | height=30)
 ' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/hash.png" alt="Hash" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Hash](images/hash.png | height=70)
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/hash.png" alt="Hash" height="30">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Hash](images/hash.png | height=30)
 ' -->
 
 Use method <code>put_each_pair</code>, or its alias <code>put_hash</code>, to log an object that <code>respond_to?(:each_pair)</code>.
@@ -362,10 +362,10 @@ aaaa => zzzz
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/hash.xml -->
 
 ### Array-Like Objects
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Array](images/array.jpg | height=70)
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Array](images/array.jpg | height=30)
 ' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/array.jpg" alt="Array" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Array](images/array.jpg | height=70)
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/array.jpg" alt="Array" height="30">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Array](images/array.jpg | height=30)
 ' -->
 
 Use method <code>put_each_with_index</code>, or its aliases <code>put_array</code> and <code>put_set</code>, to log an object that <code>respond_to?(:each_with_index)</code>.
@@ -443,7 +443,7 @@ end
     <![CDATA[false]]>
   </data>
   <data name='my_time' class='Time'>
-    <![CDATA[2018-03-28 14:45:10 -0500]]>
+    <![CDATA[2018-03-28 14:54:47 -0500]]>
   </data>
   <data name='my_exception' class='RuntimeError'>
     <![CDATA[#<RuntimeError: Oops!>]]>
@@ -618,7 +618,7 @@ end
       No child elements, just this text.
     </element_with_text>
     <element_with_attributes a='0' b='1'/>
-    <element_with_timestamp timestamp='2018-03-28-Wed-14.45.09.345'/>
+    <element_with_timestamp timestamp='2018-03-28-Wed-14.54.46.297'/>
     <element_with_data>
       3.14159
     </element_with_data>
@@ -655,7 +655,7 @@ end
 <code>exception.xml</code>
 ```xml
 <log>
-  <uncaught_exception timestamp='2018-03-28-Wed-14.45.10.905' class='RuntimeError'>
+  <uncaught_exception timestamp='2018-03-28-Wed-14.54.47.841' class='RuntimeError'>
     <message>
       Oops!
     </message>
