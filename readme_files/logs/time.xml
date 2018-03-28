@@ -1,5 +1,5 @@
 <log>
-  <section name='Section with timestamp' timestamp='2018-03-28-Wed-14.54.50.197'>
+  <section name='Section with timestamp' timestamp='2018-03-28-Wed-14.56.53.079'>
     <comment>
       This section has a timestamp.
     </comment>
@@ -9,7 +9,7 @@
       This section has a duration.
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-03-28-Wed-14.54.51.211' duration_seconds='1.014'>
+  <section name='Section with both' timestamp='2018-03-28-Wed-14.56.54.093' duration_seconds='1.014'>
     <comment>
       This section has both.
     </comment>

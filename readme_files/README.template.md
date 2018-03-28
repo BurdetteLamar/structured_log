@@ -120,7 +120,7 @@ Use method <code>put_cdata</code> to log a string (possibly multi-line) as CDATA
 @[xml](logs/cdata.xml)
 
 ### Comment
-![Comment](images/comment.jpg | height=70)
+![Comment](images/comment.png | height=70)
 
 Use method <code>comment</code> to log a comment.
 
