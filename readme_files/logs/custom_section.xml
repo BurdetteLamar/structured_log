@@ -1,0 +1,14 @@
+<log>
+  <section name='With blocks'>
+    <section_with_children>
+      <child rank='Older'/>
+      <child rank='Younger'/>
+    </section_with_children>
+    <section_with_duration duration_seconds='1.014'>
+      Block contains timed code to be timed.
+    </section_with_duration>
+    <section_with_rescue>
+      Block contains code to be rescued if necessary.
+    </section_with_rescue>
+  </section>
+</log>

@@ -31,14 +31,8 @@ namespace :build do
     # which keeps the file more readable.
     chdir(target_dir_path) do
       source_file_paths.each do |source_file_path|
-        target_file_path = File.join(
-            target_dir_path,
-            File.basename(source_file_path.sub(/rb$/, 'xml')),
-        )
-        unless uptodate?(target_file_path, [source_file_path])
-          command = "ruby #{source_file_path}"
-          system(command)
-        end
+        command = "ruby #{source_file_path}"
+        system(command)
       end
     end
     # TODO:  Implement dependencies
@@ -48,19 +42,6 @@ namespace :build do
     markdown_helper.resolve('readme_files/README.template.md', intermediate_file_path)
     markdown_helper.include(intermediate_file_path, 'README.md')
     File.delete(intermediate_file_path)
-  end
-
-  desc 'Build YARD documentation'
-  task :doc do
-    require 'find'
-    paths = []
-    Find::find(__dir__).each do |path|
-      next if File.directory?(path)
-      next unless path.end_with?('.rb')
-      paths.push(path)
-    end
-    puts paths.first
-    # system("yard doc #{paths.first}")
   end
 
 end

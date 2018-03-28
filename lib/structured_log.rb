@@ -50,14 +50,30 @@ class StructuredLog
     log.file_path
   end
 
+  # Start a new section, within the current section.
+  # Sections may be nested.
+  # - +name+: name for the section.
+  # - *+args+:  passed to method +put_element+.
+  def section(name, *args)
+    put_element('section', {:name => name}, *args) do
+      yield
+    end
+    nil
+  end
+
+  def comment(text, *args)
+    put_element('comment', text, *args)
+    nil
+  end
+
   # Log an XML element.
   # - +element_name+:  Element name for logged element.
   # - *+args+:  Anything;  processed left to right;  for each _arg_:
   #   - +Hash+:  becomes element attributes.
   #   - +String+:  appended to PCDATA.
   #   - +:timestamp+:  causes a timestamp to be added to the element.
-  #   - +:duration+:  causes block's duration to be added to the element.
-  #   - +:rescue+:  causes any exception in block to be rescued and logged.
+  #   - +:duration+:  causes block's execution duration to be added to the element.
+  #   - +:rescue+:  causes any exception raised during block execution to be rescued and logged.
   #   - else:  _arg_.inspect is appended to PCDATA.
   def put_element(element_name = 'element', *args)
     attributes = {}
@@ -150,37 +166,22 @@ class StructuredLog
   end
   alias put_hash put_each_pair
 
-  def put_method_return_value(name, obj, method, *args)
-    put_element('method_return_value', {:name => name, :class => obj.class, :method => method}) do
-      put_cdata(obj.send(method, *args))
-    end
-  end
-
   def put_data(name, obj)
-    case
-      when obj.respond_to?(:each_pair)
-        STDERR.puts("Instance of #{obj.class} can be better logged by method log#put_each_pair")
-      when obj.respond_to?(:each_with_index)
-        STDERR.puts("Instance of #{obj.class} can be better logged by method log#put_each_with_index")
-      else
-        # Ok.
-    end
     put_element('data', :name => name, :class => obj.class) do
       put_cdata(obj.inspect)
     end
   end
 
-  # Start a new section, within the current section.
-  # Sections may be nested.
-  def section(name, *args)
-    put_element('section', {:name => name}, *args) do
-      yield
+  def put_cdata(text)
+    # Guard against using a terminator that's a substring of the cdata.
+    s = 'EOT'
+    terminator = s
+    while text.match(terminator) do
+      terminator += s
     end
-    nil
-  end
-
-  def comment(text, *args)
-    put_element('comment', text, *args)
+    log_puts("CDATA\t<<#{terminator}")
+    log_puts(text)
+    log_puts(terminator)
     nil
   end
 
@@ -280,19 +281,6 @@ class StructuredLog
               end
       log_puts("ATTRIBUTE\t#{name}\t#{value}")
     end
-    nil
-  end
-
-  def put_cdata(text)
-    # Guard against using a terminator that's a substring of the cdata.
-    s = 'EOT'
-    terminator = s
-    while text.match(terminator) do
-      terminator += s
-    end
-    log_puts("CDATA\t<<#{terminator}")
-    log_puts(text)
-    log_puts(terminator)
     nil
   end
 

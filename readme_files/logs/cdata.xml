@@ -1,5 +1,12 @@
 <log>
-  <![CDATA[Method put_cdata puts the data verbatim.
-Nothing is added or detracted.
-Not even whitespace.]]>
+  <![CDATA[
+Method put_cdata puts the data verbatim:
+
+* Nothing is added or subtracted.
+* Not even whitespace.
+
+So you can use the method to log a formatted string.
+
+(You'll need to add your own leading and trailing newlines, if desired.)
+]]>
 </log>

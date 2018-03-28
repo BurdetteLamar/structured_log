@@ -13,7 +13,7 @@ Optionally, each section may include:
 <li>The ability to rescue and log an exception.
 </ul>
 
-And of course the logger offers many ways to log data.
+And of course the class offers many ways to log data.
 
 ## About the Examples
 
@@ -21,47 +21,147 @@ A working example is worth a thousand words (maybe).
 
 Each of the following sections features an example Ruby program, followed by its output log.
 
-## Nested Sections
+
+## Sections
+
+### Nested Sections
 ![Nesting](images/nesting.jpg | height=70)
+
+Use nested sections to give structure to your log.
 
 @[ruby](scripts/sections.rb)
 
 @[xml](logs/sections.xml)
 
-## Timestamp and Duration
+### Text
+![Text](images/text.jpg | height=70)
+
+Add text to a <code>section</code> element by passing a string argument.
+
+@[ruby](scripts/text.rb)
+
+@[xml](logs/text.xml)
+
+### Attributes
+![Attributes](images/attributes.png | height=70)
+
+Add attributes to a <code>section</code> element by passing a hash argument.
+
+@[ruby](scripts/attributes.rb)
+
+@[xml](logs/attributes.xml)
+
+### Timestamps and Durations
 ![Time](images/time.ico | height=70)
+
+Add a timestamp or duration to a <code>section</code> element by passing a special symbol argument.
 
 @[ruby](scripts/time.rb)
 
 @[xml](logs/time.xml)
 
-## Rescue
+### Rescued Section
 ![Rescue](images/rescue.jpg | height=70)
+
+Add rescuing to a <code>section</code> element by passing a special symbol argument.
+
+For the rescued exception, the class, message, and backtrace are logged.
 
 @[ruby](scripts/rescue.rb)
 
 @[xml](logs/rescue.xml)
 
-## Array
+### Potpourri
+![Potpourri](images/potpourri.png | height=70)
 
-@[ruby](scripts/array.rb)
+Pass any mixture of arguments to method <code>section</code>.
 
-@[xml](logs/array.xml)
+The section name must be first; after that, anything goes.
 
-## Hash
+@[ruby](scripts/potpourri.rb)
+
+@[xml](logs/potpourri.xml)
+
+## Data
+
+### Hash-LIke Objects
+![Hash](images/hash.png | height=70)
+
+Use method <code>put_each_pair</code>, or its alias <code>put_hash</code>, to log an object that <code>respond_to?(:each_pair)</code>.
 
 @[ruby](scripts/hash.rb)
 
 @[xml](logs/hash.xml)
 
-## Data
+### Array-Like Objects
+![Array](images/array.jpg | height=70)
+
+Use method <code>put_each_with_index</code>, or its aliases <code>put_array</code> and <code>put_set</code>, to log an object that <code>respond_to?(:each_with_index)</code>.
+
+@[ruby](scripts/array.rb)
+
+@[xml](logs/array.xml)
+
+### Other Objects
+![Data](images/data.png | height=70)
+
+Use method <code>put_data</code> to log any object.
 
 @[ruby](scripts/data.rb)
 
 @[xml](logs/data.xml)
 
-## CData
+### Formatted Text
+
+Use method <code>put_cdata</code> to log a string (possibly multi-line) as CDATA.
 
 @[ruby](scripts/cdata.rb)
 
 @[xml](logs/cdata.xml)
+
+### Comment
+![Comment](images/comment.jpg | height=70)
+
+Use method <code>comment</code> to log a comment.
+
+@[ruby](scripts/comment.rb)
+
+@[xml](logs/comment.xml)
+
+## Custom Logging
+![Custom](images/custom.png | width=70)
+
+At the heart of class <code>StructuredLog</code> is method <code>put_element</code>.  It logs an element, possibly with children, attributes, and text.  Several methods call it, and you can too.
+
+Basically, it's just like method <code>section</code>, except that you choose the element name (instead of the fixed name <code>section</code>).
+
+Otherwise, it handles a block and all the same arguments as <code>section</code>.
+
+### Section
+
+Create a custom section by calling method <code>put_element</code> with a block.  The custom section will have children if you call logging methods within the block.
+
+@[ruby](scripts/custom_section.rb)
+
+@[xml](logs/custom_section.xml)
+
+### Entry
+
+Create a custom entry by calling method <code>put_element</code> without a block.  The custom entry will not have children.
+
+@[ruby](scripts/custom_entry.rb)
+
+@[xml](logs/custom_entry.xml)
+
+## Uncaught Exception
+![Exception](images/exception.png | width=70)
+
+Finally, what about an uncaught exception, one not rescued by <code>:rescue</code>?
+
+When an exception is raised in a section that does not have <code>:rescue</code>, the logger rescues and logs it anyway, just as if there were an invisible "outermost section" with <code>:rescue</code> (which, in fact, there is).
+
+Just as for a rescued exception, the log includes the exception's class, message, and backtrace.
+
+@[ruby](scripts/exception.rb)
+
+@[xml](logs/exception.xml)

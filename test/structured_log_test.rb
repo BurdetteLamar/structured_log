@@ -127,7 +127,7 @@ class StructuredLogTest < Minitest::Test
       self.test.refute_match(/\S/, cdata_value)
     end
 
-    def assert_counts(ele_xpath, counts_for_method_returns)
+    def assert_counts(ele_xpath, counts)
       element = assert_element_exist(ele_xpath).first
       [
           :attributes,
@@ -135,13 +135,13 @@ class StructuredLogTest < Minitest::Test
           :comments,
           :texts,
       ].each do |method|
-        value = counts_for_method_returns[method]
+        value = counts[method]
         expected_count = value.nil? ? 0 : value
         actual_count = element.send(method).size
         self.test.assert_equal(expected_count, actual_count, method.to_s)
       end
       method = :get_elements
-      value = counts_for_method_returns[method]
+      value = counts[method]
       expected_count = value.nil? ? 0 : value
       actual_count = element.send(method, ele_xpath).size
       self.test.assert_equal(expected_count, actual_count, method.to_s)
@@ -375,7 +375,7 @@ class StructuredLogTest < Minitest::Test
       raise RuntimeError.new(exception_message)
     end
     checker = Checker.new(self, file_path)
-    ele_xpath = "//uncaught_exception"
+    ele_xpath = '//uncaught_exception'
     counts = {
         :attributes => 2,
         :get_elements => 1,
@@ -496,10 +496,6 @@ class StructuredLogTest < Minitest::Test
     }
     checker.assert_counts(ele_xpath, counts)
     checker.assert_element_exist(ele_xpath)
-  end
-
-  def test_put_method_return_value
-
   end
 
 end

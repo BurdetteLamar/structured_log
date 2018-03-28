@@ -1,0 +1,7 @@
+<log>
+  <section name='with_attributes' a='0' b='1'>
+    <comment>
+      This section has attributes a and b.
+    </comment>
+  </section>
+</log>
