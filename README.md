@@ -126,7 +126,7 @@ require 'structured_log'
 attributes = {:a => 0, :b => 1}
 StructuredLog.open('attributes.xml') do |log|
   log.section('with_attributes', attributes) do
-    log.comment('This section has attributes.')
+    log.comment('This section has attributes a and b.')
   end
 end
 ```
@@ -138,7 +138,7 @@ end
 <log>
   <section name='with_attributes' a='0' b='1'>
     <comment>
-      This section has attributes.
+      This section has attributes a and b.
     </comment>
   </section>
 </log>
@@ -179,17 +179,17 @@ end
 <code>time.xml</code>
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-03-27-Tue-14.59.01.160'>
+  <section name='Section with timestamp' timestamp='2018-03-28-Wed-10.15.25.699'>
     <comment>
       This section has a timestamp.
     </comment>
   </section>
-  <section name='Section with duration' duration_seconds='1.010'>
+  <section name='Section with duration' duration_seconds='1.014'>
     <comment>
       This section has a duration.
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-03-27-Tue-14.59.02.170' duration_seconds='1.000'>
+  <section name='Section with both' timestamp='2018-03-28-Wed-10.15.26.713' duration_seconds='1.014'>
     <comment>
       This section has both.
     </comment>
@@ -235,7 +235,7 @@ end
     <comment>
       This section will terminate because of the failure.
     </comment>
-    <rescued_exception timestamp='2018-03-27-Tue-14.59.00.450' class='RuntimeError'>
+    <rescued_exception timestamp='2018-03-28-Wed-10.15.24.919' class='RuntimeError'>
       <message>
         This exception will be rescued and logged.
       </message>
@@ -278,26 +278,21 @@ The section name must be first; after that, anything goes.
 require 'structured_log'
 
 attributes = {:a => 0, :b => 1}
+more_attributes = {:c => 2, :d => 3}
 text = 'This section has a potpourri.'
-array = [:a, :b]
 float = 3.14159
+boolean = false
+fixnum = 1066
+time = Time.new
+exception = RuntimeError.new('Oops!')
 
 StructuredLog.open('potpourri.xml') do |log|
-  log.section('my_potpourri', attributes, text, :timestamp, :duration, :rescue) do
-    log.comment('Hash, string, and special symbols are logged as usual.')
-  end
-  # Anything else has its inspect value logged as text.
-  log.section('my_array', array) do
-    log.comment('The value of array.inspect is logged as text.')
-  end
-  log.section('my_boolean', false) do
-    log.comment('The value of boolean.inspect is logged as text.')
-  end
-  log.section('my_float', float) do
-    log.comment('The value of float.inspect is logged as text.')
-  end
-  log.section('my_true_potpourri', array, false, float) do
-    log.comment('The values of inspect are concatenated and logged as text.')
+  log.section('All together now', 'Order does not matter except in aggregating text and attributes.')  do
+    args = [attributes, :rescue, text, float, :duration, more_attributes, boolean, :timestamp, fixnum, time, exception]
+    log.section('Potpourri', *args) do
+    end
+    log.section('Reverse potpourri', *args.reverse) do
+    end
   end
 end
 ```
@@ -307,35 +302,16 @@ end
 <code>potpourri.xml</code>
 ```xml
 <log>
-  <section name='my_potpourri' a='0' b='1' timestamp='2018-03-27-Tue-14.59.00.210' duration_seconds='0.000'>
-    This section has a potpourri.
-    <comment>
-      Hash, string, and special symbols are logged as usual.
-    </comment>
-  </section>
-  <section name='my_array'>
-    [:a, :b]
-    <comment>
-      The value of array.inspect is logged as text.
-    </comment>
-  </section>
-  <section name='my_boolean'>
-    false
-    <comment>
-      The value of boolean.inspect is logged as text.
-    </comment>
-  </section>
-  <section name='my_float'>
-    3.14159
-    <comment>
-      The value of float.inspect is logged as text.
-    </comment>
-  </section>
-  <section name='my_true_potpourri'>
-    [:a, :b]false3.14159
-    <comment>
-      The values of inspect are concatenated and logged as text.
-    </comment>
+  <section name='All together now'>
+    Order does not matter except in aggregating text and attributes.
+    <section name='Potpourri' a='0' b='1' c='2' d='3' timestamp='2018-03-28-Wed-10.15.23.109' duration_seconds='0.000'>
+      This section has a potpourri.3.14159false10662018-03-28 10:15:23
+      -0500#&lt;RuntimeError: Oops!&gt;
+    </section>
+    <section name='Reverse potpourri' timestamp='2018-03-28-Wed-10.15.23.109' c='2' d='3' a='0' b='1' duration_seconds='0.000'>
+      #&lt;RuntimeError: Oops!&gt;2018-03-28 10:15:23 -05001066false3.14159This
+      section has a potpourri.
+    </section>
   </section>
 </log>
 ```
@@ -437,18 +413,11 @@ Use method <code>put_data</code> to log any object.
 require 'structured_log'
 
 data = {
-    :array => %w/foo bar baz bat/,
-    :hash => {
-        :a => 'z',
-        :aa => 'zz',
-        :aaa => 'zzz',
-        :aaaa => 'zzzz',
-    },
-    :set => Set.new(%w/foo bar baz/),
     :float => 3.14,
     :fixnum => 1066,
     :false => false,
-    :string => 'Hello',
+    :time => Time.new,
+    :exception => RuntimeError.new('Oops!'),
     :nil => nil,
 }
 StructuredLog.open('data.xml') do |log|
@@ -464,15 +433,6 @@ end
 <code>data.xml</code>
 ```xml
 <log>
-  <data name='my_array' class='Array'>
-    <![CDATA[["foo", "bar", "baz", "bat"]]]>
-  </data>
-  <data name='my_hash' class='Hash'>
-    <![CDATA[{:a=>"z", :aa=>"zz", :aaa=>"zzz", :aaaa=>"zzzz"}]]>
-  </data>
-  <data name='my_set' class='Set'>
-    <![CDATA[#<Set: {"foo", "bar", "baz"}>]]>
-  </data>
   <data name='my_float' class='Float'>
     <![CDATA[3.14]]>
   </data>
@@ -482,8 +442,11 @@ end
   <data name='my_false' class='FalseClass'>
     <![CDATA[false]]>
   </data>
-  <data name='my_string' class='String'>
-    <![CDATA["Hello"]]>
+  <data name='my_time' class='Time'>
+    <![CDATA[2018-03-28 10:15:22 -0500]]>
+  </data>
+  <data name='my_exception' class='RuntimeError'>
+    <![CDATA[#<RuntimeError: Oops!>]]>
   </data>
   <data name='my_nil' class='NilClass'>
     <![CDATA[nil]]>
@@ -492,7 +455,7 @@ end
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/data.xml -->
 
-### CData
+### Formatted Text
 
 Use method <code>put_cdata</code> to log a string (possibly multi-line) as CDATA.
 
@@ -569,24 +532,103 @@ end
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/comment.xml -->
 
 ## Custom Logging
-TODO:  Image
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Custom](images/custom.png | width=70)
+' -->
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/custom.png" alt="Custom" width="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Custom](images/custom.png | width=70)
+' -->
 
-TODO:
+TODO:  script and log.
 
 ### Section
-TODO:  Image
 
-TODO:
+<!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/custom_section.rb -->
+<code>custom_section.rb</code>
+```ruby
+require 'structured_log'
+
+StructuredLog.open('custom_section.xml') do |log|
+  log.section('With blocks') do
+    log.put_element('section_with_children') do
+      log.put_element('child', :rank => 'Older')
+      log.put_element('child', :rank => 'Younger')
+    end
+    log.put_element('section_with_duration', :duration, 'Block contains timed code to be timed.') do
+      sleep 1
+    end
+    log.put_element('section_with_rescue', :rescue, 'Block contains code to be rescued if necessary.') do
+    end
+  end
+end
+```
+<!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/custom_section.rb -->
+
+<!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/custom_section.xml -->
+<code>custom_section.xml</code>
+```xml
+<log>
+  <section name='With blocks'>
+    <section_with_children>
+      <child rank='Older'/>
+      <child rank='Younger'/>
+    </section_with_children>
+    <section_with_duration duration_seconds='1.014'>
+      Block contains timed code to be timed.
+    </section_with_duration>
+    <section_with_rescue>
+      Block contains code to be rescued if necessary.
+    </section_with_rescue>
+  </section>
+</log>
+```
+<!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/custom_section.xml -->
 
 ### Entry
-TODO:  Image
+
+<!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/custom_entry.rb -->
+<code>custom_entry.rb</code>
+```ruby
+require 'structured_log'
+
+StructuredLog.open('custom_entry.xml') do |log|
+  log.section('Without blocks') do
+    log.put_element('element_with_text', 'No child elements, just this text.')
+    log.put_element('element_with_attributes', {:a => 0, :b => 1})
+    log.put_element('element_with_timestamp', :timestamp)
+    log.put_element('element_with_data', 3.14159)
+  end
+end
+```
+<!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/custom_entry.rb -->
+
+<!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/custom_entry.xml -->
+<code>custom_entry.xml</code>
+```xml
+<log>
+  <section name='Without blocks'>
+    <element_with_text>
+      No child elements, just this text.
+    </element_with_text>
+    <element_with_attributes a='0' b='1'/>
+    <element_with_timestamp timestamp='2018-03-28-Wed-10.15.21.035'/>
+    <element_with_data>
+      3.14159
+    </element_with_data>
+  </section>
+</log>
+```
+<!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/custom_entry.xml -->
 
 ## Uncaught Exception
-TODO:  Image
+<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Exception](images/exception.png | width=70)
+' -->
+<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/exception.png" alt="Exception" width="70">
+<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Exception](images/exception.png | width=70)
+' -->
 
-Finally, what about an uncaught exception?
+Finally, what about an uncaught exception, one not rescued by <code>:rescue</code>?
 
-When an exception is raised in a section that does not have <code>:rescue</code>, the logger rescues and logs it anyway, just as if there were an invisible "outermost section" with <code>:rescue</code>.
+When an exception is raised in a section that does not have <code>:rescue</code>, the logger rescues and logs it anyway, just as if there were an invisible "outermost section" with <code>:rescue</code> (which, in fact, there is).
 
 TODO:  script and log.
 <!-- <<<<<< END GENERATED FILE (resolve): SOURCE readme_files/README.template.md -->

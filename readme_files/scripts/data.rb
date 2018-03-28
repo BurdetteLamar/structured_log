@@ -1,18 +1,11 @@
 require 'structured_log'
 
 data = {
-    :array => %w/foo bar baz bat/,
-    :hash => {
-        :a => 'z',
-        :aa => 'zz',
-        :aaa => 'zzz',
-        :aaaa => 'zzzz',
-    },
-    :set => Set.new(%w/foo bar baz/),
     :float => 3.14,
     :fixnum => 1066,
     :false => false,
-    :string => 'Hello',
+    :time => Time.new,
+    :exception => RuntimeError.new('Oops!'),
     :nil => nil,
 }
 StructuredLog.open('data.xml') do |log|

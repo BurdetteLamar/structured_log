@@ -1,25 +1,20 @@
 require 'structured_log'
 
 attributes = {:a => 0, :b => 1}
+more_attributes = {:c => 2, :d => 3}
 text = 'This section has a potpourri.'
-array = [:a, :b]
 float = 3.14159
+boolean = false
+fixnum = 1066
+time = Time.new
+exception = RuntimeError.new('Oops!')
 
 StructuredLog.open('potpourri.xml') do |log|
-  log.section('my_potpourri', attributes, text, :timestamp, :duration, :rescue) do
-    log.comment('Hash, string, and special symbols are logged as usual.')
-  end
-  # Anything else has its inspect value logged as text.
-  log.section('my_array', array) do
-    log.comment('The value of array.inspect is logged as text.')
-  end
-  log.section('my_boolean', false) do
-    log.comment('The value of boolean.inspect is logged as text.')
-  end
-  log.section('my_float', float) do
-    log.comment('The value of float.inspect is logged as text.')
-  end
-  log.section('my_true_potpourri', array, false, float) do
-    log.comment('The values of inspect are concatenated and logged as text.')
+  log.section('All together now', 'Order does not matter except in aggregating text and attributes.')  do
+    args = [attributes, :rescue, text, float, :duration, more_attributes, boolean, :timestamp, fixnum, time, exception]
+    log.section('Potpourri', *args) do
+    end
+    log.section('Reverse potpourri', *args.reverse) do
+    end
   end
 end

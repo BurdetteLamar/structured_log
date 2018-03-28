@@ -111,7 +111,7 @@ Use method <code>put_data</code> to log any object.
 
 @[xml](logs/data.xml)
 
-### CData
+### Formatted Text
 
 Use method <code>put_cdata</code> to log a string (possibly multi-line) as CDATA.
 
@@ -135,15 +135,21 @@ TODO:  script and log.
 
 ### Section
 
-TODO:  script and log.
+@[ruby](scripts/custom_section.rb)
+
+@[xml](logs/custom_section.xml)
 
 ### Entry
+
+@[ruby](scripts/custom_entry.rb)
+
+@[xml](logs/custom_entry.xml)
 
 ## Uncaught Exception
 ![Exception](images/exception.png | width=70)
 
 Finally, what about an uncaught exception, one not rescued by <code>:rescue</code>?
 
-When an exception is raised in a section that does not have <code>:rescue</code>, the logger rescues and logs it anyway, just as if there were an invisible "outermost section" with <code>:rescue</code>.
+When an exception is raised in a section that does not have <code>:rescue</code>, the logger rescues and logs it anyway, just as if there were an invisible "outermost section" with <code>:rescue</code> (which, in fact, there is).
 
 TODO:  script and log.

@@ -1,13 +1,4 @@
 <log>
-  <data name='my_array' class='Array'>
-    <![CDATA[["foo", "bar", "baz", "bat"]]]>
-  </data>
-  <data name='my_hash' class='Hash'>
-    <![CDATA[{:a=>"z", :aa=>"zz", :aaa=>"zzz", :aaaa=>"zzzz"}]]>
-  </data>
-  <data name='my_set' class='Set'>
-    <![CDATA[#<Set: {"foo", "bar", "baz"}>]]>
-  </data>
   <data name='my_float' class='Float'>
     <![CDATA[3.14]]>
   </data>
@@ -17,8 +8,11 @@
   <data name='my_false' class='FalseClass'>
     <![CDATA[false]]>
   </data>
-  <data name='my_string' class='String'>
-    <![CDATA["Hello"]]>
+  <data name='my_time' class='Time'>
+    <![CDATA[2018-03-28 10:15:22 -0500]]>
+  </data>
+  <data name='my_exception' class='RuntimeError'>
+    <![CDATA[#<RuntimeError: Oops!>]]>
   </data>
   <data name='my_nil' class='NilClass'>
     <![CDATA[nil]]>
