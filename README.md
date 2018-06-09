@@ -1,12 +1,7 @@
-<!-- >>>>>> BEGIN GENERATED FILE (include): SOURCE readme_files/README.md -->
-<!-- >>>>>> BEGIN GENERATED FILE (resolve): SOURCE readme_files/README.template.md -->
+<!-- >>>>>> BEGIN GENERATED FILE (include): SOURCE readme_files/README.template.md -->
 # Structured Log
 
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/structured.png | height=70)
-' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/structured.png" alt="Structured Log" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Structured Log](images/structured.png | height=70)
-' -->
+<img src="images/structured.png" height="70" alt="Structured Log">
 
 Class <code>StructuredLog</code> offers structured (as opposed to flat) logging.  Nested sections (blocks) in Ruby code become nested XML elements in the log.
 
@@ -31,16 +26,12 @@ Each of the following sections features an example Ruby program, followed by its
 ## Sections
 
 ### Nested Sections
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Nesting](images/nesting.jpg | height=70)
-' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/nesting.jpg" alt="Nesting" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Nesting](images/nesting.jpg | height=70)
-' -->
+<img src="images/nesting.jpg" height="70" alt="Nesting">
 
 Use nested sections to give structure to your log.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/sections.rb -->
-<code>sections.rb</code>
+```sections.rb```:
 ```ruby
 require 'structured_log'
 
@@ -63,7 +54,7 @@ end
 <!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/sections.rb -->
 
 <!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/sections.xml -->
-<code>sections.xml</code>
+```sections.xml```:
 ```xml
 <log>
   <section name='Outer'>
@@ -76,16 +67,12 @@ end
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/sections.xml -->
 
 ### Text
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Text](images/text.jpg | height=70)
-' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/text.jpg" alt="Text" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Text](images/text.jpg | height=70)
-' -->
+<img src="images/text.jpg" height="70" alt="Text">
 
 Add text to a <code>section</code> element by passing a string argument.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/text.rb -->
-<code>text.rb</code>
+```text.rb```:
 ```ruby
 require 'structured_log'
 
@@ -99,7 +86,7 @@ end
 <!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/text.rb -->
 
 <!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/text.xml -->
-<code>text.xml</code>
+```text.xml```:
 ```xml
 <log>
   <section name='with_text'>
@@ -110,16 +97,12 @@ end
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/text.xml -->
 
 ### Attributes
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Attributes](images/attributes.png | height=70)
-' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/attributes.png" alt="Attributes" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Attributes](images/attributes.png | height=70)
-' -->
+<img src="images/attributes.png" height="70" alt="Attributes">
 
 Add attributes to a <code>section</code> element by passing a hash argument.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/attributes.rb -->
-<code>attributes.rb</code>
+```attributes.rb```:
 ```ruby
 require 'structured_log'
 
@@ -133,7 +116,7 @@ end
 <!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/attributes.rb -->
 
 <!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/attributes.xml -->
-<code>attributes.xml</code>
+```attributes.xml```:
 ```xml
 <log>
   <section name='with_attributes' a='0' b='1'>
@@ -146,16 +129,12 @@ end
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/attributes.xml -->
 
 ### Timestamps and Durations
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Time](images/time.png | height=70)
-' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/time.png" alt="Time" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Time](images/time.png | height=70)
-' -->
+<img src="images/time.png" height="70" alt="Time">
 
 Add a timestamp or duration to a <code>section</code> element by passing a special symbol argument.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/time.rb -->
-<code>time.rb</code>
+```time.rb```:
 ```ruby
 require 'structured_log'
 
@@ -176,20 +155,20 @@ end
 <!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/time.rb -->
 
 <!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/time.xml -->
-<code>time.xml</code>
+```time.xml```:
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-03-28-Wed-14.56.53.079'>
+  <section name='Section with timestamp' timestamp='2018-06-09-Sat-11.38.13.373'>
     <comment>
       This section has a timestamp.
     </comment>
   </section>
-  <section name='Section with duration' duration_seconds='1.014'>
+  <section name='Section with duration' duration_seconds='1.016'>
     <comment>
       This section has a duration.
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-03-28-Wed-14.56.54.093' duration_seconds='1.014'>
+  <section name='Section with both' timestamp='2018-06-09-Sat-11.38.14.389' duration_seconds='1.000'>
     <comment>
       This section has both.
     </comment>
@@ -199,18 +178,14 @@ end
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/time.xml -->
 
 ### Rescued Section
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Rescue](images/rescue.jpg | height=70)
-' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/rescue.jpg" alt="Rescue" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Rescue](images/rescue.jpg | height=70)
-' -->
+<img src="images/rescue.jpg" height="70" alt="Rescue">
 
 Add rescuing to a <code>section</code> element by passing a special symbol argument.
 
 For the rescued exception, the class, message, and backtrace are logged.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/rescue.rb -->
-<code>rescue.rb</code>
+```rescue.rb```:
 ```ruby
 require 'structured_log'
 
@@ -228,25 +203,25 @@ end
 <!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/rescue.rb -->
 
 <!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/rescue.xml -->
-<code>rescue.xml</code>
+```rescue.xml```:
 ```xml
 <log>
   <section name='Section with rescue'>
     <comment>
       This section will terminate because of the failure.
     </comment>
-    <rescued_exception timestamp='2018-03-28-Wed-14.56.52.579' class='RuntimeError'>
+    <rescued_exception timestamp='2018-06-09-Sat-11.38.12.889' class='RuntimeError'>
       <message>
         This exception will be rescued and logged.
       </message>
       <backtrace>
         <![CDATA[
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:6:in `block (2 levels) in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:116:in `put_element'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:57:in `section'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `block in section'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:116:in `put_element'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:57:in `section'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:4:in `block in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:38:in `open'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:38:in `open'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:3:in `<main>'
 ]]>
       </backtrace>
@@ -262,18 +237,14 @@ C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/rescue.xml -->
 
 ### Potpourri
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Potpourri](images/potpourri.png | height=70)
-' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/potpourri.png" alt="Potpourri" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Potpourri](images/potpourri.png | height=70)
-' -->
+<img src="images/potpourri.png" height="70" alt="Potpourri">
 
 Pass any mixture of arguments to method <code>section</code>.
 
 The section name must be first; after that, anything goes.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/potpourri.rb -->
-<code>potpourri.rb</code>
+```potpourri.rb```:
 ```ruby
 require 'structured_log'
 
@@ -299,17 +270,17 @@ end
 <!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/potpourri.rb -->
 
 <!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/potpourri.xml -->
-<code>potpourri.xml</code>
+```potpourri.xml```:
 ```xml
 <log>
   <section name='All together now'>
     Order does not matter except in aggregating text and attributes.
-    <section name='Potpourri' a='0' b='1' c='2' d='3' timestamp='2018-03-28-Wed-14.56.51.035' duration_seconds='0.000'>
-      This section has a potpourri.3.14159false10662018-03-28 14:56:51
+    <section name='Potpourri' a='0' b='1' c='2' d='3' timestamp='2018-06-09-Sat-11.38.11.279' duration_seconds='0.000'>
+      This section has a potpourri.3.14159false10662018-06-09 11:38:11
       -0500#&lt;RuntimeError: Oops!&gt;
     </section>
-    <section name='Reverse potpourri' timestamp='2018-03-28-Wed-14.56.51.035' c='2' d='3' a='0' b='1' duration_seconds='0.000'>
-      #&lt;RuntimeError: Oops!&gt;2018-03-28 14:56:51 -05001066false3.14159This
+    <section name='Reverse potpourri' timestamp='2018-06-09-Sat-11.38.11.279' c='2' d='3' a='0' b='1' duration_seconds='0.000'>
+      #&lt;RuntimeError: Oops!&gt;2018-06-09 11:38:11 -05001066false3.14159This
       section has a potpourri.
     </section>
   </section>
@@ -320,16 +291,12 @@ end
 ## Data
 
 ### Hash-LIke Objects
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Hash](images/hash.png | height=30)
-' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/hash.png" alt="Hash" height="30">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Hash](images/hash.png | height=30)
-' -->
+<img src="images/hash.png" height="30" alt="Hash">
 
 Use method <code>put_each_pair</code>, or its alias <code>put_hash</code>, to log an object that <code>respond_to?(:each_pair)</code>.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/hash.rb -->
-<code>hash.rb</code>
+```hash.rb```:
 ```ruby
 require 'structured_log'
 
@@ -346,7 +313,7 @@ end
 <!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/hash.rb -->
 
 <!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/hash.xml -->
-<code>hash.xml</code>
+```hash.xml```:
 ```xml
 <log>
   <each_pair name='my_hash' class='Hash'>
@@ -362,16 +329,12 @@ aaaa => zzzz
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/hash.xml -->
 
 ### Array-Like Objects
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Array](images/array.jpg | height=30)
-' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/array.jpg" alt="Array" height="30">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Array](images/array.jpg | height=30)
-' -->
+<img src="images/array.jpg" height="30" alt="Array">
 
 Use method <code>put_each_with_index</code>, or its aliases <code>put_array</code> and <code>put_set</code>, to log an object that <code>respond_to?(:each_with_index)</code>.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/array.rb -->
-<code>array.rb</code>
+```array.rb```:
 ```ruby
 require 'structured_log'
 
@@ -383,7 +346,7 @@ end
 <!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/array.rb -->
 
 <!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/array.xml -->
-<code>array.xml</code>
+```array.xml```:
 ```xml
 <log>
   <each_with_index name='my_array' class='Array'>
@@ -399,16 +362,12 @@ end
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/array.xml -->
 
 ### Other Objects
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Data](images/data.png | height=70)
-' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/data.png" alt="Data" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Data](images/data.png | height=70)
-' -->
+<img src="images/data.png" height="70" alt="Data">
 
 Use method <code>put_data</code> to log any object.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/data.rb -->
-<code>data.rb</code>
+```data.rb```:
 ```ruby
 require 'structured_log'
 
@@ -430,7 +389,7 @@ end
 <!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/data.rb -->
 
 <!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/data.xml -->
-<code>data.xml</code>
+```data.xml```:
 ```xml
 <log>
   <data name='my_float' class='Float'>
@@ -443,7 +402,7 @@ end
     <![CDATA[false]]>
   </data>
   <data name='my_time' class='Time'>
-    <![CDATA[2018-03-28 14:56:50 -0500]]>
+    <![CDATA[2018-06-09 11:38:10 -0500]]>
   </data>
   <data name='my_exception' class='RuntimeError'>
     <![CDATA[#<RuntimeError: Oops!>]]>
@@ -460,7 +419,7 @@ end
 Use method <code>put_cdata</code> to log a string (possibly multi-line) as CDATA.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/cdata.rb -->
-<code>cdata.rb</code>
+```cdata.rb```:
 ```ruby
 require 'structured_log'
 
@@ -483,7 +442,7 @@ end
 <!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/cdata.rb -->
 
 <!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/cdata.xml -->
-<code>cdata.xml</code>
+```cdata.xml```:
 ```xml
 <log>
   <![CDATA[
@@ -501,16 +460,12 @@ So you can use the method to log a formatted string.
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/cdata.xml -->
 
 ### Comment
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Comment](images/comment.png | height=70)
-' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/comment.png" alt="Comment" height="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Comment](images/comment.png | height=70)
-' -->
+<img src="images/comment.png" height="70" alt="Comment">
 
 Use method <code>comment</code> to log a comment.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/comment.rb -->
-<code>comment.rb</code>
+```comment.rb```:
 ```ruby
 require 'structured_log'
 
@@ -521,7 +476,7 @@ end
 <!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/comment.rb -->
 
 <!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/comment.xml -->
-<code>comment.xml</code>
+```comment.xml```:
 ```xml
 <log>
   <comment>
@@ -532,11 +487,7 @@ end
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/comment.xml -->
 
 ## Custom Logging
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Custom](images/custom.png | width=70)
-' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/custom.png" alt="Custom" width="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Custom](images/custom.png | width=70)
-' -->
+<img src="images/custom.png" width="70" alt="Custom">
 
 At the heart of class <code>StructuredLog</code> is method <code>put_element</code>.  It logs an element, possibly with children, attributes, and text.  Several methods call it, and you can too.
 
@@ -549,7 +500,7 @@ Otherwise, it handles a block and all the same arguments as <code>section</code>
 Create a custom section by calling method <code>put_element</code> with a block.  The custom section will have children if you call logging methods within the block.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/custom_section.rb -->
-<code>custom_section.rb</code>
+```custom_section.rb```:
 ```ruby
 require 'structured_log'
 
@@ -570,7 +521,7 @@ end
 <!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/custom_section.rb -->
 
 <!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/custom_section.xml -->
-<code>custom_section.xml</code>
+```custom_section.xml```:
 ```xml
 <log>
   <section name='With blocks'>
@@ -578,7 +529,7 @@ end
       <child rank='Older'/>
       <child rank='Younger'/>
     </section_with_children>
-    <section_with_duration duration_seconds='1.014'>
+    <section_with_duration duration_seconds='1.016'>
       Block contains timed code to be timed.
     </section_with_duration>
     <section_with_rescue>
@@ -594,7 +545,7 @@ end
 Create a custom entry by calling method <code>put_element</code> without a block.  The custom entry will not have children.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/custom_entry.rb -->
-<code>custom_entry.rb</code>
+```custom_entry.rb```:
 ```ruby
 require 'structured_log'
 
@@ -610,7 +561,7 @@ end
 <!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/custom_entry.rb -->
 
 <!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/custom_entry.xml -->
-<code>custom_entry.xml</code>
+```custom_entry.xml```:
 ```xml
 <log>
   <section name='Without blocks'>
@@ -618,7 +569,7 @@ end
       No child elements, just this text.
     </element_with_text>
     <element_with_attributes a='0' b='1'/>
-    <element_with_timestamp timestamp='2018-03-28-Wed-14.56.49.163'/>
+    <element_with_timestamp timestamp='2018-06-09-Sat-11.38.09.357'/>
     <element_with_data>
       3.14159
     </element_with_data>
@@ -628,11 +579,7 @@ end
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/custom_entry.xml -->
 
 ## Uncaught Exception
-<!-- >>>>>> BEGIN RESOLVED IMAGES: INPUT-LINE '![Exception](images/exception.png | width=70)
-' -->
-<img src="https://raw.githubusercontent.com/BurdetteLamar/structured_log/master/images/exception.png" alt="Exception" width="70">
-<!-- <<<<<< END RESOLVED IMAGES: INPUT-LINE '![Exception](images/exception.png | width=70)
-' -->
+<img src="images/exception.png" width="70" alt="Exception">
 
 Finally, what about an uncaught exception, one not rescued by <code>:rescue</code>?
 
@@ -641,7 +588,7 @@ When an exception is raised in a section that does not have <code>:rescue</code>
 Just as for a rescued exception, the log includes the exception's class, message, and backtrace.
 
 <!-- >>>>>> BEGIN INCLUDED FILE (ruby): SOURCE readme_files/scripts/exception.rb -->
-<code>exception.rb</code>
+```exception.rb```:
 ```ruby
 require 'structured_log'
 
@@ -652,17 +599,17 @@ end
 <!-- <<<<<< END INCLUDED FILE (ruby): SOURCE readme_files/scripts/exception.rb -->
 
 <!-- >>>>>> BEGIN INCLUDED FILE (xml): SOURCE readme_files/logs/exception.xml -->
-<code>exception.xml</code>
+```exception.xml```:
 ```xml
 <log>
-  <uncaught_exception timestamp='2018-03-28-Wed-14.56.50.692' class='RuntimeError'>
+  <uncaught_exception timestamp='2018-06-09-Sat-11.38.10.967' class='RuntimeError'>
     <message>
       Oops!
     </message>
     <backtrace>
       <![CDATA[
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/exception.rb:4:in `block in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:38:in `open'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:38:in `open'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/exception.rb:3:in `<main>'
 ]]>
     </backtrace>
@@ -670,5 +617,4 @@ C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/exception
 </log>
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/exception.xml -->
-<!-- <<<<<< END GENERATED FILE (resolve): SOURCE readme_files/README.template.md -->
-<!-- <<<<<< END GENERATED FILE (include): SOURCE readme_files/README.md -->
+<!-- <<<<<< END GENERATED FILE (include): SOURCE readme_files/README.template.md -->

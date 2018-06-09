@@ -1,6 +1,6 @@
 # Structured Log
 
-![Structured Log](images/structured.png | height=70)
+<img src="images/structured.png" height="70" alt="Structured Log">
 
 Class <code>StructuredLog</code> offers structured (as opposed to flat) logging.  Nested sections (blocks) in Ruby code become nested XML elements in the log.
 
@@ -25,7 +25,7 @@ Each of the following sections features an example Ruby program, followed by its
 ## Sections
 
 ### Nested Sections
-![Nesting](images/nesting.jpg | height=70)
+<img src="images/nesting.jpg" height="70" alt="Nesting">
 
 Use nested sections to give structure to your log.
 
@@ -34,7 +34,7 @@ Use nested sections to give structure to your log.
 @[xml](logs/sections.xml)
 
 ### Text
-![Text](images/text.jpg | height=70)
+<img src="images/text.jpg" height="70" alt="Text">
 
 Add text to a <code>section</code> element by passing a string argument.
 
@@ -43,7 +43,7 @@ Add text to a <code>section</code> element by passing a string argument.
 @[xml](logs/text.xml)
 
 ### Attributes
-![Attributes](images/attributes.png | height=70)
+<img src="images/attributes.png" height="70" alt="Attributes">
 
 Add attributes to a <code>section</code> element by passing a hash argument.
 
@@ -52,7 +52,7 @@ Add attributes to a <code>section</code> element by passing a hash argument.
 @[xml](logs/attributes.xml)
 
 ### Timestamps and Durations
-![Time](images/time.png | height=70)
+<img src="images/time.png" height="70" alt="Time">
 
 Add a timestamp or duration to a <code>section</code> element by passing a special symbol argument.
 
@@ -61,7 +61,7 @@ Add a timestamp or duration to a <code>section</code> element by passing a speci
 @[xml](logs/time.xml)
 
 ### Rescued Section
-![Rescue](images/rescue.jpg | height=70)
+<img src="images/rescue.jpg" height="70" alt="Rescue">
 
 Add rescuing to a <code>section</code> element by passing a special symbol argument.
 
@@ -72,7 +72,7 @@ For the rescued exception, the class, message, and backtrace are logged.
 @[xml](logs/rescue.xml)
 
 ### Potpourri
-![Potpourri](images/potpourri.png | height=70)
+<img src="images/potpourri.png" height="70" alt="Potpourri">
 
 Pass any mixture of arguments to method <code>section</code>.
 
@@ -85,7 +85,7 @@ The section name must be first; after that, anything goes.
 ## Data
 
 ### Hash-LIke Objects
-![Hash](images/hash.png | height=30)
+<img src="images/hash.png" height="30" alt="Hash">
 
 Use method <code>put_each_pair</code>, or its alias <code>put_hash</code>, to log an object that <code>respond_to?(:each_pair)</code>.
 
@@ -94,7 +94,7 @@ Use method <code>put_each_pair</code>, or its alias <code>put_hash</code>, to lo
 @[xml](logs/hash.xml)
 
 ### Array-Like Objects
-![Array](images/array.jpg | height=30)
+<img src="images/array.jpg" height="30" alt="Array">
 
 Use method <code>put_each_with_index</code>, or its aliases <code>put_array</code> and <code>put_set</code>, to log an object that <code>respond_to?(:each_with_index)</code>.
 
@@ -103,7 +103,7 @@ Use method <code>put_each_with_index</code>, or its aliases <code>put_array</cod
 @[xml](logs/array.xml)
 
 ### Other Objects
-![Data](images/data.png | height=70)
+<img src="images/data.png" height="70" alt="Data">
 
 Use method <code>put_data</code> to log any object.
 
@@ -120,7 +120,7 @@ Use method <code>put_cdata</code> to log a string (possibly multi-line) as CDATA
 @[xml](logs/cdata.xml)
 
 ### Comment
-![Comment](images/comment.png | height=70)
+<img src="images/comment.png" height="70" alt="Comment">
 
 Use method <code>comment</code> to log a comment.
 
@@ -129,7 +129,7 @@ Use method <code>comment</code> to log a comment.
 @[xml](logs/comment.xml)
 
 ## Custom Logging
-![Custom](images/custom.png | width=70)
+<img src="images/custom.png" width="70" alt="Custom">
 
 At the heart of class <code>StructuredLog</code> is method <code>put_element</code>.  It logs an element, possibly with children, attributes, and text.  Several methods call it, and you can too.
 
@@ -154,7 +154,7 @@ Create a custom entry by calling method <code>put_element</code> without a block
 @[xml](logs/custom_entry.xml)
 
 ## Uncaught Exception
-![Exception](images/exception.png | width=70)
+<img src="images/exception.png" width="70" alt="Exception">
 
 Finally, what about an uncaught exception, one not rescued by <code>:rescue</code>?
 

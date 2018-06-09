@@ -35,13 +35,8 @@ namespace :build do
         system(command)
       end
     end
-    # TODO:  Implement dependencies
     markdown_helper = MarkdownHelper.new
-    # The intermediate file must be in the same directory as the original source.
-    intermediate_file_path = 'readme_files/README.md'
-    markdown_helper.resolve('readme_files/README.template.md', intermediate_file_path)
-    markdown_helper.include(intermediate_file_path, 'README.md')
-    File.delete(intermediate_file_path)
+    markdown_helper.include('readme_files/README.template.md', 'README.md')
   end
 
 end
