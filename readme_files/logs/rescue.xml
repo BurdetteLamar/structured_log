@@ -3,18 +3,18 @@
     <comment>
       This section will terminate because of the failure.
     </comment>
-    <rescued_exception timestamp='2018-03-28-Wed-14.56.52.579' class='RuntimeError'>
+    <rescued_exception timestamp='2018-06-09-Sat-11.27.35.140' class='RuntimeError'>
       <message>
         This exception will be rescued and logged.
       </message>
       <backtrace>
         <![CDATA[
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:6:in `block (2 levels) in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `block in section'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:116:in `put_element'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:57:in `section'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:58:in `block in section'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:116:in `put_element'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:57:in `section'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:4:in `block in <main>'
-C:/Ruby22/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:38:in `open'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/structured_log-0.1.0/lib/structured_log.rb:38:in `open'
 C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:3:in `<main>'
 ]]>
       </backtrace>
