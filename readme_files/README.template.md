@@ -1,5 +1,7 @@
 # Structured Log
 
+[![Gem](https://img.shields.io/gem/v/structured_log.svg?style=flat)](http://rubygems.org/gems/structured_log "View this project in Rubygems")
+
 <img src="images/structured.png" height="70" alt="Structured Log">
 
 Class <code>StructuredLog</code> offers structured (as opposed to flat) logging.  Nested sections (blocks) in Ruby code become nested XML elements in the log.
