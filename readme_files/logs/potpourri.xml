@@ -1,12 +1,12 @@
 <log>
   <section name='All together now'>
     Order does not matter except in aggregating text and attributes.
-    <section name='Potpourri' a='0' b='1' c='2' d='3' timestamp='2019-03-17-Sun-13.33.14.084' duration_seconds='0.000'>
-      This section has a potpourri.3.14159false10662019-03-17 13:33:14
+    <section name='Potpourri' a='0' b='1' c='2' d='3' timestamp='2019-03-17-Sun-15.10.28.885' duration_seconds='0.000'>
+      This section has a potpourri.3.14159false10662019-03-17 15:10:28
       -0500#&lt;RuntimeError: Oops!&gt;
     </section>
-    <section name='Reverse potpourri' timestamp='2019-03-17-Sun-13.33.14.084' c='2' d='3' a='0' b='1' duration_seconds='0.000'>
-      #&lt;RuntimeError: Oops!&gt;2019-03-17 13:33:14 -05001066false3.14159This
+    <section name='Reverse potpourri' timestamp='2019-03-17-Sun-15.10.28.885' c='2' d='3' a='0' b='1' duration_seconds='0.000'>
+      #&lt;RuntimeError: Oops!&gt;2019-03-17 15:10:28 -05001066false3.14159This
       section has a potpourri.
     </section>
   </section>

@@ -1,13 +1,13 @@
 <log>
-  <uncaught_exception timestamp='2019-03-17-Sun-13.33.13.565' class='RuntimeError'>
+  <uncaught_exception timestamp='2019-03-17-Sun-15.10.28.365' class='RuntimeError'>
     <message>
       Oops!
     </message>
     <backtrace>
       <![CDATA[
-C:/Users/Burde/Documents/GitHub/structured_log/readme_files/scripts/exception.rb:4:in `block in <main>'
+C:/structured_log/readme_files/scripts/exception.rb:4:in `block in <main>'
 C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/structured_log-0.9.0/lib/structured_log.rb:38:in `open'
-C:/Users/Burde/Documents/GitHub/structured_log/readme_files/scripts/exception.rb:3:in `<main>'
+C:/structured_log/readme_files/scripts/exception.rb:3:in `<main>'
 ]]>
     </backtrace>
   </uncaught_exception>
