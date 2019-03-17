@@ -1,5 +1,6 @@
 require 'test_helper'
 
+# noinspection RubyBlockToMethodReference
 class StructuredLogTest < Minitest::Test
   def test_version_exist
     refute_nil ::StructuredLog::VERSION
