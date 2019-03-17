@@ -213,7 +213,7 @@ class StructuredLog
     File.open(self.file_path, 'r') do |file|
       element = document
       stack = Array.new
-      data_a = nil
+      data_a = []
       terminator = nil
       file.each_line do |line|
         line.chomp!
@@ -241,7 +241,7 @@ class StructuredLog
             terminator = text.split('<<', 2).last
           when terminator
             data_s = data_a.join("\n")
-            data_a = nil
+            data_a = []
             terminator = nil
             data_type = stack.last
             case data_type
