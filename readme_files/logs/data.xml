@@ -2,14 +2,14 @@
   <data name='my_float' class='Float'>
     <![CDATA[3.14]]>
   </data>
-  <data name='my_fixnum' class='Fixnum'>
+  <data name='my_fixnum' class='Integer'>
     <![CDATA[1066]]>
   </data>
   <data name='my_false' class='FalseClass'>
     <![CDATA[false]]>
   </data>
   <data name='my_time' class='Time'>
-    <![CDATA[2018-08-09 15:18:11 -0500]]>
+    <![CDATA[2019-03-17 13:33:13 -0500]]>
   </data>
   <data name='my_exception' class='RuntimeError'>
     <![CDATA[#<RuntimeError: Oops!>]]>

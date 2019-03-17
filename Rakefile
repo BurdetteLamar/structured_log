@@ -1,4 +1,3 @@
-require 'bundler/gem_tasks'
 require 'rake/testtask'
 require 'markdown_helper'
 
@@ -36,6 +35,7 @@ namespace :build do
       end
     end
     markdown_helper = MarkdownHelper.new
+    # noinspection RubyResolve
     markdown_helper.include('readme_files/README.template.md', 'README.md')
   end
 
