@@ -3,19 +3,19 @@
     <comment>
       This section will terminate because of the failure.
     </comment>
-    <rescued_exception timestamp='2019-03-17-Sun-13.33.15.978' class='RuntimeError'>
+    <rescued_exception timestamp='2019-03-17-Sun-15.10.30.798' class='RuntimeError'>
       <message>
         This exception will be rescued and logged.
       </message>
       <backtrace>
         <![CDATA[
-C:/Users/Burde/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:6:in `block (2 levels) in <main>'
+C:/structured_log/readme_files/scripts/rescue.rb:6:in `block (2 levels) in <main>'
 C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/structured_log-0.9.0/lib/structured_log.rb:58:in `block in section'
 C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/structured_log-0.9.0/lib/structured_log.rb:116:in `put_element'
 C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/structured_log-0.9.0/lib/structured_log.rb:57:in `section'
-C:/Users/Burde/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:4:in `block in <main>'
+C:/structured_log/readme_files/scripts/rescue.rb:4:in `block in <main>'
 C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/structured_log-0.9.0/lib/structured_log.rb:38:in `open'
-C:/Users/Burde/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:3:in `<main>'
+C:/structured_log/readme_files/scripts/rescue.rb:3:in `<main>'
 ]]>
       </backtrace>
     </rescued_exception>

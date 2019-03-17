@@ -34,6 +34,13 @@ namespace :build do
         system(command)
       end
     end
+    git_top_dir_path = `git rev-parse --show-toplevel`.chomp
+    log_file_paths = Dir.glob("#{target_dir_path}/*.xml")
+    log_file_paths.each do |log_file_path|
+      text = File.read(log_file_path)
+      text.gsub!(git_top_dir_path, "C:/#{File.basename(git_top_dir_path)}")
+      File.write(log_file_path, text)
+    end
     markdown_helper = MarkdownHelper.new
     # noinspection RubyResolve
     markdown_helper.include('readme_files/README.template.md', 'README.md')
