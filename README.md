@@ -160,7 +160,7 @@ end
 ```time.xml```:
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2018-08-09-Thu-15.18.14.432'>
+  <section name='Section with timestamp' timestamp='2019-03-17-Sun-13.33.16.795'>
     <comment>
       This section has a timestamp.
     </comment>
@@ -170,7 +170,7 @@ end
       This section has a duration.
     </comment>
   </section>
-  <section name='Section with both' timestamp='2018-08-09-Thu-15.18.15.448' duration_seconds='1.016'>
+  <section name='Section with both' timestamp='2019-03-17-Sun-13.33.17.796' duration_seconds='1.001'>
     <comment>
       This section has both.
     </comment>
@@ -195,7 +195,7 @@ StructuredLog.open('rescue.xml') do |log|
   log.section('Section with rescue', :rescue) do
     log.comment('This section will terminate because of the failure.')
     fail 'This exception will be rescued and logged.'
-    log.comment('This comment will not be reached.')
+    # This comment will not be reached.
   end
   log.section('Another section') do
     log.comment('This comment will be reached and logged, because of rescue above.')
@@ -212,19 +212,19 @@ end
     <comment>
       This section will terminate because of the failure.
     </comment>
-    <rescued_exception timestamp='2018-08-09-Thu-15.18.13.823' class='RuntimeError'>
+    <rescued_exception timestamp='2019-03-17-Sun-13.33.15.978' class='RuntimeError'>
       <message>
         This exception will be rescued and logged.
       </message>
       <backtrace>
         <![CDATA[
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:6:in `block (2 levels) in <main>'
-C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/structured_log-0.9.0/lib/structured_log.rb:68:in `block in section'
-C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/structured_log-0.9.0/lib/structured_log.rb:126:in `put_element'
-C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/structured_log-0.9.0/lib/structured_log.rb:67:in `section'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:4:in `block in <main>'
-C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/structured_log-0.9.0/lib/structured_log.rb:48:in `open'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:3:in `<main>'
+C:/Users/Burde/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:6:in `block (2 levels) in <main>'
+C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/structured_log-0.9.0/lib/structured_log.rb:58:in `block in section'
+C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/structured_log-0.9.0/lib/structured_log.rb:116:in `put_element'
+C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/structured_log-0.9.0/lib/structured_log.rb:57:in `section'
+C:/Users/Burde/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:4:in `block in <main>'
+C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/structured_log-0.9.0/lib/structured_log.rb:38:in `open'
+C:/Users/Burde/Documents/GitHub/structured_log/readme_files/scripts/rescue.rb:3:in `<main>'
 ]]>
       </backtrace>
     </rescued_exception>
@@ -277,12 +277,12 @@ end
 <log>
   <section name='All together now'>
     Order does not matter except in aggregating text and attributes.
-    <section name='Potpourri' a='0' b='1' c='2' d='3' timestamp='2018-08-09-Thu-15.18.12.135' duration_seconds='0.000'>
-      This section has a potpourri.3.14159false10662018-08-09 15:18:12
+    <section name='Potpourri' a='0' b='1' c='2' d='3' timestamp='2019-03-17-Sun-13.33.14.084' duration_seconds='0.000'>
+      This section has a potpourri.3.14159false10662019-03-17 13:33:14
       -0500#&lt;RuntimeError: Oops!&gt;
     </section>
-    <section name='Reverse potpourri' timestamp='2018-08-09-Thu-15.18.12.135' c='2' d='3' a='0' b='1' duration_seconds='0.000'>
-      #&lt;RuntimeError: Oops!&gt;2018-08-09 15:18:12 -05001066false3.14159This
+    <section name='Reverse potpourri' timestamp='2019-03-17-Sun-13.33.14.084' c='2' d='3' a='0' b='1' duration_seconds='0.000'>
+      #&lt;RuntimeError: Oops!&gt;2019-03-17 13:33:14 -05001066false3.14159This
       section has a potpourri.
     </section>
   </section>
@@ -397,14 +397,14 @@ end
   <data name='my_float' class='Float'>
     <![CDATA[3.14]]>
   </data>
-  <data name='my_fixnum' class='Fixnum'>
+  <data name='my_fixnum' class='Integer'>
     <![CDATA[1066]]>
   </data>
   <data name='my_false' class='FalseClass'>
     <![CDATA[false]]>
   </data>
   <data name='my_time' class='Time'>
-    <![CDATA[2018-08-09 15:18:11 -0500]]>
+    <![CDATA[2019-03-17 13:33:13 -0500]]>
   </data>
   <data name='my_exception' class='RuntimeError'>
     <![CDATA[#<RuntimeError: Oops!>]]>
@@ -531,7 +531,7 @@ end
       <child rank='Older'/>
       <child rank='Younger'/>
     </section_with_children>
-    <section_with_duration duration_seconds='1.016'>
+    <section_with_duration duration_seconds='1.000'>
       Block contains timed code to be timed.
     </section_with_duration>
     <section_with_rescue>
@@ -571,7 +571,7 @@ end
       No child elements, just this text.
     </element_with_text>
     <element_with_attributes a='0' b='1'/>
-    <element_with_timestamp timestamp='2018-08-09-Thu-15.18.09.869'/>
+    <element_with_timestamp timestamp='2019-03-17-Sun-13.33.11.708'/>
     <element_with_data>
       3.14159
     </element_with_data>
@@ -594,7 +594,7 @@ Just as for a rescued exception, the log includes the exception's class, message
 ```ruby
 require 'structured_log'
 
-StructuredLog.open('exception.xml') do |log|
+StructuredLog.open('exception.xml') do |_|
   fail('Oops!')
 end
 ```
@@ -604,15 +604,15 @@ end
 ```exception.xml```:
 ```xml
 <log>
-  <uncaught_exception timestamp='2018-08-09-Thu-15.18.11.541' class='RuntimeError'>
+  <uncaught_exception timestamp='2019-03-17-Sun-13.33.13.565' class='RuntimeError'>
     <message>
       Oops!
     </message>
     <backtrace>
       <![CDATA[
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/exception.rb:4:in `block in <main>'
-C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/structured_log-0.9.0/lib/structured_log.rb:48:in `open'
-C:/Users/Burdette/Documents/GitHub/structured_log/readme_files/scripts/exception.rb:3:in `<main>'
+C:/Users/Burde/Documents/GitHub/structured_log/readme_files/scripts/exception.rb:4:in `block in <main>'
+C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/structured_log-0.9.0/lib/structured_log.rb:38:in `open'
+C:/Users/Burde/Documents/GitHub/structured_log/readme_files/scripts/exception.rb:3:in `<main>'
 ]]>
     </backtrace>
   </uncaught_exception>

@@ -1,7 +1,7 @@
 <log>
   <section name='The usual'>
     Mixed hash, string, and special symbols are logged as usual.
-    <section name='Potpourri' a='0' b='1' timestamp='2018-08-09-Thu-15.18.12.573' duration_seconds='1.016'>
+    <section name='Potpourri' a='0' b='1' timestamp='2019-03-17-Sun-13.33.14.627' duration_seconds='1.001'>
       This section has a potpourri.
     </section>
   </section>

@@ -4,7 +4,7 @@
       <child rank='Older'/>
       <child rank='Younger'/>
     </section_with_children>
-    <section_with_duration duration_seconds='1.016'>
+    <section_with_duration duration_seconds='1.000'>
       Block contains timed code to be timed.
     </section_with_duration>
     <section_with_rescue>
