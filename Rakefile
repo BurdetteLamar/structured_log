@@ -38,6 +38,7 @@ namespace :build do
     log_file_paths = Dir.glob("#{target_dir_path}/*.xml")
     log_file_paths.each do |log_file_path|
       text = File.read(log_file_path)
+      # Obfuscate user file path.
       text.gsub!(git_top_dir_path, "C:/#{File.basename(git_top_dir_path)}")
       File.write(log_file_path, text)
     end
