@@ -3,7 +3,7 @@
     <comment>
       This section will terminate because of the failure.
     </comment>
-    <rescued_exception timestamp='2019-03-17-Sun-15.10.30.798' class='RuntimeError'>
+    <rescued_exception timestamp='2019-03-19-Tue-13.50.01.509' class='RuntimeError'>
       <message>
         This exception will be rescued and logged.
       </message>

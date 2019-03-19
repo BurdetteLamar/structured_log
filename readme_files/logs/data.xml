@@ -1,20 +1,18 @@
 <log>
   <data name='my_float' class='Float'>
-    <![CDATA[3.14]]>
+    3.14
   </data>
-  <data name='my_fixnum' class='Integer'>
-    <![CDATA[1066]]>
+  <data name='my_integer' class='Integer'>
+    1066
   </data>
   <data name='my_false' class='FalseClass'>
-    <![CDATA[false]]>
+    false
   </data>
   <data name='my_time' class='Time'>
-    <![CDATA[2019-03-17 15:10:28 -0500]]>
+    2019-03-19 13:49:58 -0500
   </data>
   <data name='my_exception' class='RuntimeError'>
-    <![CDATA[#<RuntimeError: Oops!>]]>
+    Oops!
   </data>
-  <data name='my_nil' class='NilClass'>
-    <![CDATA[nil]]>
-  </data>
+  <data name='my_nil' class='NilClass'/>
 </log>

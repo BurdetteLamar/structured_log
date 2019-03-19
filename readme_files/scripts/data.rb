@@ -2,7 +2,7 @@ require 'structured_log'
 
 data = {
     :float => 3.14,
-    :fixnum => 1066,
+    :integer => 1066,
     :false => false,
     :time => Time.new,
     :exception => RuntimeError.new('Oops!'),
