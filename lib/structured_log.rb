@@ -166,9 +166,8 @@ class StructuredLog
   alias put_hash put_each_pair
 
   def put_data(name, obj)
-    put_element('data', :name => name, :class => obj.class) do
-      put_cdata(obj.inspect)
-    end
+    value = obj.respond_to?(:to_s) ? obj.to_s : obj.inspect
+    put_element('data',  value, :name => name, :class => obj.class)
   end
 
   def put_cdata(text)

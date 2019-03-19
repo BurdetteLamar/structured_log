@@ -160,7 +160,7 @@ end
 ```time.xml```:
 ```xml
 <log>
-  <section name='Section with timestamp' timestamp='2019-03-17-Sun-15.10.31.582'>
+  <section name='Section with timestamp' timestamp='2019-03-19-Tue-13.50.02.358'>
     <comment>
       This section has a timestamp.
     </comment>
@@ -170,7 +170,7 @@ end
       This section has a duration.
     </comment>
   </section>
-  <section name='Section with both' timestamp='2019-03-17-Sun-15.10.32.583' duration_seconds='1.001'>
+  <section name='Section with both' timestamp='2019-03-19-Tue-13.50.03.359' duration_seconds='1.000'>
     <comment>
       This section has both.
     </comment>
@@ -212,7 +212,7 @@ end
     <comment>
       This section will terminate because of the failure.
     </comment>
-    <rescued_exception timestamp='2019-03-17-Sun-15.10.30.798' class='RuntimeError'>
+    <rescued_exception timestamp='2019-03-19-Tue-13.50.01.509' class='RuntimeError'>
       <message>
         This exception will be rescued and logged.
       </message>
@@ -277,12 +277,12 @@ end
 <log>
   <section name='All together now'>
     Order does not matter except in aggregating text and attributes.
-    <section name='Potpourri' a='0' b='1' c='2' d='3' timestamp='2019-03-17-Sun-15.10.28.885' duration_seconds='0.000'>
-      This section has a potpourri.3.14159false10662019-03-17 15:10:28
+    <section name='Potpourri' a='0' b='1' c='2' d='3' timestamp='2019-03-19-Tue-13.49.59.631' duration_seconds='0.000'>
+      This section has a potpourri.3.14159false10662019-03-19 13:49:59
       -0500#&lt;RuntimeError: Oops!&gt;
     </section>
-    <section name='Reverse potpourri' timestamp='2019-03-17-Sun-15.10.28.885' c='2' d='3' a='0' b='1' duration_seconds='0.000'>
-      #&lt;RuntimeError: Oops!&gt;2019-03-17 15:10:28 -05001066false3.14159This
+    <section name='Reverse potpourri' timestamp='2019-03-19-Tue-13.49.59.631' c='2' d='3' a='0' b='1' duration_seconds='0.000'>
+      #&lt;RuntimeError: Oops!&gt;2019-03-19 13:49:59 -05001066false3.14159This
       section has a potpourri.
     </section>
   </section>
@@ -375,7 +375,7 @@ require 'structured_log'
 
 data = {
     :float => 3.14,
-    :fixnum => 1066,
+    :integer => 1066,
     :false => false,
     :time => Time.new,
     :exception => RuntimeError.new('Oops!'),
@@ -395,23 +395,21 @@ end
 ```xml
 <log>
   <data name='my_float' class='Float'>
-    <![CDATA[3.14]]>
+    3.14
   </data>
-  <data name='my_fixnum' class='Integer'>
-    <![CDATA[1066]]>
+  <data name='my_integer' class='Integer'>
+    1066
   </data>
   <data name='my_false' class='FalseClass'>
-    <![CDATA[false]]>
+    false
   </data>
   <data name='my_time' class='Time'>
-    <![CDATA[2019-03-17 15:10:28 -0500]]>
+    2019-03-19 13:49:58 -0500
   </data>
   <data name='my_exception' class='RuntimeError'>
-    <![CDATA[#<RuntimeError: Oops!>]]>
+    Oops!
   </data>
-  <data name='my_nil' class='NilClass'>
-    <![CDATA[nil]]>
-  </data>
+  <data name='my_nil' class='NilClass'/>
 </log>
 ```
 <!-- <<<<<< END INCLUDED FILE (xml): SOURCE readme_files/logs/data.xml -->
@@ -571,7 +569,7 @@ end
       No child elements, just this text.
     </element_with_text>
     <element_with_attributes a='0' b='1'/>
-    <element_with_timestamp timestamp='2019-03-17-Sun-15.10.26.550'/>
+    <element_with_timestamp timestamp='2019-03-19-Tue-13.49.57.173'/>
     <element_with_data>
       3.14159
     </element_with_data>
@@ -604,7 +602,7 @@ end
 ```exception.xml```:
 ```xml
 <log>
-  <uncaught_exception timestamp='2019-03-17-Sun-15.10.28.365' class='RuntimeError'>
+  <uncaught_exception timestamp='2019-03-19-Tue-13.49.59.081' class='RuntimeError'>
     <message>
       Oops!
     </message>

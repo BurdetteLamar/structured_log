@@ -491,7 +491,7 @@ class StructuredLogTest < Minitest::Test
     ele_xpath = "//#{element_name}"
     counts = {
         :attributes => 2,
-        :cdatas => 1,
+        :cdatas => 0,
         :get_elements => 1,
         :texts => 1,
     }
